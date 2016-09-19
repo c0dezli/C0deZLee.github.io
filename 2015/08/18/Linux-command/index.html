@@ -1,0 +1,1002 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="英文作者：Tecmit翻译：oschina
+
+1. ls命令ls命令是列出目录内容(List Directory Contents)的意思。运行它就是列出文件夹里的内容，可能是文件也可能是文件夹。
+root@tecmint:~
+# ls
+Android-Games Music
+Pictures Public
+Desktop Tecmint.com
+Documents TecMint-Sync
+D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction to Linux Terminal Commands">
+<meta property="og:url" content="http://codezlee.com/2015/08/18/Linux-command/index.html">
+<meta property="og:site_name" content="Hello, World">
+<meta property="og:description" content="英文作者：Tecmit翻译：oschina
+
+1. ls命令ls命令是列出目录内容(List Directory Contents)的意思。运行它就是列出文件夹里的内容，可能是文件也可能是文件夹。
+root@tecmint:~
+# ls
+Android-Games Music
+Pictures Public
+Desktop Tecmint.com
+Documents TecMint-Sync
+D">
+<meta property="og:updated_time" content="2016-09-16T22:39:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Introduction to Linux Terminal Commands">
+<meta name="twitter:description" content="英文作者：Tecmit翻译：oschina
+
+1. ls命令ls命令是列出目录内容(List Directory Contents)的意思。运行它就是列出文件夹里的内容，可能是文件也可能是文件夹。
+root@tecmint:~
+# ls
+Android-Games Music
+Pictures Public
+Desktop Tecmint.com
+Documents TecMint-Sync
+D">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codezlee.com/2015/08/18/Linux-command/"/>
+
+  <title> Introduction to Linux Terminal Commands | Hello, World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hello, World</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text-o"></i> <br />
+            
+            Resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Introduction to Linux Terminal Commands
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-08-18T22:48:09-04:00" content="08-18-2015">
+              08-18-2015
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Guide/" itemprop="url" rel="index">
+                    <span itemprop="name">Guide</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>英文作者：Tecmit<br>翻译：<a href="http://www.oschina.net/translate/useful-linux-commands-for-newbies" target="_blank" rel="external">oschina</a></p>
+</blockquote>
+<h2 id="1-_ls命令">1. ls命令</h2><p>ls命令是列出目录内容(List Directory Contents)的意思。运行它就是列出文件夹里的内容，可能是文件也可能是文件夹。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span>
+<span class="comment"># ls</span>
+<span class="constant">Android</span>-<span class="constant">Games</span> <span class="constant">Music</span>
+<span class="constant">Pictures</span> <span class="constant">Public</span>
+<span class="constant">Desktop</span> <span class="constant">Tecmint</span>.com
+<span class="constant">Documents</span> <span class="constant">TecMint</span>-<span class="constant">Sync</span>
+<span class="constant">Downloads</span> <span class="constant">Templates</span>
+</code></pre><p>“ls -l”命令以详情模式(long listing fashion)列出文件夹的内容。 <a id="more"></a></p>
+<pre><code>root@tecmint:~
+<span class="preprocessor"># ls -l</span>
+total <span class="number">40588</span>
+drwxrwxr-x <span class="number">2</span> ravisaive ravisaive <span class="number">4096</span> May <span class="number">8</span> <span class="number">01</span>:<span class="number">06</span> Android Games
+drwxr-xr-x <span class="number">2</span> ravisaive ravisaive <span class="number">4096</span> May <span class="number">15</span> <span class="number">10</span>:<span class="number">50</span> Desktop
+drwxr-xr-x <span class="number">2</span> ravisaive ravisaive <span class="number">4096</span> May <span class="number">16</span> <span class="number">16</span>:<span class="number">45</span> Documents
+drwxr-xr-x <span class="number">6</span> ravisaive ravisaive <span class="number">4096</span> May <span class="number">16</span> <span class="number">14</span>:<span class="number">34</span> Downloads
+drwxr-xr-x <span class="number">2</span> ravisaive ravisaive <span class="number">4096</span> Apr <span class="number">30</span> <span class="number">20</span>:<span class="number">50</span> Music
+drwxr-xr-x <span class="number">2</span> ravisaive ravisaive <span class="number">4096</span> May <span class="number">9</span> <span class="number">17</span>:<span class="number">54</span> Pictures
+drwxrwxr-x <span class="number">5</span> ravisaive ravisaive <span class="number">4096</span> May <span class="number">3</span> <span class="number">18</span>:<span class="number">44</span> Tecmint.com
+drwxr-xr-x <span class="number">2</span> ravisaive ravisaive <span class="number">4096</span> Apr <span class="number">30</span> <span class="number">20</span>:<span class="number">50</span> Templates
+</code></pre><p>“ls -a”命令会列出文件夹里的所有内容，包括以”.”开头的隐藏文件。</p>
+<pre><code>root@tecmint:~
+# ls -a
+<span class="bullet">. </span>.gnupg .dbus .goutputstream-PI5VVW .mission-control
+<span class="title">.adobe deja-dup .grsync .mozilla .themes</span>
+<span class="title">.gstreamer-0.10 .mtpaint .thumbnails .gtk-bookmarks .thunderbird</span>
+<span class="title">.HotShots .mysql_history .htaccess .apport-ignore.xml .ICEauthority</span>
+<span class="title">.profile .bash_history .icons .bash_logout .fbmessenger</span>
+<span class="title">.jedit .pulse .bashrc .liferea_1.8 .pulse-cookie</span>
+<span class="title">.Xauthority .gconf .local .Xauthority.HGHVWW .cache</span>
+<span class="title">.gftp .macromedia .remmina .cinnamon .gimp-2.8</span>
+<span class="title">.ssh .xsession-errors .compiz .gnome teamviewer_linux.deb</span>
+<span class="title">.xsession-errors.old .config .gnome2 .zoncolor</span>
+</code></pre><p>注意：在Linux中，文件以“.”开头的就是隐藏文件，并且每个文件，文件夹，设备或者命令都是以文件对待。</p>
+<p>ls -l 命令输出：</p>
+<ul>
+<li>d (代表了是目录).</li>
+<li>rwxr-xr-x 是文件或者目录对所属用户，同一组用户和其它用户的权限。</li>
+<li>上面例子中第一个ravisaive 代表了文件文件属于用户ravisaive</li>
+<li>上面例子中的第二个ravisaive代表了文件文件属于用户组ravisaive</li>
+<li>4096 代表了文件大小为4096字节.</li>
+<li>May 8 01:06 代表了文件最后一次修改的日期和时间.</li>
+<li>最后面的就是文件/文件夹的名字</li>
+</ul>
+<h2 id="2-_lsblk命令">2. lsblk命令</h2><p>“lsblk”就是列出块设备。除了RAM外，以标准的树状输出格式，整齐地显示块设备。</p>
+<pre><code>root@tecmint:~
+<span class="preprocessor"># lsblk</span>
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sda <span class="number">8</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">232.9</span>G <span class="number">0</span> disk
+├─sda1 <span class="number">8</span>:<span class="number">1</span> <span class="number">0</span> <span class="number">46.6</span>G <span class="number">0</span> part /
+├─sda2 <span class="number">8</span>:<span class="number">2</span> <span class="number">0</span> <span class="number">1</span>K <span class="number">0</span> part
+├─sda5 <span class="number">8</span>:<span class="number">5</span> <span class="number">0</span> <span class="number">190</span>M <span class="number">0</span> part /boot
+├─sda6 <span class="number">8</span>:<span class="number">6</span> <span class="number">0</span> <span class="number">3.7</span>G <span class="number">0</span> part [SWAP]
+├─sda7 <span class="number">8</span>:<span class="number">7</span> <span class="number">0</span> <span class="number">93.1</span>G <span class="number">0</span> part /data
+└─sda8 <span class="number">8</span>:<span class="number">8</span> <span class="number">0</span> <span class="number">89.2</span>G <span class="number">0</span> part /personal
+sr0 <span class="number">11</span>:<span class="number">0</span> <span class="number">1</span> <span class="number">1024</span>M <span class="number">0</span> rom
+</code></pre><p>“lsblk -l”命令以列表格式显示块设备(而不是树状格式)。</p>
+<pre><code>root@tecmint:~
+<span class="preprocessor"># lsblk -l</span>
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sda <span class="number">8</span>:<span class="number">0</span> <span class="number">0</span> <span class="number">232.9</span>G <span class="number">0</span> disk
+sda1 <span class="number">8</span>:<span class="number">1</span> <span class="number">0</span> <span class="number">46.6</span>G <span class="number">0</span> part /
+sda2 <span class="number">8</span>:<span class="number">2</span> <span class="number">0</span> <span class="number">1</span>K <span class="number">0</span> part
+sda5 <span class="number">8</span>:<span class="number">5</span> <span class="number">0</span> <span class="number">190</span>M <span class="number">0</span> part /boot
+sda6 <span class="number">8</span>:<span class="number">6</span> <span class="number">0</span> <span class="number">3.7</span>G <span class="number">0</span> part [SWAP]
+sda7 <span class="number">8</span>:<span class="number">7</span> <span class="number">0</span> <span class="number">93.1</span>G <span class="number">0</span> part /data
+sda8 <span class="number">8</span>:<span class="number">8</span> <span class="number">0</span> <span class="number">89.2</span>G <span class="number">0</span> part /personal
+sr0 <span class="number">11</span>:<span class="number">0</span> <span class="number">1</span> <span class="number">1024</span>M <span class="number">0</span> rom
+</code></pre><p>注意：lsblk是最有用和最简单的方式来了解新插入的USB设备的名字，特别是当你在终端上处理磁盘/块设备时。</p>
+<h2 id="3-_md5sum命令">3. md5sum命令</h2><p>“md5sum”就是计算和检验MD5信息签名。md5 checksum(通常叫做哈希)使用匹配或者验证文件的文件的完整性，因为文件可能因为传输错误，磁盘错误或者无恶意的干扰等原因而发生改变。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span>
+<span class="comment"># md5sum teamviewer_linux.deb</span>
+<span class="number">47790</span>ed345a7b7970fc1f2ac50c97002 teamviewer_linux.deb
+</code></pre><p>注意：用户可以使用官方提供的和md5sum生成签名信息匹对以此检测文件是否改变。Md5sum没有sha1sum安全，这点我们稍后讨论。</p>
+<h2 id="4-_dd命令">4. dd命令</h2><p>“dd”命令代表了转换和复制文件。可以用来转换和复制文件，大多数时间是用来复制iso文件(或任何其它文件)到一个usb设备(或任何其它地方)中去，所以可以用来制作USB启动器。</p>
+<pre><code>root@tecmint:~
+# dd <span class="keyword">if</span>=<span class="regexp">/home/u</span>ser<span class="regexp">/Downloads/</span>debian.iso of=<span class="regexp">/dev/</span>sdb1 bs=<span class="number">512</span>M; sync
+</code></pre><p>注意：在上面的例子中，usb设备就是sdb1（你应该使用lsblk命令验证它，否则你会重写你的磁盘或者系统），请慎重使用磁盘的名，切忌。</p>
+<p>dd 命令在执行中会根据文件的大小和类型 以及 usb设备的读写速度，消耗几秒到几分钟不等。</p>
+<h2 id="5-_uname命令">5. uname命令</h2><p>“uname”命令就是Unix Name的简写。显示机器名，操作系统和内核的详细信息。</p>
+<pre><code>root@tecmint:~
+<span class="preprocessor"># uname -a</span>
+Linux tecmint <span class="number">3.8</span><span class="number">.0</span>-<span class="number">19</span>-generic
+<span class="preprocessor">#<span class="number">30</span>-Ubuntu SMP Wed May <span class="number">1</span> <span class="number">16</span>:<span class="number">36</span>:<span class="number">13</span> UTC <span class="number">2013</span> i686 i686 i686 GNU/Linux</span>
+</code></pre><p>注意： uname显示内核类别， uname -a显示详细信息。</p>
+<p>上面的输出详细说明了uname -a的输出内容</p>
+<ul>
+<li>“Linux“: 机器的内核名</li>
+<li>“tecmint“: 机器的分支名</li>
+<li>“3.8.0-19-generic“: 内核发布版本</li>
+<li>“#30-Ubuntu SMP“: 内核版本</li>
+<li>“i686“: 处理器架构</li>
+<li>“GNU/Linux“: 操作系统名</li>
+</ul>
+<h2 id="6-_history命令">6. history命令</h2><p>“history”命令就是历史记录。它显示了在终端中所执行过的所有命令的历史。</p>
+<pre><code>root@tecmint:~
+<span class="comment"># history</span>
+1 sudo<span class="instruction"> add-apt-repository </span>ppa:tualatrix/ppa
+2 sudo apt-get update
+3 sudo apt-get install ubuntu-tweak
+4 sudo<span class="instruction"> add-apt-repository </span>ppa:diesch/testing
+5 sudo apt-get update
+6 sudo apt-get install indicator-privacy
+7 sudo<span class="instruction"> add-apt-repository </span>ppa:atareao/atareao
+8 sudo apt-get update
+9 sudo apt-get install my-weather-indicator
+10 pwd
+11 cd &amp;&amp; sudo cp -r unity/6 /usr/share/unity/
+12 cd /usr/share/unity/icons/
+13 cd /usr/share/unity
+</code></pre><p>注意：按住“CTRL + R”就可以搜索已经执行过的命令，它可以你写命令时自动补全。</p>
+<pre><code><span class="comment">(reverse-i-search)</span>`<span class="keyword">if</span><span class="string">': ifconfig</span>
+</code></pre><h2 id="7-_sudo命令">7. sudo命令</h2><p>“sudo”(super user do)命令允许授权用户执行超级用户或者其它用户的命令。通过在sudoers列表的安全策略来指定。</p>
+<pre><code>root@tecmin<span class="variable">t:</span>~# sudo <span class="built_in">add</span>-apt-repository <span class="keyword">pp</span><span class="variable">a:tualatrix</span>/ppa
+</code></pre><p>注意：sudo 允许用户借用超级用户的权限，然而”su”命令实际上是允许用户以超级用户登录。所以sudo比su更安全。</p>
+<p>并不建议使用sudo或者su来处理日常用途，因为它可能导致严重的错误如果你意外的做错了事，这就是为什么在linux社区流行一句话：</p>
+<p>“To err is human, but to really foul up everything, you need root password.”</p>
+<p>“人非圣贤孰能无过，但是拥有root密码就真的万劫不复了。”</p>
+<h2 id="8-_mkdir命令">8. mkdir命令</h2><p>“mkdir”(Make directory)命令在命名路径下创建新的目录。然而如果目录已经存在了，那么它就会返回一个错误信息”不能创建文件夹，文件夹已经存在了”(“cannot create folder, folder already exists”)</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span>
+<span class="comment"># mkdir tecmint</span>
+</code></pre><p>注意：目录只能在用户拥有写权限的目录下才能创建。mkdir：不能创建目录<code>tecmint</code>，因为文件已经存在了。（上面的输出中不要被文件迷惑了，你应该记住我开头所说的-在linux中，文件，文件夹，驱动，命令，脚本都视为文件）</p>
+<h2 id="9-_touch_命令">9. touch 命令</h2><p>“touch”命令代表了将文件的访问和修改时间更新为当前时间。touch命令只会在文件不存在的时候才会创建它。如果文件已经存在了，它会更新时间戳，但是并不会改变文件的内容。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span>
+<span class="comment"># touch tecmintfile</span>
+</code></pre><p>注意：touch 可以用来在用户拥有写权限的目录下创建不存在的文件。</p>
+<h2 id="10-_chmod_命令">10. chmod 命令</h2><p>“chmod”命令就是改变文件的模式位。chmod会根据要求的模式来改变每个所给的文件，文件夹，脚本等等的文件模式（权限）。</p>
+<p>在文件(文件夹或者其它，为了简单起见，我们就使用文件)中存在3中类型的权限</p>
+<ul>
+<li>Read (r)=4</li>
+<li>Write(w)=2</li>
+<li>Execute(x)=1</li>
+</ul>
+<p>所以如果你想给文件只读权限，就设置为’4′;只写权限，设置权限为’2′;只执行权限，设置为1; 读写权限，就是4+2 = 6, 以此类推。</p>
+<p>现在需要设置3种用户和用户组权限。第一个是拥有者，然后是用户所在的组，最后是其它用户。</p>
+<pre><code>rwxr-<span class="keyword">x</span>--<span class="keyword">x</span> <span class="keyword">abc</span>.<span class="keyword">sh</span>
+</code></pre><p>这里root的权限是 rwx（读写和执行权限），</p>
+<p>所属用户组权限是 r-x (只有读写权限, 没有写权限)，</p>
+<p>对于其它用户权限是 -x(只有只执行权限)</p>
+<p>为了改变它的权限，为拥有者，用户所在组和其它用户提供读，写，执行权限。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span>
+
+<span class="comment"># chmod 777 abc.sh</span>
+</code></pre><p>三种都只有读写权限</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span>
+
+<span class="comment"># chmod 666 abc.sh</span>
+</code></pre><p>拥有者用户有读写和执行权限，用户所在的组和其它用户只有可执行权限</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span>
+
+<span class="comment"># chmod 711 abc.sh</span>
+</code></pre><p>注意：对于系统管理员和用户来说，这个命令是最有用的命令之一了。在多用户环境或者服务器上，对于某个用户，如果设置了文件不可访问，那么这个命令就可以解决，如果设置了错误的权限，那么也就提供了为授权的访问。</p>
+<h2 id="11-_chown命令">11. chown命令</h2><p>“chown”命令就是改变文件拥有者和所在用户组。每个文件都属于一个用户组和一个用户。在你的目录下，使用”ls -l”,你就会看到像这样的东西。</p>
+<pre><code>root@tecmint:~
+
+<span class="preprocessor"># ls -l</span>
+
+drwxr-xr-x <span class="number">3</span> server root <span class="number">4096</span> May <span class="number">10</span> <span class="number">11</span>:<span class="number">14</span> Binary
+
+drwxr-xr-x <span class="number">2</span> server server <span class="number">4096</span> May <span class="number">13</span> <span class="number">09</span>:<span class="number">42</span> Desktop
+</code></pre><p>在这里，目录Binary属于用户”server”,和用户组”root”,而目录”Desktop”属于用户“server”和用户组”server”</p>
+<p>“chown”命令用来改变文件的所有权，所以仅仅用来管理和提供文件的用户和用户组授权。</p>
+<pre><code>root@tecmint:~<span class="preprocessor"># chown server:server Binary</span>
+
+drwxr-xr-x <span class="number">3</span> server server <span class="number">4096</span> May <span class="number">10</span> <span class="number">11</span>:<span class="number">14</span> Binary
+
+drwxr-xr-x <span class="number">2</span> server server <span class="number">4096</span> May <span class="number">13</span> <span class="number">09</span>:<span class="number">42</span> Desktop
+</code></pre><p>注意：“chown”所给的文件改变用户和组的所有权到新的拥有者或者已经存在的用户或者用户组。</p>
+<h2 id="12-_apt命令">12. apt命令</h2><p>Debian系列以“apt”命令为基础，“apt”代表了Advanced Package Tool。APT是一个为Debian系列系统（Ubuntu，Kubuntu等等）开发的高级包管理器，在Gnu/Linux系统上，它会为包自动地，智能地搜索，安装，升级以及解决依赖。</p>
+<pre><code>root@tecmint:~
+
+# apt-get <span class="operator"><span class="keyword">install</span> mplayer
+
+Reading <span class="keyword">package</span> lists... Done
+Building dependency tree
+Reading state information... Done
+The <span class="keyword">following</span> <span class="keyword">package</span> was automatically installed <span class="keyword">and</span> <span class="keyword">is</span> <span class="keyword">no</span> longer <span class="keyword">required</span>:
+<span class="keyword">java</span>-wrappers
+<span class="keyword">Use</span> <span class="string">'apt-get autoremove'</span> <span class="keyword">to</span> remove it.
+The <span class="keyword">following</span> extra packages will be installed:
+esound-common libaudiofile1 libesd0 libopenal-<span class="keyword">data</span> libopenal1 libsvga1 libvdpau1 libxvidcore4
+Suggested packages:
+pulseaudio-esound-compat libroar-compat2 nvidia-vdpau-driver vdpau-driver mplayer-doc netselect fping
+The <span class="keyword">following</span> <span class="keyword">NEW</span> packages will be installed:
+esound-common libaudiofile1 libesd0 libopenal-<span class="keyword">data</span> libopenal1 libsvga1 libvdpau1 libxvidcore4 mplayer
+<span class="number">0</span> upgraded, <span class="number">9</span> newly installed, <span class="number">0</span> <span class="keyword">to</span> remove <span class="keyword">and</span> <span class="number">8</span> <span class="keyword">not</span> upgraded.
+Need <span class="keyword">to</span> <span class="keyword">get</span> <span class="number">3</span>,<span class="number">567</span> kB <span class="keyword">of</span> archives.
+<span class="keyword">After</span> this operation, <span class="number">7</span>,<span class="number">772</span> kB <span class="keyword">of</span> additional disk <span class="keyword">space</span> will be used.
+<span class="keyword">Do</span> you want <span class="keyword">to</span> continue [Y/<span class="keyword">n</span>]? y</span>
+</code></pre><p>升级现有的package</p>
+<pre><code>root@tecmint:~
+
+# apt-get <span class="operator"><span class="keyword">update</span>
+
+Hit <span class="keyword">http</span>://ppa.launchpad.net raring <span class="keyword">Release</span>.gpg
+Hit <span class="keyword">http</span>://ppa.launchpad.net raring <span class="keyword">Release</span>.gpg
+Hit <span class="keyword">http</span>://ppa.launchpad.net raring <span class="keyword">Release</span>.gpg
+Hit <span class="keyword">http</span>://ppa.launchpad.net raring <span class="keyword">Release</span>.gpg
+<span class="keyword">Get</span>:<span class="number">1</span> <span class="keyword">http</span>://<span class="keyword">security</span>.ubuntu.com raring-<span class="keyword">security</span> <span class="keyword">Release</span>.gpg [<span class="number">933</span> B]
+Hit <span class="keyword">http</span>://<span class="keyword">in</span>.<span class="keyword">archive</span>.ubuntu.com raring <span class="keyword">Release</span>.gpg
+Hit <span class="keyword">http</span>://ppa.launchpad.net raring <span class="keyword">Release</span>.gpg
+<span class="keyword">Get</span>:<span class="number">2</span> <span class="keyword">http</span>://<span class="keyword">security</span>.ubuntu.com raring-<span class="keyword">security</span> <span class="keyword">Release</span> [<span class="number">40.8</span> kB]
+Ign <span class="keyword">http</span>://ppa.launchpad.net raring <span class="keyword">Release</span>.gpg
+<span class="keyword">Get</span>:<span class="number">3</span> <span class="keyword">http</span>://<span class="keyword">in</span>.<span class="keyword">archive</span>.ubuntu.com raring-updates <span class="keyword">Release</span>.gpg [<span class="number">933</span> B]
+Hit <span class="keyword">http</span>://ppa.launchpad.net raring <span class="keyword">Release</span>.gpg
+Hit <span class="keyword">http</span>://<span class="keyword">in</span>.<span class="keyword">archive</span>.ubuntu.com raring-backports <span class="keyword">Release</span>.gpg</span>
+</code></pre><p>注意：上面的命令会导致系统整体的改变，所以需要root密码（查看提示符为”#”，而不是“$”）.和yum命令相比，Apt更高级和智能。</p>
+<p>见名知义，apt-cache用来搜索包中是否包含子包mplayer, apt-get用来安装，升级所有的已安装的包到最新版。</p>
+<h2 id="13-_tar命令">13. tar命令</h2><p>“tar”命令是磁带归档(Tape Archive)，对创建一些文件的的归档和它们的解压很有用。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># tar -zxvf abc.tar.gz (记住'z'代表了.tar.gz)</span>
+root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># tar -jxvf abc.tar.bz2 (记住'j'代表了.tar.bz2)</span>
+root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># tar -cvf archieve.tar.gz(.bz2) /path/to/folder/abc</span>
+</code></pre><p>注意： “tar.gz“代表了使用gzip归档，“bar.bz2”使用bzip压缩的，它压缩的更好但是也更慢。</p>
+<p>了解更多”tar 命令”的例子，请查看 18 Tar命名例子</p>
+<h2 id="14-_cal_命令">14. cal 命令</h2><p>“cal”（Calender），它用来显示当前月份或者未来或者过去任何年份中的月份。</p>
+<pre><code>root@tecmint:~
+
+<span class="preprocessor"># cal</span>
+
+May <span class="number">2013</span>
+
+Su Mo Tu We Th Fr Sa
+
+<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>
+
+<span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> <span class="number">10</span> <span class="number">11</span>
+
+<span class="number">12</span> <span class="number">13</span> <span class="number">14</span> <span class="number">15</span> <span class="number">16</span> <span class="number">17</span> <span class="number">18</span>
+
+<span class="number">19</span> <span class="number">20</span> <span class="number">21</span> <span class="number">22</span> <span class="number">23</span> <span class="number">24</span> <span class="number">25</span>
+
+<span class="number">26</span> <span class="number">27</span> <span class="number">28</span> <span class="number">29</span> <span class="number">30</span> <span class="number">31</span>
+</code></pre><p>显示已经过去的月份，1835年2月</p>
+<pre><code>root@tecmint:~<span class="preprocessor"># cal <span class="number">02</span> <span class="number">1835</span></span>
+
+February <span class="number">1835</span>
+
+Su Mo Tu We Th Fr Sa
+
+<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span>
+
+<span class="number">8</span> <span class="number">9</span> <span class="number">10</span> <span class="number">11</span> <span class="number">12</span> <span class="number">13</span> <span class="number">14</span>
+
+<span class="number">15</span> <span class="number">16</span> <span class="number">17</span> <span class="number">18</span> <span class="number">19</span> <span class="number">20</span> <span class="number">21</span>
+
+<span class="number">22</span> <span class="number">23</span> <span class="number">24</span> <span class="number">25</span> <span class="number">26</span> <span class="number">27</span> <span class="number">28</span>
+</code></pre><p>显示未来的月份，2145年7月。</p>
+<pre><code>root@tecmint:~<span class="preprocessor"># cal <span class="number">07</span> <span class="number">2145</span></span>
+
+July <span class="number">2145</span>
+
+Su Mo Tu We Th Fr Sa
+
+<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>
+
+<span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> <span class="number">10</span>
+
+<span class="number">11</span> <span class="number">12</span> <span class="number">13</span> <span class="number">14</span> <span class="number">15</span> <span class="number">16</span> <span class="number">17</span>
+
+<span class="number">18</span> <span class="number">19</span> <span class="number">20</span> <span class="number">21</span> <span class="number">22</span> <span class="number">23</span> <span class="number">24</span>
+
+<span class="number">25</span> <span class="number">26</span> <span class="number">27</span> <span class="number">28</span> <span class="number">29</span> <span class="number">30</span> <span class="number">31</span>
+</code></pre><p>注意： 你不需要往回调整日历50年，既不用复杂的数据计算你出生那天，也不用计算你的生日在哪天到来，[因为它的最小单位是月，而不是日]。</p>
+<h2 id="15-_date命令">15. date命令</h2><p>“date”命令使用标准的输出打印当前的日期和时间，也可以深入设置。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># date</span>
+
+<span class="constant">Fri</span> <span class="constant">May</span> <span class="number">17</span> <span class="number">14</span><span class="symbol">:</span><span class="number">13</span><span class="symbol">:</span><span class="number">29</span> <span class="constant">IST</span> <span class="number">2013</span>
+root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># date --set='14 may 2013 13:57'</span>
+
+<span class="constant">Mon</span> <span class="constant">May</span> <span class="number">13</span> <span class="number">13</span><span class="symbol">:</span><span class="number">57</span><span class="symbol">:</span><span class="number">00</span> <span class="constant">IST</span> <span class="number">2013</span>
+</code></pre><p>注意：这个命令在脚本中十分有用，以及基于时间和日期的脚本更完美。而且在终端中改变日期和时间，让你更专业！！！（当然你需要root权限才能操作这个，因为它是系统整体改变）</p>
+<h2 id="16-_cat命令">16. cat命令</h2><p>“cat”代表了连结（Concatenation），连接两个或者更多文本文件或者以标准输出形式打印文件的内容。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># cat a.txt b.txt c.txt d.txt abcd.txt</span>
+root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># cat abcd.txt</span>
+
+....
+
+contents <span class="keyword">of</span> file abcd
+
+...
+</code></pre><p>注意：“&gt;&gt;”和“&gt;”调用了追加符号。它们用来追加到文件里，而不是显示在标准输出上。“&gt;”符号会删除已存在的文件，然后创建一个新的文件。所以因为安全的原因，建议使用“&gt;&gt;”，它会写入到文件中，而不是覆盖或者删除。</p>
+<p>在深入探究之前，我必须让你知道通配符(你应该知道通配符，它出现在大多数电视选秀中)。通配符是shell的特色，和任何GUI文件管理器相比，它使命令行更强大有力！如你所看到那样，在一个图形文件管理器中，你想选择一大组文件，你通常不得不使用你的鼠标来选择它们。这可能觉得很简单，但是事实上，这种情形很让人沮丧！</p>
+<p>例如，假如你有一个有很多很多各种类型的文件和子目录的目录，然后你决定移动所有文件名中包含“Linux”字样的HTML文件到另外一个目录。如何简单的完成这个？如果目录中包含了大量的不同名的HTML文件，你的任务很巨大，而不是简单了。</p>
+<p>在LInux CLI中，这个任务就很简单，就好像只移动一个HTML文件，因为有shell的通配符，才会如此简单。这些是特殊的字符，允许你选择匹配某种字符模式的文件名。它帮助你来选择，即使是大量文件名中只有几个字符，而且在大多数情形中，它比使用鼠标选择文件更简单。</p>
+<p>这里就是常用通配符列表：</p>
+<p>Wildcard Matches</p>
+<ul>
+<li>* 零个或者更多字符</li>
+<li>? 恰好一个字符</li>
+<li>[abcde] 恰好列举中的一个字符</li>
+<li>[a-e] 恰好在所给范围中的一个字符</li>
+<li>[!abcde] 任何字符都不在列举中</li>
+<li>[!a-e] 任何字符都不在所给的范围中</li>
+<li>{debian,linux} 恰好在所给选项中的一整个单词<br>! 叫做非，带’！’的反向字符串为真</li>
+</ul>
+<h2 id="17-_cp_命令">17. cp 命令</h2><p>“copy”就是复制。它会从一个地方复制一个文件到另外一个地方。</p>
+<pre><code>root@tecmint:~# cp <span class="regexp">/home/u</span>ser<span class="regexp">/Downloads abc.tar.gz /</span>home<span class="regexp">/user/</span>Desktop (<span class="keyword">Return</span> <span class="number">0</span> when sucess)
+</code></pre><p>注意： cp，在shell脚本中是最常用的一个命令，而且它可以使用通配符（在前面一块中有所描述），来定制所需的文件的复制。</p>
+<h2 id="18-_mv_命令">18. mv 命令</h2><p>“mv”命令将一个地方的文件移动到另外一个地方去。</p>
+<pre><code>root@tecmint:~# mv <span class="regexp">/home/u</span>ser<span class="regexp">/Downloads abc.tar.gz /</span>home<span class="regexp">/user/</span>Desktop (<span class="keyword">Return</span> <span class="number">0</span> when sucess)
+</code></pre><p>注意：mv 命令可以使用通配符。mv需谨慎使用，因为易懂系统的或者未授权的文件不但会导致安全性问题，而且可能系统崩溃。</p>
+<h2 id="19-_pwd_命令">19. pwd 命令</h2><p>“pwd”（print working directory），在终端中显示当前工作目录的全路径。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># pwd</span>
+
+/home/user/<span class="constant">Desktop</span>
+</code></pre><p>注意： 这个命令并不会在脚本中经常使用，但是对于新手，当从连接到nux很久后在终端中迷失了路径，这绝对是救命稻草。</p>
+<h2 id="20-_cd_命令">20. cd 命令</h2><p>最后，经常使用的“cd”命令代表了改变目录。它在终端中改变工作目录来执行，复制，移动，读，写等等操作。</p>
+<pre><code>root<span class="variable">@tecmint</span><span class="symbol">:~</span><span class="comment"># cd /home/user/Desktop</span>
+server<span class="variable">@localhost</span><span class="symbol">:~</span><span class="variable">$ </span>pwd
+
+/home/user/<span class="constant">Desktop</span>
+</code></pre><p>注意： 在终端中切换目录时，cd就大显身手了。“cd ～”会改变工作目录为用户的家目录，而且当用户发现自己在终端中迷失了路径时，非常有用。“cd ..”从当前工作目录切换到(当前工作目录的)父目录。</p>
+<p>这些命令肯定会让你在Linux上很舒服。但是这并不是结束。不久，我就会写一些其它的针对于中级用户的有用命令。例如，如果你熟练使用这些命令，欢呼吧，少年，你会发现你已从小白级别提升为了中级用户了。在下篇文章，我会介绍像“kill”,”ps”,”grep”等等命令，期待吧，我不会让你失望的。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/12/重新认识JavaScript/" rel="next" title="A Re-introduction to JavaScript (Chinese)">
+                <i class="fa fa-chevron-left"></i> A Re-introduction to JavaScript (Chinese)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/22/奇葩物语/" rel="prev" title="奇葩物语">
+                奇葩物语 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="C0deZLee" />
+          <p class="site-author-name" itemprop="name">C0deZLee</p>
+          <p class="site-description motion-element" itemprop="description">Be a better me</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/c0dezlee" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:c0dezlee@gmail.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/li-xiang-b680b5ab" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/4985648/c0dez" target="_blank" title="StackOverFlow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                  StackOverFlow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-_ls命令"><span class="nav-number">1.</span> <span class="nav-text">1. ls命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-_lsblk命令"><span class="nav-number">2.</span> <span class="nav-text">2. lsblk命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-_md5sum命令"><span class="nav-number">3.</span> <span class="nav-text">3. md5sum命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-_dd命令"><span class="nav-number">4.</span> <span class="nav-text">4. dd命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-_uname命令"><span class="nav-number">5.</span> <span class="nav-text">5. uname命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-_history命令"><span class="nav-number">6.</span> <span class="nav-text">6. history命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-_sudo命令"><span class="nav-number">7.</span> <span class="nav-text">7. sudo命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-_mkdir命令"><span class="nav-number">8.</span> <span class="nav-text">8. mkdir命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-_touch_命令"><span class="nav-number">9.</span> <span class="nav-text">9. touch 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-_chmod_命令"><span class="nav-number">10.</span> <span class="nav-text">10. chmod 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-_chown命令"><span class="nav-number">11.</span> <span class="nav-text">11. chown命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-_apt命令"><span class="nav-number">12.</span> <span class="nav-text">12. apt命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-_tar命令"><span class="nav-number">13.</span> <span class="nav-text">13. tar命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-_cal_命令"><span class="nav-number">14.</span> <span class="nav-text">14. cal 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-_date命令"><span class="nav-number">15.</span> <span class="nav-text">15. date命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-_cat命令"><span class="nav-number">16.</span> <span class="nav-text">16. cat命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-_cp_命令"><span class="nav-number">17.</span> <span class="nav-text">17. cp 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-_mv_命令"><span class="nav-number">18.</span> <span class="nav-text">18. mv 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-_pwd_命令"><span class="nav-number">19.</span> <span class="nav-text">19. pwd 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-_cd_命令"><span class="nav-number">20.</span> <span class="nav-text">20. cd 命令</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C0deZLee</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
