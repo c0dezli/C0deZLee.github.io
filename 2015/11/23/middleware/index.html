@@ -85,11 +85,13 @@
 
 
 <meta name="description" content="Middleware（中间件）在Express中扮演了相当重要的角色，然而很多新手一开始并不清楚如何使用Middleware，今天我们用一个典型的Middleware使用场景（判断用户是否登陆）来做一个简单的教程。">
+<meta name="keywords" content="JavaScript,Node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Use Middleware to Check User Auth Status in Express (Chinese)">
 <meta property="og:url" content="http://codezlee.com/2015/11/23/middleware/index.html">
 <meta property="og:site_name" content="Hello, World">
 <meta property="og:description" content="Middleware（中间件）在Express中扮演了相当重要的角色，然而很多新手一开始并不清楚如何使用Middleware，今天我们用一个典型的Middleware使用场景（判断用户是否登陆）来做一个简单的教程。">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2016-09-16T22:40:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use Middleware to Check User Auth Status in Express (Chinese)">
@@ -326,7 +328,7 @@
 
       
         <p>Middleware（中间件）在Express中扮演了相当重要的角色，然而很多新手一开始并不清楚如何使用Middleware，今天我们用一个典型的Middleware使用场景（判断用户是否登陆）来做一个简单的教程。<br><a id="more"></a></p>
-<h2 id="什么是Middleware？">什么是Middleware？</h2><p>相信这是很多初学者第一个想问的问题，事实上Middleware的定义十分广泛，此文中我们仅仅探讨Middleware在Express中的定义。<br>在<a href="http://expressjs.com/guide/using-middleware.html" target="_blank" rel="external">Express文档</a>中写道:</p>
+<h2 id="什么是Middleware？"><a href="#什么是Middleware？" class="headerlink" title="什么是Middleware？"></a>什么是Middleware？</h2><p>相信这是很多初学者第一个想问的问题，事实上Middleware的定义十分广泛，此文中我们仅仅探讨Middleware在Express中的定义。<br>在<a href="http://expressjs.com/guide/using-middleware.html" target="_blank" rel="external">Express文档</a>中写道:</p>
 <blockquote>
 <p>Middleware is a function with access to the request object (req), the response object (res), and the next middleware in the application’s request-response cycle, commonly denoted by a variable named next.<br>Middleware can:</p>
 <ul>
@@ -344,32 +346,32 @@
 <li>调用堆栈中的下一个Middleware</li>
 </ul>
 <p>因此事实上Middleware在Expres中的作用是对用户的请求（request）进行预处理和过滤，而且可以将过滤后的东西传递下去。</p>
-<h2 id="示例代码">示例代码</h2><p>在本示例中我们将实现只有登录后的用户才可以访问”/home”路径。</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>在本示例中我们将实现只有登录后的用户才可以访问”/home”路径。</p>
 <p>route.js (Before)</p>
-<pre><code>module.exports = <span class="function"><span class="keyword">function</span><span class="params">(app)</span> </span>{
-    app.<span class="keyword">get</span>(<span class="string">'/home'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-        res.send(<span class="string">'Hello world!'</span>);
+<pre><code>module.exports = function(app) {
+    app.get(&apos;/home&apos;, function(req, res) {
+        res.send(&apos;Hello world!&apos;);
     });
 };
 </code></pre><p>现在任何人都可以访问”/home”，然而我们只想让已登录的用户访问这个路径。</p>
 <p>controller.js</p>
 <pre><code>...
-<span class="function"><span class="keyword">function</span> <span class="title">isAuthenticated</span><span class="params">(req, res, next)</span></span> {
-    <span class="keyword">if</span> (!req.isAuthenticated()) {
-        // <span class="keyword">if</span> user is <span class="keyword">not</span> authenticated, <span class="keyword">then</span> redirect to root
-        res.redirect(<span class="string">'/'</span>);
+function isAuthenticated(req, res, next) {
+    if (!req.isAuthenticated()) {
+        // if user is not authenticated, then redirect to root
+        res.redirect(&apos;/&apos;);
     }
-    <span class="built_in">next</span>();
+    next();
 }
 ...
 </code></pre><p>此Middleware的作用就是将未登录的用户“过滤”出去。<br>现在我们对route.js做一些更改，使Middleware可以发挥作用：</p>
 <p>route.js (After)</p>
-<pre><code>module.exports = <span class="function"><span class="keyword">function</span><span class="params">(app)</span> </span>{
-    app.<span class="keyword">get</span>(<span class="string">'/home'</span>, isAuthenticated, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-        res.send(<span class="string">'Hello world!'</span>);
+<pre><code>module.exports = function(app) {
+    app.get(&apos;/home&apos;, isAuthenticated, function(req, res) {
+        res.send(&apos;Hello world!&apos;);
     });
 };
-</code></pre><h2 id="小结">小结</h2><p>相信此时大家已经对middleware的使用有了一些初步的了解，下面是一些进阶的资料，可以帮助对Express的理解。<br><a href="http://expressjs.com/guide/using-middleware.html" target="_blank" rel="external">Express Guide - Using Middleware</a><br><a href="http://expressjs.com/4x/api.html" target="_blank" rel="external">Express 4.x API</a></p>
+</code></pre><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>相信此时大家已经对middleware的使用有了一些初步的了解，下面是一些进阶的资料，可以帮助对Express的理解。<br><a href="http://expressjs.com/guide/using-middleware.html" target="_blank" rel="external">Express Guide - Using Middleware</a><br><a href="http://expressjs.com/4x/api.html" target="_blank" rel="external">Express 4.x API</a></p>
 
       
     </div>

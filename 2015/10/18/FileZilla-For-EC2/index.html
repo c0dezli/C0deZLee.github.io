@@ -84,22 +84,21 @@
 
 
 
-<meta name="description" content="The FileZilla is a useful tool to upload/download files to/from Amazon EC2, and here is a brief guide of how to use FileZilla.
-DownloadDownload LinkYou can download the FileZilla from the link above,">
+<meta name="description" content="The FileZilla is a useful tool to upload/download files to/from Amazon EC2, and here is a brief guide of how to use FileZilla. DownloadDownload LinkYou can download the FileZilla from the link above,">
+<meta name="keywords" content="Cloud,AWS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Use FileZilla to connect to Amazon EC2 instance">
 <meta property="og:url" content="http://codezlee.com/2015/10/18/FileZilla-For-EC2/index.html">
 <meta property="og:site_name" content="Hello, World">
-<meta property="og:description" content="The FileZilla is a useful tool to upload/download files to/from Amazon EC2, and here is a brief guide of how to use FileZilla.
-DownloadDownload LinkYou can download the FileZilla from the link above,">
+<meta property="og:description" content="The FileZilla is a useful tool to upload/download files to/from Amazon EC2, and here is a brief guide of how to use FileZilla. DownloadDownload LinkYou can download the FileZilla from the link above,">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://codezlee.com/images/filezilla/step1.png">
 <meta property="og:image" content="http://codezlee.com/images/filezilla/step2.png">
 <meta property="og:image" content="http://codezlee.com/images/filezilla/step3.png">
 <meta property="og:updated_time" content="2016-09-19T07:35:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use FileZilla to connect to Amazon EC2 instance">
-<meta name="twitter:description" content="The FileZilla is a useful tool to upload/download files to/from Amazon EC2, and here is a brief guide of how to use FileZilla.
-DownloadDownload LinkYou can download the FileZilla from the link above,">
+<meta name="twitter:description" content="The FileZilla is a useful tool to upload/download files to/from Amazon EC2, and here is a brief guide of how to use FileZilla. DownloadDownload LinkYou can download the FileZilla from the link above,">
 <meta name="twitter:image" content="http://codezlee.com/images/filezilla/step1.png">
 
 
@@ -333,10 +332,10 @@ DownloadDownload LinkYou can download the FileZilla from the link above,">
 
       
         <p>The FileZilla is a useful tool to upload/download files to/from Amazon EC2, and here is a brief guide of how to use FileZilla.</p>
-<h2 id="Download">Download</h2><p><a href="https://filezilla-project.org/download.php?type=client" target="_blank" rel="external">Download Link</a><br>You can download the FileZilla from the link above, FileZilla provides Windows, Mac and Linux versions.<br><a id="more"></a></p>
-<h2 id="Setup">Setup</h2><h4 id="Step_1">Step 1</h4><p>EC2 instances use <strong>.pem</strong> files to connect instead of username/password, so the first step is import your <strong>.pem</strong> to FileZilla.<br>Open Settings -&gt; SFTP -&gt; Add key file, import your <strong>.pem</strong> file.<br><img src="/images/filezilla/step1.png" alt=""></p>
-<h4 id="Step_2">Step 2</h4><p>Open File -&gt; Site Manager.<br>Enter the parameters as followings:<br><strong>Host</strong>: EC2 instance public DNS<br><strong>Protocol</strong>: SFTP<br><strong>Logon Type</strong>: Normal<br><strong>User</strong>: ec2-user<br><img src="/images/filezilla/step2.png" alt=""><br>Then click connect</p>
-<h4 id="Step_3">Step 3</h4><p>Now we have connected to EC2, to upload files to your remote server, just drag files to desired directory.<br><img src="/images/filezilla/step3.png" alt=""></p>
+<h2 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h2><p><a href="https://filezilla-project.org/download.php?type=client" target="_blank" rel="external">Download Link</a><br>You can download the FileZilla from the link above, FileZilla provides Windows, Mac and Linux versions.<br><a id="more"></a></p>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h4><p>EC2 instances use <strong>.pem</strong> files to connect instead of username/password, so the first step is import your <strong>.pem</strong> to FileZilla.<br>Open Settings -&gt; SFTP -&gt; Add key file, import your <strong>.pem</strong> file.<br><img src="/images/filezilla/step1.png" alt=""></p>
+<h4 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h4><p>Open File -&gt; Site Manager.<br>Enter the parameters as followings:<br><strong>Host</strong>: EC2 instance public DNS<br><strong>Protocol</strong>: SFTP<br><strong>Logon Type</strong>: Normal<br><strong>User</strong>: ec2-user<br><img src="/images/filezilla/step2.png" alt=""><br>Then click connect</p>
+<h4 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h4><p>Now we have connected to EC2, to upload files to your remote server, just drag files to desired directory.<br><img src="/images/filezilla/step3.png" alt=""></p>
 
       
     </div>
@@ -532,7 +531,7 @@ DownloadDownload LinkYou can download the FileZilla from the link above,">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Download"><span class="nav-number">1.</span> <span class="nav-text">Download</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-number">2.</span> <span class="nav-text">Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step_1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step_2"><span class="nav-number">2.0.2.</span> <span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step_3"><span class="nav-number">2.0.3.</span> <span class="nav-text">Step 3</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Download"><span class="nav-number">1.</span> <span class="nav-text">Download</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-number">2.</span> <span class="nav-text">Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2"><span class="nav-number">2.0.2.</span> <span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-3"><span class="nav-number">2.0.3.</span> <span class="nav-text">Step 3</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

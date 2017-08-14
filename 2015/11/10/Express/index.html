@@ -84,40 +84,18 @@
 
 
 
-<meta name="description" content="转载自阮一峰的博客
-
-概述Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站。
-Express上手非常简单，首先新建一个项目目录，假定叫做hello-world。
-$ mkdir hello-world
-进入该目录，新建一个package.json文件，内容如下。
-{
-  &quot;name&quot;: &quot;hello-world&quot;,
-  &quot;description&quot;:">
+<meta name="description" content="转载自阮一峰的博客  概述Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站。 Express上手非常简单，首先新建一个项目目录，假定叫做hello-world。 $ mkdir hello-world 进入该目录，新建一个package.json文件，内容如下。 {   &amp;quot;name&amp;quot;: &amp;quot;hello-world&amp;quo">
+<meta name="keywords" content="JavaScript,Node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Express Simple Guide (Chinese)">
 <meta property="og:url" content="http://codezlee.com/2015/11/10/Express/index.html">
 <meta property="og:site_name" content="Hello, World">
-<meta property="og:description" content="转载自阮一峰的博客
-
-概述Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站。
-Express上手非常简单，首先新建一个项目目录，假定叫做hello-world。
-$ mkdir hello-world
-进入该目录，新建一个package.json文件，内容如下。
-{
-  &quot;name&quot;: &quot;hello-world&quot;,
-  &quot;description&quot;:">
+<meta property="og:description" content="转载自阮一峰的博客  概述Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站。 Express上手非常简单，首先新建一个项目目录，假定叫做hello-world。 $ mkdir hello-world 进入该目录，新建一个package.json文件，内容如下。 {   &amp;quot;name&amp;quot;: &amp;quot;hello-world&amp;quo">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2016-09-16T22:37:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Express Simple Guide (Chinese)">
-<meta name="twitter:description" content="转载自阮一峰的博客
-
-概述Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站。
-Express上手非常简单，首先新建一个项目目录，假定叫做hello-world。
-$ mkdir hello-world
-进入该目录，新建一个package.json文件，内容如下。
-{
-  &quot;name&quot;: &quot;hello-world&quot;,
-  &quot;description&quot;:">
+<meta name="twitter:description" content="转载自阮一峰的博客  概述Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站。 Express上手非常简单，首先新建一个项目目录，假定叫做hello-world。 $ mkdir hello-world 进入该目录，新建一个package.json文件，内容如下。 {   &amp;quot;name&amp;quot;: &amp;quot;hello-world&amp;quo">
 
 
 
@@ -352,716 +330,716 @@ $ mkdir hello-world
         <blockquote>
 <p>转载自<a href="http://javascript.ruanyifeng.com/nodejs/express.html" target="_blank" rel="external">阮一峰的博客</a></p>
 </blockquote>
-<h2 id="概述">概述</h2><p>Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Express是目前最流行的基于Node.js的Web开发框架，可以快速地搭建一个完整功能的网站。</p>
 <p>Express上手非常简单，首先新建一个项目目录，假定叫做hello-world。</p>
-<pre><code><span class="variable">$ </span>mkdir hello-world
+<pre><code>$ mkdir hello-world
 </code></pre><p>进入该目录，新建一个package.json文件，内容如下。</p>
 <pre><code>{
-  "<span class="attribute">name</span>": <span class="value"><span class="string">"hello-world"</span></span>,
-  "<span class="attribute">description</span>": <span class="value"><span class="string">"hello world test app"</span></span>,
-  "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.1"</span></span>,
-  "<span class="attribute">private</span>": <span class="value"><span class="literal">true</span></span>,
-  "<span class="attribute">dependencies</span>": <span class="value">{
-    "<span class="attribute">express</span>": <span class="value"><span class="string">"4.x"</span>
-  </span>}
-</span>}
+  &quot;name&quot;: &quot;hello-world&quot;,
+  &quot;description&quot;: &quot;hello world test app&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;private&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;express&quot;: &quot;4.x&quot;
+  }
+}
 </code></pre><p>上面代码定义了项目的名称、描述、版本等，并且指定需要4.0版本以上的Express。</p>
 <p>然后，就可以安装了。</p>
-<pre><code>$ npm <span class="keyword">install</span>
+<pre><code>$ npm install
 </code></pre><a id="more"></a>
 <p>执行上面的命令以后，在项目根目录下，新建一个启动文件，假定叫做index.js。</p>
-<pre><code><span class="keyword">var</span> express = <span class="keyword">require</span>(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
+<pre><code>var express = require(&apos;express&apos;);
+var app = express();
 
-app.<span class="keyword">use</span>(express.<span class="keyword">static</span>(__dirname + <span class="string">'/public'</span>));
+app.use(express.static(__dirname + &apos;/public&apos;));
 
-app.listen(<span class="number">8080</span>);
+app.listen(8080);
 </code></pre><p>然后，运行上面的启动脚本。</p>
-<pre><code>$ node <span class="keyword">index</span>
+<pre><code>$ node index
 </code></pre><p>现在就可以访问<code>http://localhost:8080</code>，它会在浏览器中打开当前目录的public子目录（严格来说，是打开public目录的index.html文件）。如果public目录之中有一个图片文件<code>my_image.png</code>，那么可以用<code>http://localhost:8080/my_image.png</code>访问该文件。</p>
 <p>你也可以在index.js之中，生成动态网页。</p>
-<pre><code><span class="comment">// index.js</span>
+<pre><code>// index.js
 
-<span class="keyword">var</span> express = require(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
-app.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>{
-  res.send(<span class="string">'Hello world!'</span>);
+var express = require(&apos;express&apos;);
+var app = express();
+app.get(&apos;/&apos;, function (req, res) {
+  res.send(&apos;Hello world!&apos;);
 });
-app.listen(<span class="number">3000</span>);
+app.listen(3000);
 </code></pre><p>然后，在命令行下运行启动脚本，就可以在浏览器中访问项目网站了。</p>
-<pre><code>$ node <span class="keyword">index</span>
+<pre><code>$ node index
 </code></pre><p>上面代码会在本机的3000端口启动一个网站，网页显示Hello World。</p>
 <p>启动脚本index.js的<code>app.get</code>方法，用于指定不同的访问路径所对应的回调函数，这叫做“路由”（routing）。上面代码只指定了根目录的回调函数，因此只有一个路由记录。实际应用中，可能有多个路由记录。</p>
-<pre><code><span class="comment">// index.js</span>
+<pre><code>// index.js
 
-<span class="keyword">var</span> express = require(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
+var express = require(&apos;express&apos;);
+var app = express();
 
-app.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>{
-  res.send(<span class="string">'Hello world!'</span>);
+app.get(&apos;/&apos;, function (req, res) {
+  res.send(&apos;Hello world!&apos;);
 });
-app.<span class="keyword">get</span>(<span class="string">'/customer'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span></span>{
-  res.send(<span class="string">'customer page'</span>);
+app.get(&apos;/customer&apos;, function(req, res){
+  res.send(&apos;customer page&apos;);
 });
-app.<span class="keyword">get</span>(<span class="string">'/admin'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span></span>{
-  res.send(<span class="string">'admin page'</span>);
+app.get(&apos;/admin&apos;, function(req, res){
+  res.send(&apos;admin page&apos;);
 });
 
-app.listen(<span class="number">3000</span>);
+app.listen(3000);
 </code></pre><p>这时，最好就把路由放到一个单独的文件中，比如新建一个routes子目录。</p>
-<pre><code><span class="comment">// routes/index.js</span>
+<pre><code>// routes/index.js
 
-module.exports = <span class="function"><span class="keyword">function</span> <span class="params">(app)</span> </span>{
-  app.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>{
-    res.send(<span class="string">'Hello world'</span>);
+module.exports = function (app) {
+  app.get(&apos;/&apos;, function (req, res) {
+    res.send(&apos;Hello world&apos;);
   });
-  app.<span class="keyword">get</span>(<span class="string">'/customer'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span></span>{
-    res.send(<span class="string">'customer page'</span>);
+  app.get(&apos;/customer&apos;, function(req, res){
+    res.send(&apos;customer page&apos;);
   });
-  app.<span class="keyword">get</span>(<span class="string">'/admin'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span></span>{
-    res.send(<span class="string">'admin page'</span>);
+  app.get(&apos;/admin&apos;, function(req, res){
+    res.send(&apos;admin page&apos;);
   });
 };
 </code></pre><p>然后，原来的index.js就变成下面这样。</p>
-<pre><code><span class="comment">// index.js</span>
-<span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
-<span class="keyword">var</span> routes = <span class="built_in">require</span>(<span class="string">'./routes'</span>)(app);
-app.listen(<span class="number">3000</span>);
-</code></pre><h2 id="运行原理">运行原理</h2><h3 id="底层：http模块">底层：http模块</h3><p>Express框架建立在node.js内置的http模块上。http模块生成服务器的原始代码如下。</p>
-<pre><code><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);
+<pre><code>// index.js
+var express = require(&apos;express&apos;);
+var app = express();
+var routes = require(&apos;./routes&apos;)(app);
+app.listen(3000);
+</code></pre><h2 id="运行原理"><a href="#运行原理" class="headerlink" title="运行原理"></a>运行原理</h2><h3 id="底层：http模块"><a href="#底层：http模块" class="headerlink" title="底层：http模块"></a>底层：http模块</h3><p>Express框架建立在node.js内置的http模块上。http模块生成服务器的原始代码如下。</p>
+<pre><code>var http = require(&quot;http&quot;);
 
-<span class="keyword">var</span> app = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>{
-  response.writeHead(<span class="number">200</span>, {<span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span>});
-  response.end(<span class="string">"Hello world!"</span>);
+var app = http.createServer(function(request, response) {
+  response.writeHead(200, {&quot;Content-Type&quot;: &quot;text/plain&quot;});
+  response.end(&quot;Hello world!&quot;);
 });
 
-app.listen(<span class="number">3000</span>, <span class="string">"localhost"</span>);
+app.listen(3000, &quot;localhost&quot;);
 </code></pre><p>上面代码的关键是http模块的createServer方法，表示生成一个HTTP服务器实例。该方法接受一个回调函数，该回调函数的参数，分别为代表HTTP请求和HTTP回应的request对象和response对象。</p>
 <p>Express框架的核心是对http模块的再包装。上面的代码用Express改写如下。</p>
-<pre><code><span class="keyword">var</span> express = require(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
+<pre><code>var express = require(&apos;express&apos;);
+var app = express();
 
-app.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>{
-  res.send(<span class="string">'Hello world!'</span>);
+app.get(&apos;/&apos;, function (req, res) {
+  res.send(&apos;Hello world!&apos;);
 });
 
-app.listen(<span class="number">3000</span>);
+app.listen(3000);
 </code></pre><p>比较两段代码，可以看到它们非常接近。原来是用<code>http.createServer</code>方法新建一个app实例，现在则是用Express的构造方法，生成一个Epress实例。两者的回调函数都是相同的。Express框架等于在http模块之上，加了一个中间层。</p>
-<h3 id="什么是中间件">什么是中间件</h3><p>简单说，中间件（middleware）就是处理HTTP请求的函数。它最大的特点就是，一个中间件处理完，再传递给下一个中间件。App实例在运行过程中，会调用一系列的中间件。</p>
+<h3 id="什么是中间件"><a href="#什么是中间件" class="headerlink" title="什么是中间件"></a>什么是中间件</h3><p>简单说，中间件（middleware）就是处理HTTP请求的函数。它最大的特点就是，一个中间件处理完，再传递给下一个中间件。App实例在运行过程中，会调用一系列的中间件。</p>
 <p>每个中间件可以从App实例，接收三个参数，依次为request对象（代表HTTP请求）、response对象（代表HTTP回应），next回调函数（代表下一个中间件）。每个中间件都可以对HTTP请求（request对象）进行加工，并且决定是否调用next方法，将request对象再传给下一个中间件。</p>
 <p>一个不进行任何操作、只传递request对象的中间件，就是下面这样。</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">uselessMiddleware</span><span class="params">(req, res, next)</span></span> {
-  <span class="built_in">next</span>();
+<pre><code>function uselessMiddleware(req, res, next) {
+  next();
 }
 </code></pre><p>上面代码的next就是下一个中间件。如果它带有参数，则代表抛出一个错误，参数为错误文本。</p>
-<pre><code><span class="function"><span class="keyword">function</span> <span class="title">uselessMiddleware</span><span class="params">(req, res, next)</span></span> {
-  <span class="built_in">next</span>(<span class="string">'出错了！'</span>);
+<pre><code>function uselessMiddleware(req, res, next) {
+  next(&apos;出错了！&apos;);
 }
 </code></pre><p>抛出错误以后，后面的中间件将不再执行，直到发现一个错误处理函数为止。</p>
-<h3 id="use方法">use方法</h3><p>use是express注册中间件的方法，它返回一个函数。下面是一个连续调用两个中间件的例子。</p>
-<pre><code>var express = require(<span class="string">"express"</span>);
-var http = require(<span class="string">"http"</span>);
+<h3 id="use方法"><a href="#use方法" class="headerlink" title="use方法"></a>use方法</h3><p>use是express注册中间件的方法，它返回一个函数。下面是一个连续调用两个中间件的例子。</p>
+<pre><code>var express = require(&quot;express&quot;);
+var http = require(&quot;http&quot;);
 
 var app = express();
 
-app.use(<span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>, <span class="keyword">next</span>) {
-  console.<span class="built_in">log</span>(<span class="string">"In comes a "</span> + <span class="built_in">request</span>.method + <span class="string">" to "</span> + <span class="built_in">request</span>.url);
-  <span class="keyword">next</span>();
+app.use(function(request, response, next) {
+  console.log(&quot;In comes a &quot; + request.method + &quot; to &quot; + request.url);
+  next();
 });
 
-app.use(<span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>) {
-  <span class="built_in">response</span>.writeHead(<span class="number">200</span>, { <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> });
-  <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"Hello world!\n"</span>);
+app.use(function(request, response) {
+  response.writeHead(200, { &quot;Content-Type&quot;: &quot;text/plain&quot; });
+  response.end(&quot;Hello world!\n&quot;);
 });
 
-http.createServer(app).listen(<span class="number">1337</span>);
+http.createServer(app).listen(1337);
 </code></pre><p>上面代码使用<code>app.use</code>方法，注册了两个中间件。收到HTTP请求后，先调用第一个中间件，在控制台输出一行信息，然后通过next方法，将执行权传给第二个中间件，输出HTTP回应。由于第二个中间件没有调用next方法，所以request对象就不再向后传递了。</p>
 <p>use方法内部可以对访问路径进行判断，据此就能实现简单的路由，根据不同的请求网址，返回不同的网页内容。</p>
-<pre><code>var express = require(<span class="string">"express"</span>);
-var http = require(<span class="string">"http"</span>);
+<pre><code>var express = require(&quot;express&quot;);
+var http = require(&quot;http&quot;);
 
 var app = express();
 
-app.use(<span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>, <span class="keyword">next</span>) {
-  <span class="keyword">if</span> (<span class="built_in">request</span>.url == <span class="string">"/"</span>) {
-    <span class="built_in">response</span>.writeHead(<span class="number">200</span>, { <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> });
-    <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"Welcome to the homepage!\n"</span>);
-  } <span class="keyword">else</span> {
-    <span class="keyword">next</span>();
+app.use(function(request, response, next) {
+  if (request.url == &quot;/&quot;) {
+    response.writeHead(200, { &quot;Content-Type&quot;: &quot;text/plain&quot; });
+    response.end(&quot;Welcome to the homepage!\n&quot;);
+  } else {
+    next();
   }
 });
 
-app.use(<span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>, <span class="keyword">next</span>) {
-  <span class="keyword">if</span> (<span class="built_in">request</span>.url == <span class="string">"/about"</span>) {
-    <span class="built_in">response</span>.writeHead(<span class="number">200</span>, { <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> });
-  } <span class="keyword">else</span> {
-    <span class="keyword">next</span>();
+app.use(function(request, response, next) {
+  if (request.url == &quot;/about&quot;) {
+    response.writeHead(200, { &quot;Content-Type&quot;: &quot;text/plain&quot; });
+  } else {
+    next();
   }
 });
 
-app.use(<span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>) {
-  <span class="built_in">response</span>.writeHead(<span class="number">404</span>, { <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> });
-  <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"404 error!\n"</span>);
+app.use(function(request, response) {
+  response.writeHead(404, { &quot;Content-Type&quot;: &quot;text/plain&quot; });
+  response.end(&quot;404 error!\n&quot;);
 });
 
-http.createServer(app).listen(<span class="number">1337</span>);
+http.createServer(app).listen(1337);
 </code></pre><p>上面代码通过request.url属性，判断请求的网址，从而返回不同的内容。注意，<code>app.use</code>方法一共登记了三个中间件，只要请求路径匹配，就不会将执行权交给下一个中间件。因此，最后一个中间件会返回404错误，即前面的中间件都没匹配请求路径，找不到所要请求的资源。</p>
 <p>除了在回调函数内部，判断请求的网址，use方法也允许将请求网址写在第一个参数。这代表，只有请求路径匹配这个参数，后面的中间件才会生效。无疑，这样写更加清晰和方便。</p>
-<pre><code>app.<span class="keyword">use</span>(<span class="string">'/'</span>, someMiddleware);
+<pre><code>app.use(&apos;/&apos;, someMiddleware);
 </code></pre><p>上面代码表示，只对根目录的请求，调用某个中间件。</p>
 <p>因此，上面的代码可以写成下面的样子。</p>
-<pre><code>var express = require(<span class="string">"express"</span>);
-var http = require(<span class="string">"http"</span>);
+<pre><code>var express = require(&quot;express&quot;);
+var http = require(&quot;http&quot;);
 
 var app = express();
 
-app.use(<span class="string">"/"</span>, <span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>, <span class="keyword">next</span>) {
-  <span class="built_in">response</span>.writeHead(<span class="number">200</span>, { <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> });
-  <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"Welcome to the homepage!\n"</span>);
+app.use(&quot;/&quot;, function(request, response, next) {
+  response.writeHead(200, { &quot;Content-Type&quot;: &quot;text/plain&quot; });
+  response.end(&quot;Welcome to the homepage!\n&quot;);
 });
 
-app.use(<span class="string">"/about"</span>, <span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>, <span class="keyword">next</span>) {
-  <span class="built_in">response</span>.writeHead(<span class="number">200</span>, { <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> });
-  <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"Welcome to the about page!\n"</span>);
+app.use(&quot;/about&quot;, function(request, response, next) {
+  response.writeHead(200, { &quot;Content-Type&quot;: &quot;text/plain&quot; });
+  response.end(&quot;Welcome to the about page!\n&quot;);
 });
 
-app.use(<span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>) {
-  <span class="built_in">response</span>.writeHead(<span class="number">404</span>, { <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> });
-  <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"404 error!\n"</span>);
+app.use(function(request, response) {
+  response.writeHead(404, { &quot;Content-Type&quot;: &quot;text/plain&quot; });
+  response.end(&quot;404 error!\n&quot;);
 });
 
-http.createServer(app).listen(<span class="number">1337</span>);
-</code></pre><h2 id="Express的方法">Express的方法</h2><h3 id="all方法和HTTP动词方法">all方法和HTTP动词方法</h3><p>针对不同的请求，Express提供了use方法的一些别名。比如，上面代码也可以用别名的形式来写。</p>
-<pre><code>var express = require(<span class="string">"express"</span>);
-var http = require(<span class="string">"http"</span>);
+http.createServer(app).listen(1337);
+</code></pre><h2 id="Express的方法"><a href="#Express的方法" class="headerlink" title="Express的方法"></a>Express的方法</h2><h3 id="all方法和HTTP动词方法"><a href="#all方法和HTTP动词方法" class="headerlink" title="all方法和HTTP动词方法"></a>all方法和HTTP动词方法</h3><p>针对不同的请求，Express提供了use方法的一些别名。比如，上面代码也可以用别名的形式来写。</p>
+<pre><code>var express = require(&quot;express&quot;);
+var http = require(&quot;http&quot;);
 var app = express();
 
-app.all(<span class="string">"*"</span>, <span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>, <span class="keyword">next</span>) {
-  <span class="built_in">response</span>.writeHead(<span class="number">200</span>, { <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> });
-  <span class="keyword">next</span>();
+app.all(&quot;*&quot;, function(request, response, next) {
+  response.writeHead(200, { &quot;Content-Type&quot;: &quot;text/plain&quot; });
+  next();
 });
 
-app.<span class="keyword">get</span>(<span class="string">"/"</span>, <span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>) {
-  <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"Welcome to the homepage!"</span>);
+app.get(&quot;/&quot;, function(request, response) {
+  response.end(&quot;Welcome to the homepage!&quot;);
 });
 
-app.<span class="keyword">get</span>(<span class="string">"/about"</span>, <span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>) {
-  <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"Welcome to the about page!"</span>);
+app.get(&quot;/about&quot;, function(request, response) {
+  response.end(&quot;Welcome to the about page!&quot;);
 });
 
-app.<span class="keyword">get</span>(<span class="string">"*"</span>, <span class="keyword">function</span>(<span class="built_in">request</span>, <span class="built_in">response</span>) {
-  <span class="built_in">response</span>.<span class="keyword">end</span>(<span class="string">"404!"</span>);
+app.get(&quot;*&quot;, function(request, response) {
+  response.end(&quot;404!&quot;);
 });
 
-http.createServer(app).listen(<span class="number">1337</span>);
+http.createServer(app).listen(1337);
 </code></pre><p>上面代码的all方法表示，所有请求都必须通过该中间件，参数中的“*”表示对所有路径有效。get方法则是只有GET动词的HTTP请求通过该中间件，它的第一个参数是请求的路径。由于get方法的回调函数没有调用next方法，所以只要有一个中间件被调用了，后面的中间件就不会再被调用了。</p>
 <p>除了get方法以外，Express还提供post、put、delete方法，即HTTP动词都是Express的方法。</p>
 <p>这些方法的第一个参数，都是请求的路径。除了绝对匹配以外，Express允许模式匹配。</p>
-<pre><code>app.<span class="keyword">get</span>(<span class="string">"/hello/:who"</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-  res.end(<span class="string">"Hello, "</span> + req.params.who + <span class="string">"."</span>);
+<pre><code>app.get(&quot;/hello/:who&quot;, function(req, res) {
+  res.end(&quot;Hello, &quot; + req.params.who + &quot;.&quot;);
 });
 </code></pre><p>上面代码将匹配“/hello/alice”网址，网址中的alice将被捕获，作为req.params.who属性的值。需要注意的是，捕获后需要对网址进行检查，过滤不安全字符，上面的写法只是为了演示，生产中不应这样直接使用用户提供的值。</p>
 <p>如果在模式参数后面加上问号，表示该参数可选。</p>
-<pre><code>app.<span class="keyword">get</span>(<span class="string">'/hello/:who?'</span>,<span class="function"><span class="keyword">function</span><span class="params">(req,res)</span> </span>{
-    <span class="keyword">if</span>(req.params.id) {
-        res.end(<span class="string">"Hello, "</span> + req.params.who + <span class="string">"."</span>);
+<pre><code>app.get(&apos;/hello/:who?&apos;,function(req,res) {
+    if(req.params.id) {
+        res.end(&quot;Hello, &quot; + req.params.who + &quot;.&quot;);
     }
-    <span class="keyword">else</span> {
-        res.send(<span class="string">"Hello, Guest."</span>);
+    else {
+        res.send(&quot;Hello, Guest.&quot;);
     }
 });
 </code></pre><p>下面是一些更复杂的模式匹配的例子。</p>
-<pre><code>app.<span class="keyword">get</span>(<span class="string">'/forum/:fid/thread/:tid'</span>, middleware)
+<pre><code>app.get(&apos;/forum/:fid/thread/:tid&apos;, middleware)
 
-<span class="comment">// 匹配/commits/71dbb9c</span>
-<span class="comment">// 或/commits/71dbb9c..4c084f9这样的git格式的网址</span>
-app.<span class="keyword">get</span>(/^\/commits\/(\w+)(?:\.\.(\w+))?$/, function(req, res){
-  <span class="keyword">var</span> <span class="keyword">from</span> = req.<span class="keyword">params</span>[<span class="number">0</span>];
-  <span class="keyword">var</span> to = req.<span class="keyword">params</span>[<span class="number">1</span>] || <span class="string">'HEAD'</span>;
-  res.send(<span class="string">'commit range '</span> + <span class="keyword">from</span> + <span class="string">'..'</span> + to);
+// 匹配/commits/71dbb9c
+// 或/commits/71dbb9c..4c084f9这样的git格式的网址
+app.get(/^\/commits\/(\w+)(?:\.\.(\w+))?$/, function(req, res){
+  var from = req.params[0];
+  var to = req.params[1] || &apos;HEAD&apos;;
+  res.send(&apos;commit range &apos; + from + &apos;..&apos; + to);
 });
-</code></pre><h3 id="set方法">set方法</h3><p>set方法用于指定变量的值。</p>
-<pre><code><span class="keyword">app</span>.<span class="keyword">set</span>(<span class="string">"views"</span>, __dirname + <span class="string">"/views"</span>);
+</code></pre><h3 id="set方法"><a href="#set方法" class="headerlink" title="set方法"></a>set方法</h3><p>set方法用于指定变量的值。</p>
+<pre><code>app.set(&quot;views&quot;, __dirname + &quot;/views&quot;);
 
-<span class="keyword">app</span>.<span class="keyword">set</span>(<span class="string">"view engine"</span>, <span class="string">"jade"</span>);
+app.set(&quot;view engine&quot;, &quot;jade&quot;);
 </code></pre><p>上面代码使用set方法，为系统变量“views”和“view engine”指定值。</p>
-<h3 id="response对象">response对象</h3><p><strong>（1）response.redirect方法</strong></p>
+<h3 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h3><p><strong>（1）response.redirect方法</strong></p>
 <p>response.redirect方法允许网址的重定向。</p>
-<pre><code><span class="built_in">response</span>.redirect(<span class="string">"/hello/anime"</span>);
-<span class="built_in">response</span>.redirect(<span class="string">"http://www.example.com"</span>);
-<span class="built_in">response</span>.redirect(<span class="number">301</span>, <span class="string">"http://www.example.com"</span>);
+<pre><code>response.redirect(&quot;/hello/anime&quot;);
+response.redirect(&quot;http://www.example.com&quot;);
+response.redirect(301, &quot;http://www.example.com&quot;);
 </code></pre><p><strong>（2）response.sendFile方法</strong></p>
 <p>response.sendFile方法用于发送文件。</p>
-<pre><code><span class="built_in">response</span>.sendFile(<span class="string">"/path/to/anime.mp4"</span>);
+<pre><code>response.sendFile(&quot;/path/to/anime.mp4&quot;);
 </code></pre><p><strong>（3）response.render方法</strong></p>
 <p>response.render方法用于渲染网页模板。</p>
-<pre><code><span class="tag">app</span><span class="class">.get</span>(<span class="string">"/"</span>, <span class="function">function</span>(request, response) {
-  <span class="tag">response</span><span class="class">.render</span>(<span class="string">"index"</span>, { <span class="attribute">message</span>: <span class="string">"Hello World"</span> });
+<pre><code>app.get(&quot;/&quot;, function(request, response) {
+  response.render(&quot;index&quot;, { message: &quot;Hello World&quot; });
 });
 </code></pre><p>上面代码使用render方法，将message变量传入index模板，渲染成HTML网页。</p>
-<h3 id="requst对象">requst对象</h3><p><strong>（1）request.ip</strong></p>
+<h3 id="requst对象"><a href="#requst对象" class="headerlink" title="requst对象"></a>requst对象</h3><p><strong>（1）request.ip</strong></p>
 <p>request.ip属性用于获得HTTP请求的IP地址。</p>
 <p><strong>（2）request.files</strong></p>
 <p>request.files用于获取上传的文件。</p>
-<h3 id="搭建HTTPs服务器">搭建HTTPs服务器</h3><p>使用Express搭建HTTPs加密服务器，也很简单。</p>
-<pre><code><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);
-<span class="keyword">var</span> options = {
-  key: fs.readFileSync(<span class="string">'E:/ssl/myserver.key'</span>),
-  cert: fs.readFileSync(<span class="string">'E:/ssl/myserver.crt'</span>),
-  passphrase: <span class="string">'1234'</span>
+<h3 id="搭建HTTPs服务器"><a href="#搭建HTTPs服务器" class="headerlink" title="搭建HTTPs服务器"></a>搭建HTTPs服务器</h3><p>使用Express搭建HTTPs加密服务器，也很简单。</p>
+<pre><code>var fs = require(&apos;fs&apos;);
+var options = {
+  key: fs.readFileSync(&apos;E:/ssl/myserver.key&apos;),
+  cert: fs.readFileSync(&apos;E:/ssl/myserver.crt&apos;),
+  passphrase: &apos;1234&apos;
 };
 
-<span class="keyword">var</span> https = <span class="built_in">require</span>(<span class="string">'https'</span>);
-<span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
+var https = require(&apos;https&apos;);
+var express = require(&apos;express&apos;);
+var app = express();
 
-app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>{
-  res.send(<span class="string">'Hello World Expressjs'</span>);
+app.get(&apos;/&apos;, function(req, res){
+  res.send(&apos;Hello World Expressjs&apos;);
 });
 
-<span class="keyword">var</span> server = https.createServer(options, app);
-server.listen(<span class="number">8084</span>);
-<span class="built_in">console</span>.log(<span class="string">'Server is running on port 8084'</span>);
-</code></pre><h2 id="项目开发实例">项目开发实例</h2><h3 id="编写启动脚本">编写启动脚本</h3><p>上一节使用express命令自动建立项目，也可以不使用这个命令，手动新建所有文件。</p>
+var server = https.createServer(options, app);
+server.listen(8084);
+console.log(&apos;Server is running on port 8084&apos;);
+</code></pre><h2 id="项目开发实例"><a href="#项目开发实例" class="headerlink" title="项目开发实例"></a>项目开发实例</h2><h3 id="编写启动脚本"><a href="#编写启动脚本" class="headerlink" title="编写启动脚本"></a>编写启动脚本</h3><p>上一节使用express命令自动建立项目，也可以不使用这个命令，手动新建所有文件。</p>
 <p>先建立一个项目目录（假定这个目录叫做demo）。进入该目录，新建一个package.json文件，写入项目的配置信息。</p>
 <pre><code>{
-   "<span class="attribute">name</span>": <span class="value"><span class="string">"demo"</span></span>,
-   "<span class="attribute">description</span>": <span class="value"><span class="string">"My First Express App"</span></span>,
-   "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.1"</span></span>,
-   "<span class="attribute">dependencies</span>": <span class="value">{
-      "<span class="attribute">express</span>": <span class="value"><span class="string">"3.x"</span>
-   </span>}
-</span>}
+   &quot;name&quot;: &quot;demo&quot;,
+   &quot;description&quot;: &quot;My First Express App&quot;,
+   &quot;version&quot;: &quot;0.0.1&quot;,
+   &quot;dependencies&quot;: {
+      &quot;express&quot;: &quot;3.x&quot;
+   }
+}
 </code></pre><p>在项目目录中，新建文件app.js。项目的代码就放在这个文件里面。</p>
-<pre><code><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
+<pre><code>var express = require(&apos;express&apos;);
+var app = express();
 </code></pre><p>上面代码首先加载express模块，赋给变量express。然后，生成express实例，赋给变量app。</p>
 <p>接着，设定express实例的参数。</p>
-<pre><code><span class="comment">// 设定port变量，意为访问端口</span>
-<span class="keyword">app</span>.<span class="keyword">set</span>('port', process.env.PORT || 3000);
+<pre><code>// 设定port变量，意为访问端口
+app.set(&apos;port&apos;, process.env.PORT || 3000);
 
-<span class="comment">// 设定views变量，意为视图存放的目录</span>
-<span class="keyword">app</span>.<span class="keyword">set</span>('views', path.join(__dirname, 'views'));
+// 设定views变量，意为视图存放的目录
+app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));
 
-<span class="comment">// 设定view engine变量，意为网页模板引擎</span>
-<span class="keyword">app</span>.<span class="keyword">set</span>('<span class="keyword">view</span> engine', 'jade');
+// 设定view engine变量，意为网页模板引擎
+app.set(&apos;view engine&apos;, &apos;jade&apos;);
 
-<span class="keyword">app</span>.<span class="keyword">use</span>(express.favicon());
-<span class="keyword">app</span>.<span class="keyword">use</span>(express.logger('dev'));
-<span class="keyword">app</span>.<span class="keyword">use</span>(express.bodyParser());
-<span class="keyword">app</span>.<span class="keyword">use</span>(express.methodOverride());
-<span class="keyword">app</span>.<span class="keyword">use</span>(<span class="keyword">app</span>.router);
+app.use(express.favicon());
+app.use(express.logger(&apos;dev&apos;));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
 
-<span class="comment">// 设定静态文件目录，比如本地文件</span>
-<span class="comment">// 目录为demo/public/images，访问</span>
-<span class="comment">// 网址则显示为http://localhost:3000/images</span>
-<span class="keyword">app</span>.<span class="keyword">use</span>(express.static(path.join(__dirname, 'public')));
+// 设定静态文件目录，比如本地文件
+// 目录为demo/public/images，访问
+// 网址则显示为http://localhost:3000/images
+app.use(express.static(path.join(__dirname, &apos;public&apos;)));
 </code></pre><p>上面代码中的set方法用于设定内部变量，use方法用于调用express的中间件。</p>
 <p>最后，调用实例方法listen，让其监听事先设定的端口（3000）。</p>
-<pre><code><span class="keyword">app</span>.listen(<span class="keyword">app</span>.<span class="literal">get</span>('port'));
+<pre><code>app.listen(app.get(&apos;port&apos;));
 </code></pre><p>这时，运行下面的命令，就可以在浏览器访问<a href="http://127.0.0.1:3000。" target="_blank" rel="external">http://127.0.0.1:3000。</a></p>
-<pre><code><span class="tag">node</span> <span class="tag">app</span><span class="class">.js</span>
+<pre><code>node app.js
 </code></pre><p>网页提示“Cannot GET /”，表示没有为网站的根路径指定可以显示的内容。所以，下一步就是配置路由。</p>
-<h3 id="配置路由">配置路由</h3><p>所谓“路由”，就是指为不同的访问路径，指定不同的处理方法。</p>
+<h3 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h3><p>所谓“路由”，就是指为不同的访问路径，指定不同的处理方法。</p>
 <p><strong>（1）指定根路径</strong></p>
 <p>在app.js之中，先指定根路径的处理方法。</p>
-<pre><code>app.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-   res.send(<span class="string">'Hello World'</span>);
+<pre><code>app.get(&apos;/&apos;, function(req, res) {
+   res.send(&apos;Hello World&apos;);
 });
 </code></pre><p>上面代码的get方法，表示处理客户端发出的GET请求。相应的，还有app.post、app.put、app.del（delete是JavaScript保留字，所以改叫del）方法。</p>
 <p>get方法的第一个参数是访问路径，正斜杠（/）就代表根路径；第二个参数是回调函数，它的req参数表示客户端发来的HTTP请求，res参数代表发向客户端的HTTP回应，这两个参数都是对象。在回调函数内部，使用HTTP回应的send方法，表示向浏览器发送一个字符串。然后，运行下面的命令。</p>
-<pre><code><span class="tag">node</span> <span class="tag">app</span><span class="class">.js</span>
+<pre><code>node app.js
 </code></pre><p>此时，在浏览器中访问<a href="http://127.0.0.1:3000，网页就会显示“Hello" target="_blank" rel="external">http://127.0.0.1:3000，网页就会显示“Hello</a> World”。</p>
 <p>如果需要指定HTTP头信息，回调函数就必须换一种写法，要使用setHeader方法与end方法。</p>
-<pre><code>app.<span class="built_in">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span>{</span>
-  var body = <span class="string">'Hello World'</span>;
-  <span class="keyword">res</span>.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/plain'</span>);
-  <span class="keyword">res</span>.setHeader(<span class="string">'Content-Length'</span>, body.length);
-  <span class="keyword">res</span>.end(body);
+<pre><code>app.get(&apos;/&apos;, function(req, res){
+  var body = &apos;Hello World&apos;;
+  res.setHeader(&apos;Content-Type&apos;, &apos;text/plain&apos;);
+  res.setHeader(&apos;Content-Length&apos;, body.length);
+  res.end(body);
 });
 </code></pre><p><strong>（2）指定特定路径</strong></p>
 <p>上面是处理根目录的情况，下面再举一个例子。假定用户访问/api路径，希望返回一个JSON字符串。这时，get可以这样写。</p>
-<pre><code><span class="tag">app</span><span class="class">.get</span>(<span class="string">'/api'</span>, <span class="function">function</span>(request, response) {
-   <span class="tag">response</span><span class="class">.send</span>({<span class="attribute">name</span>:<span class="string">"张三"</span>,<span class="attribute">age</span>:<span class="number">40</span>});
+<pre><code>app.get(&apos;/api&apos;, function(request, response) {
+   response.send({name:&quot;张三&quot;,age:40});
 });
 </code></pre><p>上面代码表示，除了发送字符串，send方法还可以直接发送对象。重新启动node以后，再访问路径/api，浏览器就会显示一个JSON对象。</p>
 <pre><code>{
-  "<span class="attribute">name</span>": <span class="value"><span class="string">"张三"</span></span>,
-  "<span class="attribute">age</span>": <span class="value"><span class="number">40</span>
-</span>}
+  &quot;name&quot;: &quot;张三&quot;,
+  &quot;age&quot;: 40
+}
 </code></pre><p>我们也可以把app.get的回调函数，封装成模块。先在routes目录下面建立一个api.js文件。</p>
-<pre><code><span class="comment">// routes/api.js</span>
+<pre><code>// routes/api.js
 
-<span class="keyword">exports</span>.<span class="keyword">index</span> = <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span><span class="comment">{
-  res.json(200, {name:"张三",age:40}</span>);</span>
+exports.index = function (req, res){
+  res.json(200, {name:&quot;张三&quot;,age:40});
 }
 </code></pre><p>然后，在app.js中加载这个模块。</p>
-<pre><code><span class="comment">// app.js</span>
+<pre><code>// app.js
 
-<span class="keyword">var</span> api = <span class="keyword">require</span>(<span class="string">'./routes/api'</span>);
-app.get(<span class="string">'/api'</span>, api.<span class="keyword">index</span>);
+var api = require(&apos;./routes/api&apos;);
+app.get(&apos;/api&apos;, api.index);
 </code></pre><p>现在访问时，就会显示与上一次同样的结果。</p>
 <p>如果只向浏览器发送简单的文本信息，上面的方法已经够用；但是如果要向浏览器发送复杂的内容，还是应该使用网页模板。</p>
-<h3 id="静态网页模板">静态网页模板</h3><p>在项目目录之中，建立一个子目录views，用于存放网页模板。</p>
+<h3 id="静态网页模板"><a href="#静态网页模板" class="headerlink" title="静态网页模板"></a>静态网页模板</h3><p>在项目目录之中，建立一个子目录views，用于存放网页模板。</p>
 <p>假定这个项目有三个路径：根路径（/）、自我介绍（/about）和文章（/article）。那么，app.js可以这样写：</p>
-<pre><code><span class="keyword">var</span> express = require(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
+<pre><code>var express = require(&apos;express&apos;);
+var app = express();
 
-app.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-   res.sendfile(<span class="string">'./views/index.html'</span>);
+app.get(&apos;/&apos;, function(req, res) {
+   res.sendfile(&apos;./views/index.html&apos;);
 });
 
-app.<span class="keyword">get</span>(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-   res.sendfile(<span class="string">'./views/about.html'</span>);
+app.get(&apos;/about&apos;, function(req, res) {
+   res.sendfile(&apos;./views/about.html&apos;);
 });
 
-app.<span class="keyword">get</span>(<span class="string">'/article'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-   res.sendfile(<span class="string">'./views/article.html'</span>);
+app.get(&apos;/article&apos;, function(req, res) {
+   res.sendfile(&apos;./views/article.html&apos;);
 });
 
-app.listen(<span class="number">3000</span>);
+app.listen(3000);
 </code></pre><p>上面代码表示，三个路径分别对应views目录中的三个模板：index.html、about.html和article.html。另外，向服务器发送信息的方法，从send变成了sendfile，后者专门用于发送文件。</p>
 <p>假定index.html的内容如下：</p>
-<pre><code><span class="tag">&lt;<span class="title">html</span>&gt;</span>
-<span class="tag">&lt;<span class="title">head</span>&gt;</span>
-   <span class="tag">&lt;<span class="title">title</span>&gt;</span>首页<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;首页&lt;/title&gt;
+&lt;/head&gt;
 
-<span class="tag">&lt;<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;<span class="title">h1</span>&gt;</span>Express Demo<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+&lt;body&gt;
+&lt;h1&gt;Express Demo&lt;/h1&gt;
 
-<span class="tag">&lt;<span class="title">footer</span>&gt;</span>
-<span class="tag">&lt;<span class="title">p</span>&gt;</span>
-   <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/"</span>&gt;</span>首页<span class="tag">&lt;/<span class="title">a</span>&gt;</span> - <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/about"</span>&gt;</span>自我介绍<span class="tag">&lt;/<span class="title">a</span>&gt;</span> - <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/article"</span>&gt;</span>文章<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">footer</span>&gt;</span>
+&lt;footer&gt;
+&lt;p&gt;
+   &lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt; - &lt;a href=&quot;/about&quot;&gt;自我介绍&lt;/a&gt; - &lt;a href=&quot;/article&quot;&gt;文章&lt;/a&gt;
+&lt;/p&gt;
+&lt;/footer&gt;
 
-<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre><p>上面代码是一个静态网页。如果想要展示动态内容，就必须使用动态网页模板。</p>
-<h2 id="动态网页模板">动态网页模板</h2><p>网站真正的魅力在于动态网页，下面我们来看看，如何制作一个动态网页的网站。</p>
-<h3 id="安装模板引擎">安装模板引擎</h3><p>Express支持多种模板引擎，这里采用Handlebars模板引擎的服务器端版本<a href="https://github.com/donpark/hbs" target="_blank" rel="external">hbs</a>模板引擎。</p>
+<h2 id="动态网页模板"><a href="#动态网页模板" class="headerlink" title="动态网页模板"></a>动态网页模板</h2><p>网站真正的魅力在于动态网页，下面我们来看看，如何制作一个动态网页的网站。</p>
+<h3 id="安装模板引擎"><a href="#安装模板引擎" class="headerlink" title="安装模板引擎"></a>安装模板引擎</h3><p>Express支持多种模板引擎，这里采用Handlebars模板引擎的服务器端版本<a href="https://github.com/donpark/hbs" target="_blank" rel="external">hbs</a>模板引擎。</p>
 <p>先安装hbs。</p>
-<pre><code>npm install hbs --<span class="built_in">save</span>-<span class="built_in">dev</span>
+<pre><code>npm install hbs --save-dev
 </code></pre><p>上面代码将hbs模块，安装在项目目录的子目录node_modules之中。save-dev参数表示，将依赖关系写入package.json文件。安装以后的package.json文件变成下面这样：</p>
 <pre><code>// package.json文件
 
 {
-  <span class="string">"name"</span>: <span class="string">"demo"</span>,
-  <span class="string">"description"</span>: <span class="string">"My First Express App"</span>,
-  <span class="string">"version"</span>: <span class="string">"0.0.1"</span>,
-  <span class="string">"dependencies"</span>: {
-    <span class="string">"express"</span>: <span class="string">"3.x"</span>
+  &quot;name&quot;: &quot;demo&quot;,
+  &quot;description&quot;: &quot;My First Express App&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;dependencies&quot;: {
+    &quot;express&quot;: &quot;3.x&quot;
   },
-  <span class="string">"devDependencies"</span>: {
-    <span class="string">"hbs"</span>: <span class="string">"~2.3.1"</span>
+  &quot;devDependencies&quot;: {
+    &quot;hbs&quot;: &quot;~2.3.1&quot;
   }
 }
 </code></pre><p>安装模板引擎之后，就要改写app.js。</p>
-<pre><code><span class="comment">// app.js文件</span>
+<pre><code>// app.js文件
 
-<span class="keyword">var</span> express = require(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
+var express = require(&apos;express&apos;);
+var app = express();
 
-<span class="comment">// 加载hbs模块</span>
-<span class="keyword">var</span> hbs = require(<span class="string">'hbs'</span>);
+// 加载hbs模块
+var hbs = require(&apos;hbs&apos;);
 
-<span class="comment">// 指定模板文件的后缀名为html</span>
-app.<span class="keyword">set</span>(<span class="string">'view engine'</span>, <span class="string">'html'</span>);
+// 指定模板文件的后缀名为html
+app.set(&apos;view engine&apos;, &apos;html&apos;);
 
-<span class="comment">// 运行hbs模块</span>
-app.engine(<span class="string">'html'</span>, hbs.__express);
+// 运行hbs模块
+app.engine(&apos;html&apos;, hbs.__express);
 
-app.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span></span>{
-    res.render(<span class="string">'index'</span>);
+app.get(&apos;/&apos;, function (req, res){
+    res.render(&apos;index&apos;);
 });
 
-app.<span class="keyword">get</span>(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-    res.render(<span class="string">'about'</span>);
+app.get(&apos;/about&apos;, function(req, res) {
+    res.render(&apos;about&apos;);
 });
 
-app.<span class="keyword">get</span>(<span class="string">'/article'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-    res.render(<span class="string">'article'</span>);
+app.get(&apos;/article&apos;, function(req, res) {
+    res.render(&apos;article&apos;);
 });
 </code></pre><p>上面代码改用render方法，对网页模板进行渲染。render方法的参数就是模板的文件名，默认放在子目录views之中，后缀名已经在前面指定为html，这里可以省略。所以，res.render(‘index’) 就是指，把子目录views下面的index.html文件，交给模板引擎hbs渲染。</p>
-<h3 id="新建数据脚本">新建数据脚本</h3><p>渲染是指将数据代入模板的过程。实际运用中，数据都是保存在数据库之中的，这里为了简化问题，假定数据保存在一个脚本文件中。</p>
+<h3 id="新建数据脚本"><a href="#新建数据脚本" class="headerlink" title="新建数据脚本"></a>新建数据脚本</h3><p>渲染是指将数据代入模板的过程。实际运用中，数据都是保存在数据库之中的，这里为了简化问题，假定数据保存在一个脚本文件中。</p>
 <p>在项目目录中，新建一个文件blog.js，用于存放数据。blog.js的写法符合CommonJS规范，使得它可以被require语句加载。</p>
-<pre><code><span class="comment">// blog.js文件</span>
+<pre><code>// blog.js文件
 
-<span class="keyword">var</span> entries = [
-    {<span class="string">"id"</span>:<span class="number">1</span>, <span class="string">"title"</span>:<span class="string">"第一篇"</span>, <span class="string">"body"</span>:<span class="string">"正文"</span>, <span class="string">"published"</span>:<span class="string">"6/2/2013"</span>},
-    {<span class="string">"id"</span>:<span class="number">2</span>, <span class="string">"title"</span>:<span class="string">"第二篇"</span>, <span class="string">"body"</span>:<span class="string">"正文"</span>, <span class="string">"published"</span>:<span class="string">"6/3/2013"</span>},
-    {<span class="string">"id"</span>:<span class="number">3</span>, <span class="string">"title"</span>:<span class="string">"第三篇"</span>, <span class="string">"body"</span>:<span class="string">"正文"</span>, <span class="string">"published"</span>:<span class="string">"6/4/2013"</span>},
-    {<span class="string">"id"</span>:<span class="number">4</span>, <span class="string">"title"</span>:<span class="string">"第四篇"</span>, <span class="string">"body"</span>:<span class="string">"正文"</span>, <span class="string">"published"</span>:<span class="string">"6/5/2013"</span>},
-    {<span class="string">"id"</span>:<span class="number">5</span>, <span class="string">"title"</span>:<span class="string">"第五篇"</span>, <span class="string">"body"</span>:<span class="string">"正文"</span>, <span class="string">"published"</span>:<span class="string">"6/10/2013"</span>},
-    {<span class="string">"id"</span>:<span class="number">6</span>, <span class="string">"title"</span>:<span class="string">"第六篇"</span>, <span class="string">"body"</span>:<span class="string">"正文"</span>, <span class="string">"published"</span>:<span class="string">"6/12/2013"</span>}
+var entries = [
+    {&quot;id&quot;:1, &quot;title&quot;:&quot;第一篇&quot;, &quot;body&quot;:&quot;正文&quot;, &quot;published&quot;:&quot;6/2/2013&quot;},
+    {&quot;id&quot;:2, &quot;title&quot;:&quot;第二篇&quot;, &quot;body&quot;:&quot;正文&quot;, &quot;published&quot;:&quot;6/3/2013&quot;},
+    {&quot;id&quot;:3, &quot;title&quot;:&quot;第三篇&quot;, &quot;body&quot;:&quot;正文&quot;, &quot;published&quot;:&quot;6/4/2013&quot;},
+    {&quot;id&quot;:4, &quot;title&quot;:&quot;第四篇&quot;, &quot;body&quot;:&quot;正文&quot;, &quot;published&quot;:&quot;6/5/2013&quot;},
+    {&quot;id&quot;:5, &quot;title&quot;:&quot;第五篇&quot;, &quot;body&quot;:&quot;正文&quot;, &quot;published&quot;:&quot;6/10/2013&quot;},
+    {&quot;id&quot;:6, &quot;title&quot;:&quot;第六篇&quot;, &quot;body&quot;:&quot;正文&quot;, &quot;published&quot;:&quot;6/12/2013&quot;}
 ];
 
-exports.getBlogEntries = <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>{
-   <span class="keyword">return</span> entries;
+exports.getBlogEntries = function (){
+   return entries;
 }
 
-exports.getBlogEntry = <span class="function"><span class="keyword">function</span> <span class="params">(id)</span></span>{
-   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; entries.length; i++){
-      <span class="keyword">if</span>(entries[i].id == id) <span class="keyword">return</span> entries[i];
+exports.getBlogEntry = function (id){
+   for(var i=0; i &lt; entries.length; i++){
+      if(entries[i].id == id) return entries[i];
    }
 }
-</code></pre><h3 id="新建网页模板">新建网页模板</h3><p>接着，新建模板文件index.html。</p>
-<pre><code><span class="comment">&lt;!-- views/index.html文件 --&gt;</span>
+</code></pre><h3 id="新建网页模板"><a href="#新建网页模板" class="headerlink" title="新建网页模板"></a>新建网页模板</h3><p>接着，新建模板文件index.html。</p>
+<pre><code>&lt;!-- views/index.html文件 --&gt;
 
-<span class="tag">&lt;<span class="title">h1</span>&gt;</span>文章列表<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+&lt;h1&gt;文章列表&lt;/h1&gt;
 
-<span class="comment">{{"{{"}}</span>#each entries}}
-   <span class="tag">&lt;<span class="title">p</span>&gt;</span>
-      <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/article/{{"{{"}}id}}"</span>&gt;</span><span class="comment">{{"{{"}}</span>title}}<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;<span class="title">br</span>/&gt;</span>
-      Published: <span class="comment">{{"{{"}}</span>published}}
-   <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
-<span class="comment">{{"{{"}}</span>/each}}
+{{"{{"}}#each entries}}
+   &lt;p&gt;
+      &lt;a href=&quot;/article/{{"{{"}}id}}&quot;&gt;{{"{{"}}title}}&lt;/a&gt;&lt;br/&gt;
+      Published: {{"{{"}}published}}
+   &lt;/p&gt;
+{{"{{"}}/each}}
 </code></pre><p>模板文件about.html。</p>
-<pre><code><span class="comment">&lt;!-- views/about.html文件 --&gt;</span>
+<pre><code>&lt;!-- views/about.html文件 --&gt;
 
-<span class="tag">&lt;<span class="title">h1</span>&gt;</span>自我介绍<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+&lt;h1&gt;自我介绍&lt;/h1&gt;
 
-<span class="tag">&lt;<span class="title">p</span>&gt;</span>正文<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+&lt;p&gt;正文&lt;/p&gt;
 </code></pre><p>模板文件article.html。</p>
-<pre><code><span class="comment">&lt;!-- views/article.html文件 --&gt;</span>
+<pre><code>&lt;!-- views/article.html文件 --&gt;
 
-<span class="tag">&lt;<span class="title">h1</span>&gt;</span><span class="comment">{{"{{"}}</span>blog.title}}<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
-Published: <span class="comment">{{"{{"}}</span>blog.published}}
+&lt;h1&gt;{{"{{"}}blog.title}}&lt;/h1&gt;
+Published: {{"{{"}}blog.published}}
 
-<span class="tag">&lt;<span class="title">p</span>/&gt;</span>
+&lt;p/&gt;
 
-<span class="comment">{{"{{"}}</span>blog.body}}
+{{"{{"}}blog.body}}
 </code></pre><p>可以看到，上面三个模板文件都只有网页主体。因为网页布局是共享的，所以布局的部分可以单独新建一个文件layout.html。</p>
-<pre><code><span class="comment">&lt;!-- views/layout.html文件 --&gt;</span>
+<pre><code>&lt;!-- views/layout.html文件 --&gt;
 
-<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+&lt;html&gt;
 
-<span class="tag">&lt;<span class="title">head</span>&gt;</span>
-   <span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="comment">{{"{{"}}</span>title}}<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+&lt;head&gt;
+   &lt;title&gt;{{"{{"}}title}}&lt;/title&gt;
+&lt;/head&gt;
 
-<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+&lt;body&gt;
 
-    <span class="comment">{{"{{{"}}</span>body}}}
+    {{"{{{"}}body}}}
 
-   <span class="tag">&lt;<span class="title">footer</span>&gt;</span>
-      <span class="tag">&lt;<span class="title">p</span>&gt;</span>
-         <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/"</span>&gt;</span>首页<span class="tag">&lt;/<span class="title">a</span>&gt;</span> - <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"/about"</span>&gt;</span>自我介绍<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
-      <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
-   <span class="tag">&lt;/<span class="title">footer</span>&gt;</span>
+   &lt;footer&gt;
+      &lt;p&gt;
+         &lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt; - &lt;a href=&quot;/about&quot;&gt;自我介绍&lt;/a&gt;
+      &lt;/p&gt;
+   &lt;/footer&gt;
 
-<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
-</code></pre><h3 id="渲染模板">渲染模板</h3><p>最后，改写app.js文件。</p>
-<pre><code><span class="comment">// app.js文件</span>
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="渲染模板"><a href="#渲染模板" class="headerlink" title="渲染模板"></a>渲染模板</h3><p>最后，改写app.js文件。</p>
+<pre><code>// app.js文件
 
-<span class="keyword">var</span> express = require(<span class="string">'express'</span>);
-<span class="keyword">var</span> app = express();
+var express = require(&apos;express&apos;);
+var app = express();
 
-<span class="keyword">var</span> hbs = require(<span class="string">'hbs'</span>);
+var hbs = require(&apos;hbs&apos;);
 
-<span class="comment">// 加载数据模块</span>
-<span class="keyword">var</span> blogEngine = require(<span class="string">'./blog'</span>);
+// 加载数据模块
+var blogEngine = require(&apos;./blog&apos;);
 
-app.<span class="keyword">set</span>(<span class="string">'view engine'</span>, <span class="string">'html'</span>);
-app.engine(<span class="string">'html'</span>, hbs.__express);
-app.<span class="keyword">use</span>(express.bodyParser());
+app.set(&apos;view engine&apos;, &apos;html&apos;);
+app.engine(&apos;html&apos;, hbs.__express);
+app.use(express.bodyParser());
 
-app.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-   res.render(<span class="string">'index'</span>,{title:<span class="string">"最近文章"</span>, entries:blogEngine.getBlogEntries()});
+app.get(&apos;/&apos;, function(req, res) {
+   res.render(&apos;index&apos;,{title:&quot;最近文章&quot;, entries:blogEngine.getBlogEntries()});
 });
 
-app.<span class="keyword">get</span>(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-   res.render(<span class="string">'about'</span>, {title:<span class="string">"自我介绍"</span>});
+app.get(&apos;/about&apos;, function(req, res) {
+   res.render(&apos;about&apos;, {title:&quot;自我介绍&quot;});
 });
 
-app.<span class="keyword">get</span>(<span class="string">'/article/:id'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-   <span class="keyword">var</span> entry = blogEngine.getBlogEntry(req.params.id);
-   res.render(<span class="string">'article'</span>,{title:entry.title, blog:entry});
+app.get(&apos;/article/:id&apos;, function(req, res) {
+   var entry = blogEngine.getBlogEntry(req.params.id);
+   res.render(&apos;article&apos;,{title:entry.title, blog:entry});
 });
 
-app.listen(<span class="number">3000</span>);
+app.listen(3000);
 </code></pre><p>上面代码中的render方法，现在加入了第二个参数，表示模板变量绑定的数据。</p>
 <p>现在重启node服务器，然后访问<a href="http://127.0.0.1:3000。" target="_blank" rel="external">http://127.0.0.1:3000。</a></p>
-<pre><code><span class="tag">node</span> <span class="tag">app</span><span class="class">.js</span>
+<pre><code>node app.js
 </code></pre><p>可以看得，模板已经使用加载的数据渲染成功了。</p>
-<h3 id="指定静态文件目录">指定静态文件目录</h3><p>模板文件默认存放在views子目录。这时，如果要在网页中加载静态文件（比如样式表、图片等），就需要另外指定一个存放静态文件的目录。</p>
-<pre><code>app.<span class="keyword">use</span>(express.<span class="keyword">static</span>(<span class="string">'public'</span>));
+<h3 id="指定静态文件目录"><a href="#指定静态文件目录" class="headerlink" title="指定静态文件目录"></a>指定静态文件目录</h3><p>模板文件默认存放在views子目录。这时，如果要在网页中加载静态文件（比如样式表、图片等），就需要另外指定一个存放静态文件的目录。</p>
+<pre><code>app.use(express.static(&apos;public&apos;));
 </code></pre><p>上面代码在文件app.js之中，指定静态文件存放的目录是public。于是，当浏览器发出非HTML文件请求时，服务器端就到public目录寻找这个文件。比如，浏览器发出如下的样式表请求：</p>
-<pre><code><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"/bootstrap/css/bootstrap.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span>
+<pre><code>&lt;link href=&quot;/bootstrap/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
 </code></pre><p>服务器端就到public/bootstrap/css/目录中寻找bootstrap.css文件。</p>
-<h2 id="Express-Router用法">Express.Router用法</h2><p>从Express 4.0开始，路由器功能成了一个单独的组件<code>Express.Router</code>。它好像小型的express应用程序一样，有自己的use、get、param和route方法。</p>
-<h3 id="基本用法">基本用法</h3><p>首先，<code>Express.Router</code>是一个构造函数，调用后返回一个路由器实例。然后，使用该实例的HTTP动词方法，为不同的访问路径，指定回调函数；最后，挂载到某个路径。</p>
-<pre><code><span class="keyword">var</span> router = express.Router();
+<h2 id="Express-Router用法"><a href="#Express-Router用法" class="headerlink" title="Express.Router用法"></a>Express.Router用法</h2><p>从Express 4.0开始，路由器功能成了一个单独的组件<code>Express.Router</code>。它好像小型的express应用程序一样，有自己的use、get、param和route方法。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>首先，<code>Express.Router</code>是一个构造函数，调用后返回一个路由器实例。然后，使用该实例的HTTP动词方法，为不同的访问路径，指定回调函数；最后，挂载到某个路径。</p>
+<pre><code>var router = express.Router();
 
-router.<span class="keyword">get</span>(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-  res.send(<span class="string">'首页'</span>);
+router.get(&apos;/&apos;, function(req, res) {
+  res.send(&apos;首页&apos;);
 });
 
-router.<span class="keyword">get</span>(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-  res.send(<span class="string">'关于'</span>);
+router.get(&apos;/about&apos;, function(req, res) {
+  res.send(&apos;关于&apos;);
 });
 
-app.<span class="keyword">use</span>(<span class="string">'/'</span>, router);
+app.use(&apos;/&apos;, router);
 </code></pre><p>上面代码先定义了两个访问路径，然后将它们挂载到根目录。如果最后一行改为app.use(‘/app’, router)，则相当于为<code>/app</code>和<code>/app/about</code>这两个路径，指定了回调函数。</p>
 <p>这种路由器可以自由挂载的做法，为程序带来了更大的灵活性，既可以定义多个路由器实例，也可以为将同一个路由器实例挂载到多个路径。</p>
-<h3 id="router-route方法">router.route方法</h3><p>router实例对象的route方法，可以接受访问路径作为参数。</p>
-<pre><code><span class="keyword">var</span> router = express.Router();
+<h3 id="router-route方法"><a href="#router-route方法" class="headerlink" title="router.route方法"></a>router.route方法</h3><p>router实例对象的route方法，可以接受访问路径作为参数。</p>
+<pre><code>var router = express.Router();
 
-router.route(<span class="string">'/api'</span>)
-    .post(<span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-        <span class="comment">// ...</span>
+router.route(&apos;/api&apos;)
+    .post(function(req, res) {
+        // ...
     })
-    .<span class="keyword">get</span>(<span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-        Bear.find(<span class="function"><span class="keyword">function</span><span class="params">(err, bears)</span> </span>{
-            <span class="keyword">if</span> (err) res.send(err);
+    .get(function(req, res) {
+        Bear.find(function(err, bears) {
+            if (err) res.send(err);
             res.json(bears);
         });
     });
 
-app.<span class="keyword">use</span>(<span class="string">'/'</span>, router);
-</code></pre><h3 id="router中间件">router中间件</h3><p>use方法为router对象指定中间件，即在数据正式发给用户之前，对数据进行处理。下面就是一个中间件的例子。</p>
+app.use(&apos;/&apos;, router);
+</code></pre><h3 id="router中间件"><a href="#router中间件" class="headerlink" title="router中间件"></a>router中间件</h3><p>use方法为router对象指定中间件，即在数据正式发给用户之前，对数据进行处理。下面就是一个中间件的例子。</p>
 <pre><code>router.use(function(req, res, next) {
-    console.log(req.<span class="keyword">method</span>, req.url);
+    console.log(req.method, req.url);
     next();
 });
 </code></pre><p>上面代码中，回调函数的next参数，表示接受其他中间件的调用。函数体中的next()，表示将数据传递给下一个中间件。</p>
 <p>注意，中间件的放置顺序很重要，等同于执行顺序。而且，中间件必须放在HTTP动词方法之前，否则不会执行。</p>
-<h3 id="对路径参数的处理">对路径参数的处理</h3><p>router对象的param方法用于路径参数的处理，可以</p>
-<pre><code>router.param(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next, name)</span> </span>{
-    <span class="comment">// 对name进行验证或其他处理……</span>
+<h3 id="对路径参数的处理"><a href="#对路径参数的处理" class="headerlink" title="对路径参数的处理"></a>对路径参数的处理</h3><p>router对象的param方法用于路径参数的处理，可以</p>
+<pre><code>router.param(&apos;name&apos;, function(req, res, next, name) {
+    // 对name进行验证或其他处理……
     console.log(name);
     req.name = name;
     next();
 });
 
-router.<span class="keyword">get</span>(<span class="string">'/hello/:name'</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> </span>{
-    res.send(<span class="string">'hello '</span> + req.name + <span class="string">'!'</span>);
+router.get(&apos;/hello/:name&apos;, function(req, res) {
+    res.send(&apos;hello &apos; + req.name + &apos;!&apos;);
 });
 </code></pre><p>上面代码中，get方法为访问路径指定了name参数，param方法则是对name参数进行处理。注意，param方法必须放在HTTP动词方法之前。</p>
-<h3 id="app-route">app.route</h3><p>假定app是Express的实例对象，Express 4.0为该对象提供了一个route属性。app.route实际上是express.Router()的缩写形式，除了直接挂载到根路径。因此，对同一个路径指定get和post方法的回调函数，可以写成链式形式。</p>
-<pre><code>app.route(<span class="string">'/login'</span>)
-    .<span class="built_in">get</span>(<span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> {</span>
-        <span class="keyword">res</span>.send(<span class="string">'this is the login form'</span>);
+<h3 id="app-route"><a href="#app-route" class="headerlink" title="app.route"></a>app.route</h3><p>假定app是Express的实例对象，Express 4.0为该对象提供了一个route属性。app.route实际上是express.Router()的缩写形式，除了直接挂载到根路径。因此，对同一个路径指定get和post方法的回调函数，可以写成链式形式。</p>
+<pre><code>app.route(&apos;/login&apos;)
+    .get(function(req, res) {
+        res.send(&apos;this is the login form&apos;);
     })
-    .post(<span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> {</span>
-        console.<span class="built_in">log</span>(<span class="string">'processing'</span>);
-        <span class="keyword">res</span>.send(<span class="string">'processing the login form!'</span>);
+    .post(function(req, res) {
+        console.log(&apos;processing&apos;);
+        res.send(&apos;processing the login form!&apos;);
     });
 </code></pre><p>上面代码的这种写法，显然非常简洁清晰。</p>
-<h2 id="上传文件">上传文件</h2><p>首先，在网页插入上传文件的表单。</p>
-<pre><code>&lt;form action=<span class="string">"/pictures/upload"</span> method=<span class="string">"<span class="keyword">POST</span>"</span> enctype=<span class="string">"multipart/form-data"</span>&gt;
+<h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><p>首先，在网页插入上传文件的表单。</p>
+<pre><code>&lt;form action=&quot;/pictures/upload&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&gt;
   Select an image to upload:
-  &lt;input type=<span class="string">"file"</span> name=<span class="string">"image"</span>&gt;
-  &lt;input type=<span class="string">"submit"</span> value=<span class="string">"Upload Image"</span>&gt;
+  &lt;input type=&quot;file&quot; name=&quot;image&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Upload Image&quot;&gt;
 &lt;/form&gt;
 </code></pre><p>然后，服务器脚本建立指向<code>/upload</code>目录的路由。这时可以安装multer模块，它提供了上传文件的许多功能。</p>
-<pre><code><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);
-<span class="keyword">var</span> router = express.Router();
-<span class="keyword">var</span> multer = <span class="built_in">require</span>(<span class="string">'multer'</span>);
+<pre><code>var express = require(&apos;express&apos;);
+var router = express.Router();
+var multer = require(&apos;multer&apos;);
 
-<span class="keyword">var</span> uploading = multer({
-  dest: __dirname + <span class="string">'../public/uploads/'</span>,
-  <span class="comment">// 设定限制，每次最多上传1个文件，文件大小不超过1MB</span>
-  limits: {fileSize: <span class="number">1000000</span>, files:<span class="number">1</span>},
+var uploading = multer({
+  dest: __dirname + &apos;../public/uploads/&apos;,
+  // 设定限制，每次最多上传1个文件，文件大小不超过1MB
+  limits: {fileSize: 1000000, files:1},
 })
 
-router.post(<span class="string">'/upload'</span>, uploading, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>{
+router.post(&apos;/upload&apos;, uploading, function(req, res) {
 
 })
 
-<span class="built_in">module</span>.exports = router
+module.exports = router
 </code></pre><p>上面代码是上传文件到本地目录。下面是上传到Amazon S3的例子。</p>
 <p>首先，在S3上面新增CORS配置文件。</p>
-<pre><code><span class="pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="tag">&lt;<span class="title">CORSConfiguration</span> <span class="attribute">xmlns</span>=<span class="value">"http://s3.amazonaws.com/doc/2006-03-01/"</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">CORSRule</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">AllowedOrigin</span>&gt;</span>*<span class="tag">&lt;/<span class="title">AllowedOrigin</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">AllowedMethod</span>&gt;</span>GET<span class="tag">&lt;/<span class="title">AllowedMethod</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">AllowedMethod</span>&gt;</span>POST<span class="tag">&lt;/<span class="title">AllowedMethod</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">AllowedMethod</span>&gt;</span>PUT<span class="tag">&lt;/<span class="title">AllowedMethod</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">AllowedHeader</span>&gt;</span>*<span class="tag">&lt;/<span class="title">AllowedHeader</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">CORSRule</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">CORSConfiguration</span>&gt;</span>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;CORSConfiguration xmlns=&quot;http://s3.amazonaws.com/doc/2006-03-01/&quot;&gt;
+  &lt;CORSRule&gt;
+    &lt;AllowedOrigin&gt;*&lt;/AllowedOrigin&gt;
+    &lt;AllowedMethod&gt;GET&lt;/AllowedMethod&gt;
+    &lt;AllowedMethod&gt;POST&lt;/AllowedMethod&gt;
+    &lt;AllowedMethod&gt;PUT&lt;/AllowedMethod&gt;
+    &lt;AllowedHeader&gt;*&lt;/AllowedHeader&gt;
+  &lt;/CORSRule&gt;
+&lt;/CORSConfiguration&gt;
 </code></pre><p>上面的配置允许任意电脑向你的bucket发送HTTP请求。</p>
 <p>然后，安装aws-sdk。</p>
-<pre><code>$ npm <span class="operator"><span class="keyword">install</span> aws-sdk <span class="comment">--save</span></span>
+<pre><code>$ npm install aws-sdk --save
 </code></pre><p>下面是服务器脚本。</p>
-<pre><code><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);
-<span class="keyword">var</span> router = express.Router();
-<span class="keyword">var</span> aws = <span class="built_in">require</span>(<span class="string">'aws-sdk'</span>);
+<pre><code>var express = require(&apos;express&apos;);
+var router = express.Router();
+var aws = require(&apos;aws-sdk&apos;);
 
-router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>{
-  res.render(<span class="string">'index'</span>)
+router.get(&apos;/&apos;, function(req, res) {
+  res.render(&apos;index&apos;)
 })
 
-<span class="keyword">var</span> AWS_ACCESS_KEY = <span class="string">'your_AWS_access_key'</span>
-<span class="keyword">var</span> AWS_SECRET_KEY = <span class="string">'your_AWS_secret_key'</span>
-<span class="keyword">var</span> S3_BUCKET = <span class="string">'images_upload'</span>
+var AWS_ACCESS_KEY = &apos;your_AWS_access_key&apos;
+var AWS_SECRET_KEY = &apos;your_AWS_secret_key&apos;
+var S3_BUCKET = &apos;images_upload&apos;
 
-router.get(<span class="string">'/sign'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>{
+router.get(&apos;/sign&apos;, function(req, res) {
   aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
 
-  <span class="keyword">var</span> s3 = <span class="keyword">new</span> aws.S3()
-  <span class="keyword">var</span> options = {
+  var s3 = new aws.S3()
+  var options = {
     Bucket: S3_BUCKET,
     Key: req.query.file_name,
-    Expires: <span class="number">60</span>,
+    Expires: 60,
     ContentType: req.query.file_type,
-    ACL: <span class="string">'public-read'</span>
+    ACL: &apos;public-read&apos;
   }
 
-  s3.getSignedUrl(<span class="string">'putObject'</span>, options, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>)</span>{
-    <span class="keyword">if</span>(err) <span class="keyword">return</span> res.send(<span class="string">'Error with S3'</span>)
+  s3.getSignedUrl(&apos;putObject&apos;, options, function(err, data){
+    if(err) return res.send(&apos;Error with S3&apos;)
 
     res.json({
       signed_request: data,
-      url: <span class="string">'https://s3.amazonaws.com/'</span> + S3_BUCKET + <span class="string">'/'</span> + req.query.file_name
+      url: &apos;https://s3.amazonaws.com/&apos; + S3_BUCKET + &apos;/&apos; + req.query.file_name
     })
   })
 })
 
-<span class="built_in">module</span>.exports = router
+module.exports = router
 </code></pre><p>上面代码中，用户访问<code>/sign</code>路径，正确登录后，会收到一个JSON对象，里面是S3返回的数据和一个暂时用来接收上传文件的URL，有效期只有60秒。</p>
 <p>浏览器代码如下。</p>
-<pre><code><span class="comment">// HTML代码为</span>
-<span class="comment">// &lt;br&gt;Please select an image</span>
-<span class="comment">// &lt;input type="file" id="image"&gt;</span>
-<span class="comment">// &lt;br&gt;</span>
-<span class="comment">// &lt;img id="preview"&gt;</span>
+<pre><code>// HTML代码为
+// &lt;br&gt;Please select an image
+// &lt;input type=&quot;file&quot; id=&quot;image&quot;&gt;
+// &lt;br&gt;
+// &lt;img id=&quot;preview&quot;&gt;
 
-<span class="built_in">document</span>.getElementById(<span class="string">"image"</span>).onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-  <span class="keyword">var</span> file = <span class="built_in">document</span>.getElementById(<span class="string">"image"</span>).files[<span class="number">0</span>]
-  <span class="keyword">if</span> (!file) <span class="keyword">return</span>
+document.getElementById(&quot;image&quot;).onchange = function() {
+  var file = document.getElementById(&quot;image&quot;).files[0]
+  if (!file) return
 
-  sign_request(file, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>{
-    upload(file, response.signed_request, response.url, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-      <span class="built_in">document</span>.getElementById(<span class="string">"preview"</span>).src = response.url
+  sign_request(file, function(response) {
+    upload(file, response.signed_request, response.url, function() {
+      document.getElementById(&quot;preview&quot;).src = response.url
     })
   })
 }
 
-<span class="function"><span class="keyword">function</span> <span class="title">sign_request</span>(<span class="params">file, done</span>) </span>{
-  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()
-  xhr.open(<span class="string">"GET"</span>, <span class="string">"/sign?file_name="</span> + file.name + <span class="string">"&amp;file_type="</span> + file.type)
+function sign_request(file, done) {
+  var xhr = new XMLHttpRequest()
+  xhr.open(&quot;GET&quot;, &quot;/sign?file_name=&quot; + file.name + &quot;&amp;file_type=&quot; + file.type)
 
-  xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="keyword">if</span>(xhr.readyState === <span class="number">4</span> &amp;&amp; xhr.status === <span class="number">200</span>) {
-      <span class="keyword">var</span> response = <span class="built_in">JSON</span>.parse(xhr.responseText)
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+      var response = JSON.parse(xhr.responseText)
       done(response)
     }
   }
   xhr.send()
 }
 
-<span class="function"><span class="keyword">function</span> <span class="title">upload</span>(<span class="params">file, signed_request, url, done</span>) </span>{
-  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()
-  xhr.open(<span class="string">"PUT"</span>, signed_request)
-  xhr.setRequestHeader(<span class="string">'x-amz-acl'</span>, <span class="string">'public-read'</span>)
-  xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) {
+function upload(file, signed_request, url, done) {
+  var xhr = new XMLHttpRequest()
+  xhr.open(&quot;PUT&quot;, signed_request)
+  xhr.setRequestHeader(&apos;x-amz-acl&apos;, &apos;public-read&apos;)
+  xhr.onload = function() {
+    if (xhr.status === 200) {
       done()
     }
   }
@@ -1069,7 +1047,7 @@ router.get(<span class="string">'/sign'</span>, <span class="function"><span cla
   xhr.send(file)
 }
 </code></pre><p>上面代码首先监听file控件的change事件，一旦有变化，就先向服务器要求一个临时的上传URL，然后向该URL上传文件。</p>
-<h2 id="参考链接">参考链接</h2><ul>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
 <li>Raymond Camden, <a href="http://net.tutsplus.com/tutorials/javascript-ajax/introduction-to-express/" target="_blank" rel="external">Introduction to Express</a></li>
 <li>Christopher Buecheler, <a href="http://cwbuecheler.com/web/tutorials/2013/node-express-mongo/" target="_blank" rel="external">Getting Started With Node.js, Express, MongoDB</a></li>
 <li>Stephen Sugden, <a href="http://stephensugden.com/middleware_guide/" target="_blank" rel="external">A short guide to Connect Middleware</a></li>
