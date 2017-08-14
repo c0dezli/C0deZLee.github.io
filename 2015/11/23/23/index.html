@@ -1,0 +1,1461 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="转载自匠心写作－小问  一言蔽之 ES2015说到 ES2015，有了解过的同学一定会马上想到各种新语法，如箭头函数（=&amp;gt;）、class、模板字符串等。是的，ECMA 委员会吸取了许多来自全球众多 JavaScript 开发者的意见和来自其他优秀编程语言的经验，致力于制定出一个更适合现代 JavaScript 开发的标准，以达到“和谐”(Harmony)。一言蔽之：  ES2015 标准提">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES2015 Syntax Guide">
+<meta property="og:url" content="http://codezlee.com/2015/11/23/23/index.html">
+<meta property="og:site_name" content="Hello, World">
+<meta property="og:description" content="转载自匠心写作－小问  一言蔽之 ES2015说到 ES2015，有了解过的同学一定会马上想到各种新语法，如箭头函数（=&amp;gt;）、class、模板字符串等。是的，ECMA 委员会吸取了许多来自全球众多 JavaScript 开发者的意见和来自其他优秀编程语言的经验，致力于制定出一个更适合现代 JavaScript 开发的标准，以达到“和谐”(Harmony)。一言蔽之：  ES2015 标准提">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-08-14T04:49:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES2015 Syntax Guide">
+<meta name="twitter:description" content="转载自匠心写作－小问  一言蔽之 ES2015说到 ES2015，有了解过的同学一定会马上想到各种新语法，如箭头函数（=&amp;gt;）、class、模板字符串等。是的，ECMA 委员会吸取了许多来自全球众多 JavaScript 开发者的意见和来自其他优秀编程语言的经验，致力于制定出一个更适合现代 JavaScript 开发的标准，以达到“和谐”(Harmony)。一言蔽之：  ES2015 标准提">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codezlee.com/2015/11/23/23/"/>
+
+  <title> ES2015 Syntax Guide | Hello, World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hello, World</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text-o"></i> <br />
+            
+            Resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ES2015 Syntax Guide
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-11-23T16:25:08-05:00" content="11-23-2015">
+              11-23-2015
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>转载自<a href="http://gank.io/post/564151c1f1df1210001c9161?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">匠心写作－小问</a></p>
+</blockquote>
+<h2 id="一言蔽之-ES2015"><a href="#一言蔽之-ES2015" class="headerlink" title="一言蔽之 ES2015"></a>一言蔽之 ES2015</h2><p>说到 ES2015，有了解过的同学一定会马上想到各种新语法，如箭头函数（=&gt;）、class、模板字符串等。是的，ECMA 委员会吸取了许多来自全球众多 JavaScript 开发者的意见和来自其他优秀编程语言的经验，致力于制定出一个更适合现代 JavaScript 开发的标准，以达到“和谐”(Harmony)。一言蔽之：</p>
+<blockquote>
+<p>ES2015 标准提供了许多新的语法和编程特性以提高 JavaScript 的开发效率和体验</p>
+</blockquote>
+<p>从 ES6 的别名被定为 Harmony 开始，就注定了这个新的语言标准将以一种更优雅的姿态展现出来，以适应日趋复杂的应用开发需求。<br><a id="more"></a></p>
+<h2 id="ES2015-能为-JavaScript-的开发带来什么"><a href="#ES2015-能为-JavaScript-的开发带来什么" class="headerlink" title="ES2015 能为 JavaScript 的开发带来什么"></a>ES2015 能为 JavaScript 的开发带来什么</h2><h3 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h3><p>如果您有其他语言（如 Ruby、Scala）或是某些 JavaScript 的衍生语言（如 CoffeeScript、TypeScript）的开发经验，就一定会了解一些很有意思的语法糖，如 Ruby 中的 Range -&gt; 1..10，Scala 和 CoffeeScript 中的箭头函数 (a, b) =&gt; a + b。ECMA 委员会借鉴了许多其他编程语言的标准，给 ECMAScript 家族带来了许多可用性非常高的语法糖，下文将会一一讲解。</p>
+<p>这些语法糖能让 JavaScript 开发者更舒心地开发 JavaScript 应用，提高我们的工作效率。</p>
+<h3 id="工程优势"><a href="#工程优势" class="headerlink" title="工程优势"></a>工程优势</h3><p>ES2015 除了提供了许多语法糖以外，还由官方解决了多年来困扰众多 JavaScript 开发者的问题：JavaScript 的模块化构建。从许多年前开始，各大公司、团队、大牛都相继给出了他们对于这个问题的不同解决方案，以至于定下了如 CommonJS、AMD、CMD 或是 UMD 等 JavaScript 模块化标准，RequireJS、SeaJS、FIS、Browserify、webpack 等模块加载库都以各自不同的优势占领著一方土地。</p>
+<p>然而正正是因为这春秋战国般的现状，广大的前端搬砖工们表示很纳闷。</p>
+<p>这™究竟哪种好？哪种适合我？求大神带我飞！</p>
+<p>对此，ECMA 委员会终于是坐不住了，站了起来表示不服，并制订了 ES2015 的原生模块加载器标准。</p>
+<pre><code>import fs from &apos;fs&apos;
+import readline from &apos;readline&apos;
+import path from &apos;path&apos;
+
+let Module = {
+  readLineInFile(filename, callback = noop, complete = noop) {
+    let rl = readline.createInterface({
+      input: fs.createReadStream(path.resolve(__dirname, &apos;./big_file.txt&apos;))
+    })
+
+    rl.on(&apos;line&apos;, line =&gt; {
+      //... do something with the current line
+      callback(line)
+    })
+
+    rl.on(&apos;close&apos;, complete)
+
+    return rl
+  }
+}
+
+function noop() { return false }
+
+export default Module
+</code></pre><p><del>老实说，这套模块化语法不禁让我们又得要对那个很 silly 的问题进行重新思考了：JavaScript 和 Java 有什么关系？</del></p>
+<p>可惜的是，目前暂时还没有任何浏览器厂商或是 JavaScript 引擎支持这种模块化语法。所以我们需要用 babel 进行转换为 CommonJS、AMD 或是 UMD 等模块化标准的语法。</p>
+<h2 id="ES2015-新语法详解"><a href="#ES2015-新语法详解" class="headerlink" title="ES2015 新语法详解"></a>ES2015 新语法详解</h2><h3 id="let、const-和块级作用域"><a href="#let、const-和块级作用域" class="headerlink" title="let、const 和块级作用域"></a>let、const 和块级作用域</h3><p>在 ES2015 的新语法中，影响速度最为直接，范围最大的，恐怕得数 let 和 const 了，它们是继 var 之后，新的变量定义方法。与 let 相比，const 更容易被理解：const 也就是 constant 的缩写，跟 C/C++ 等经典语言一样，用于定义常量，即不可变量。</p>
+<p>但由于在 ES6 之前的 ECMAScript 标准中，并没有原生的实现，所以在降级编译中，会马上进行引用检查，然后使用 var 代替。</p>
+<pre><code>// foo.js
+const foo = &apos;bar&apos;
+
+foo = &apos;newvalue&apos;
+
+$ babel foo.js
+...
+SyntaxError: test.js: Line 3: &quot;foo&quot; is read-only
+  1 | const foo = &apos;bar&apos;
+  2 |
+&gt; 3 | foo = &apos;newvalue&apos;
+...
+块级作用域
+</code></pre><p>在 ES6 诞生之前，我们在给 JavaScript 新手解答困惑时，经常会提到一个观点：</p>
+<blockquote>
+<p>JavaScript 没有块级作用域</p>
+</blockquote>
+<p>在 ES6 诞生之前的时代中，JavaScript 确实是没有块级作用域的。这个问题之所以为人所熟知，是因为它引发了诸如历遍监听事件需要使用闭包解决等问题。</p>
+<pre><code>&lt;button&gt;一&lt;/button&gt;
+&lt;button&gt;二&lt;/button&gt;
+&lt;button&gt;三&lt;/button&gt;
+&lt;button&gt;四&lt;/button&gt;
+
+&lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var buttons = document.querySelectorAll(&apos;button&apos;)
+  var output = document.querySelector(&apos;#output&apos;)
+
+  for (var i = 0; i &lt; buttons.length; i++) {
+    buttons[i].addEventListener(&apos;click&apos;, function() {
+      output.innerText = buttons[i].innerText
+    })
+  }
+&lt;/script&gt;
+</code></pre><p>前端新手非常容易写出类似的代码，因为从直观的角度看这段代码并没有语义上的错误，但是当我们点击任意一个按钮时，就会报出这样的错误信息：</p>
+<pre><code>Uncaught TypeError: Cannot read property &apos;innerText&apos; of undefined
+</code></pre><p>出现这个错误的原因是因为 buttons[i] 不存在，即为 undefined。</p>
+<p>为什么会出现按钮不存在结果呢？通过排查，我们可以发现，每次我们点击按钮时，事件监听回调函数中得到的变量 i 都会等于 buttons.length，也就是这里的 4。而 buttons[4] 恰恰不存在，所以导致了错误的发生。</p>
+<p>再而导致 i 得到的值都是 buttons.length 的原因就是因为 JavaScript 中没有块级作用域，而使对 i 的变量引用(Reference)一直保持在上一层作用域（循环语句所在层）上，而当循环结束时 i 则正好是 buttons.length。</p>
+<p>而在 ES6 中，我们只需做出一个小小的改动，便可以解决该问题（假设所使用的浏览器已经支持所需要的特性）：</p>
+<pre><code>// ...
+for (/* var */ let i = 0; i &lt; buttons.length; i++) {
+  // ...
+}
+// ...
+</code></pre><p>通过把 for 语句中对计数器 i 的定义语句从 var 换成 let，即可。因为 let 语句会使该变量处于一个块级作用域中，从而让事件监听回调函数中的变量引用得到保持。我们不妨看看改进后的代码经过 babel 的编译会变成什么样子：</p>
+<pre><code>// ...
+var _loop = function (i) {
+  buttons[i].addEventListener(&apos;click&apos;, function () {
+    output.innerText = buttons[i].innerText
+  })
+}
+
+for (var i = 0; i &lt; buttons.length; i++) {
+  _loop(i)
+}
+// ...
+</code></pre><p>实现方法一目了然，通过传值的方法防止了 i 的值错误。</p>
+<h3 id="箭头函数-Arrow-Function"><a href="#箭头函数-Arrow-Function" class="headerlink" title="箭头函数(Arrow Function)"></a>箭头函数(Arrow Function)</h3><p>继 let 和 const 之后，箭头函数就是使用率最高的新特性了。当然了，如果你了解过 Scala 或者曾经如日中天的 JavaScript 衍生语言 CoffeeScript，就会知道箭头函数并非 ES6 独创。</p>
+<p>箭头函数，顾名思义便是使用箭头(=&gt;)进行定义的函数，属于匿名函数（Lambda）一类。当然了，也可以作为定义式函数使用，但我们并不推荐这样做，随后会详细解释。</p>
+<p>使用</p>
+<p>箭头函数有好几种使用语法：</p>
+<pre><code>1. foo =&gt; foo + &apos; world&apos; // means return `foo + &apos; world&apos;`
+2. (foo, bar) =&gt; foo + bar
+3.
+foo =&gt; {
+  return foo + &apos; world&apos;
+}
+4.
+(foo, bar) =&gt; {
+  return foo + bar
+}
+以上都是被支持的箭头函数表达方式，其最大的好处便是简洁明了，省略了 function 关键字，而使用 =&gt; 代替。
+</code></pre><p>箭头函数语言简洁的特点使其特别适合用於单行回调函数的定义：</p>
+<pre><code>let names = [ &apos;Will&apos;, &apos;Jack&apos;, &apos;Peter&apos;, &apos;Steve&apos;, &apos;John&apos;, &apos;Hugo&apos;, &apos;Mike&apos; ]
+
+let newSet = names
+  .map((name, index) =&gt; {
+    return {
+      id: index,
+      name: name
+    }
+  })
+  .filter(man =&gt; man.id % 2 == 0)
+  .map(man =&gt; [man.name])
+  .reduce((a, b) =&gt; a.concat(b))
+
+console.log(newSet) //=&gt; [ &apos;Will&apos;, &apos;Peter&apos;, &apos;John&apos;, &apos;Mike&apos; ]
+</code></pre><p>如果你有 Scala + Spark 的开发经验，就一定会觉得这非常亲切，因为这跟其中的 RDD 操作几乎如出一辙：</p>
+<p>将原本的由名字组成的数组转换为一个格式为 { id, name } 的对象，id 则为每个名字在原数组中的位置<br>剔除其中 id 为奇数的元素，只保留 id 为偶数的元素<br>将剩下的元素转换为一个包含当前元素中原名字的单元数组，以方便下一步的处理<br>通过不断合并相邻的两个数组，最后能得到的一个数组，便是我们需要得到的目标值<br>箭头函数与上下文绑定</p>
+<p>事实上，箭头函数在 ES2015 标准中，并不只是作为一种新的语法出现。就如同它在 CoffeeScript 中的定义一般，是用于对函数内部的上下文 （this）绑定为定义函数所在的作用域的上下文。</p>
+<pre><code>let obj = {
+  hello: &apos;world&apos;,
+  foo() {
+    let bar = () =&gt; {
+      return this.hello
+    }
+    return bar
+  }
+}
+
+window.hello = &apos;ES6&apos;
+window.bar = obj.foo()
+window.bar() //=&gt; &apos;world&apos;
+上面代码中的 obj.foo 等价于：
+
+// ...
+foo() {
+  let bar = (function() {
+    return this.hello
+  }).bind(this)
+
+  return bar
+}
+// ...
+</code></pre><p>为什么要为箭头函数给予这样的特性呢？我们可以假设出这样的一个应用场景，我们需要创建一个实例，用于对一些数据进行查询和筛选。</p>
+<pre><code>let DataCenter = {
+  baseUrl: &apos;http://example.com/api/data&apos;,
+  search(query) {
+    fetch(`${this.baseUrl}/search?query=${query}`)
+      .then(res =&gt; res.json())
+      .then(rows =&gt; {
+        // TODO
+      })
+  }
+}
+</code></pre><p>此时，从服务器获得数据是一个 JSON 编码的数组，其中包含的元素是若干元素的 ID，我们需要另外请求服务器的其他 API 以获得元素本身（当然了，实际上的 API 设计大部份不会这么使用这么蛋疼的设计）。我们就需要在回调函数中再次使用 this.baseUrl 这个属性，如果要同时兼顾代码的可阅读性和美观性，ES2015 允许我们这样做。</p>
+<pre><code>let DataCenter = {
+  baseUrl: &apos;http://example.com/api/data&apos;,
+  search(query) {
+    return fetch(`${this.baseUrl}/search?query=${query}`)
+      .then(res =&gt; res.json())
+      .then(rows =&gt; {
+        return fetch(`${this.baseUrl}/fetch?ids=${rows.join(&apos;,&apos;)}`)
+        // 此处的 this 是 DataCenter，而不是 fetch 中的某个实例
+      })
+      .then(res =&gt; res.json())
+  }
+}
+
+DataCenter.search(&apos;iwillwen&apos;)
+  .then(rows =&gt; console.log(rows))
+</code></pre><p>因为在单行匿名函数中，如果 this 指向的是该函数的上下文，就会不符合直观的语义表达。</p>
+<p>注意事项</p>
+<p>另外，要注意的是，箭头函数对上下文的绑定是强制性的，无法通过 apply 或 call 方法改变其上下文。</p>
+<pre><code>let a = {
+  init() {
+    this.bar = () =&gt; this.dam
+  },
+  dam: &apos;hei&apos;,
+  foo() {
+    return this.dam
+  }
+}
+
+let b = {
+  dam: &apos;ha&apos;
+}
+
+a.init()
+
+console.log(a.foo()) //=&gt; hei
+console.log(a.foo.bind(b).call(a)) //=&gt; ha
+console.log(a.bar.call(b)) //=&gt; hei
+</code></pre><p>另外，因为箭头函数会绑定上下文的特性，故不能随意在顶层作用域使用箭头函数，以防出错：</p>
+<pre><code>// 假设当前运行环境为浏览器，故顶层作上下文为 `window`
+let obj = {
+  msg: &apos;pong&apos;,
+
+  ping: () =&gt; {
+    return this.msg // Warning!
+  }
+}
+
+obj.ping() //=&gt; undefined
+let msg = &apos;bang!&apos;
+obj.ping() //=&gt; bang!
+</code></pre><p>为什么上面这段代码会如此让人费解呢？</p>
+<p>我们来看看它的等价代码吧。</p>
+<pre><code>let obj = {
+  // ...
+  ping: (function() {
+    return this.msg // Warning!
+  }).bind(this)
+}
+
+// 同样等价于
+let obj = { /* ... */ }
+obj.ping = (function() {
+  return this.msg
+}).bind(this /* this -&gt; window */)
+</code></pre><h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><p>模板字符串模板出现简直对 Node.js 应用的开发和 Node.js 自身的发展起到了相当大的推动作用！我的意思并不是说这个原生的模板字符串能代替现有的模板引擎，而是说它的出现可以让非常多的字符串使用变得尤为轻松。</p>
+<p>模板字符串要求使用 ` 代替原本的单/双引号来包裹字符串内容。它有两大特点：</p>
+<ul>
+<li>支持变量注入</li>
+<li>支持换行</li>
+</ul>
+<h4 id="支持变量注入"><a href="#支持变量注入" class="headerlink" title="支持变量注入"></a>支持变量注入</h4><p>模板字符串之所以称之为“模板”，就是因为它允许我们在字符串中引用外部变量，而不需要像以往需要不断地相加、相加、相加……</p>
+<pre><code>let name = &apos;Will Wen Gunn&apos;
+let title = &apos;Founder&apos;
+let company = &apos;LikMoon Creation&apos;
+
+let greet = `Hi, I&apos;m ${name}, I am the ${title} at ${company}`
+console.log(greet) //=&gt; Hi, I&apos;m Will Wen Gunn, I am the Founder at LikMoon Creation
+</code></pre><h4 id="支持换行"><a href="#支持换行" class="headerlink" title="支持换行"></a>支持换行</h4><p>在 Node.js 中，如果我们没有支持换行的模板字符串，若需要拼接一条SQL，则很有可能是这样的：</p>
+<pre><code>var sql =
+  &quot;SELECT * FROM Users &quot; +
+  &quot;WHERE FirstName=&apos;Mike&apos; &quot; +
+  &quot;LIMIT 5;&quot;
+或者是这样的：
+
+var sql = [
+  &quot;SELECT * FROM Users&quot;,
+  &quot;WHERE FirstName=&apos;Mike&apos;&quot;,
+  &quot;LIMIT 5;&quot;
+].join(&apos; &apos;)
+</code></pre><p>无论是上面的哪一种，都会让我们感到很不爽。但若使用模板字符串，仿佛打开了新世界的大门~</p>
+<pre><code>let sql = `
+SELECT * FROM Users
+WHERE FirstName=&apos;Mike&apos;
+LIMIT 5;
+`
+</code></pre><p>Sweet! 在 Node.js 应用的实际开发中，除了 SQL 的编写，还有如 Lua 等嵌入语言的出现（如 Redis 中的 SCRIPT 命令），或是手工的 XML 拼接。模板字符串的出现使这些需求的解决变得不再纠结了~</p>
+<h3 id="对象字面量扩展语法"><a href="#对象字面量扩展语法" class="headerlink" title="对象字面量扩展语法"></a>对象字面量扩展语法</h3><p>看到这个标题的时候，相信有很多同学会感到奇怪，对象字面量还有什么可以扩展的？</p>
+<p>确实，对象字面量的语法在 ES2015 之前早已挺完善的了。不过，对于聪明的工程师们来说，细微的改变，也能带来不少的价值。</p>
+<h4 id="方法属性省略-function"><a href="#方法属性省略-function" class="headerlink" title="方法属性省略 function"></a>方法属性省略 function</h4><p>这个新特性可以算是比较有用但并不是很显眼的一个。</p>
+<pre><code>let obj = {
+  // before
+  foo: function() {
+    return &apos;foo&apos;
+  },
+
+  // after
+  bar() {
+    return &apos;bar&apos;
+  }
+}
+</code></pre><p>支持 <code>__proto__</code> 注入</p>
+<p>在 ES2015 中，我们可以给一个对象硬生生的赋予其 <code>__proto__</code>，这样它就可以成为这个值所属类的一个实例了。</p>
+<pre><code>class Foo {
+  constructor() {
+    this.pingMsg = &apos;pong&apos;
+  }
+
+  ping() {
+    console.log(this.pingMsg)
+  }
+}
+
+let o = {
+  __proto__: new Foo()
+}
+
+o.ping() //=&gt; pong
+</code></pre><p>什么？有什么卵用？</p>
+<p>有一个比较特殊的场景会需要用到：我想扩展或者覆盖一个类的方法，并生成一个实例，但觉得另外定义一个类就感觉浪费了。那我可以这样做：</p>
+<pre><code>let o = {
+  __proto__: new Foo(),
+
+  constructor() {
+    this.pingMsg = &apos;alive&apos;
+  },
+
+  msg: &apos;bang&apos;,
+  yell() {
+    console.log(this.msg)
+  }
+}
+
+o.yell() //=&gt; bang
+o.ping() //=&gt; alive
+</code></pre><h4 id="同名方法属性省略语法"><a href="#同名方法属性省略语法" class="headerlink" title="同名方法属性省略语法"></a>同名方法属性省略语法</h4><p>也是看上去有点鸡肋的新特性，不过在做 JavaScript 模块化工程的时候则有了用武之地。</p>
+<pre><code>// module.js
+export default {
+  someMethod
+}
+
+function someMethod() {
+  // ...
+}
+
+// app.js
+import Module from &apos;./module&apos;
+
+Module.someMethod()
+</code></pre><h4 id="可以动态计算的属性名称"><a href="#可以动态计算的属性名称" class="headerlink" title="可以动态计算的属性名称"></a>可以动态计算的属性名称</h4><p>这个特性相当有意思，也是可以用在一些特殊的场景中。</p>
+<pre><code>let arr = [1, 2, 3]
+let outArr = arr.map(n =&gt; {
+  return {
+    [ n ]: n,
+    [ `${n}^2` ]: Math.pow(n, 2)
+  }
+})
+console.dir(outArr) //=&gt;
+  [
+    { &apos;1&apos;: 1, &apos;1^2&apos;: 1 },
+    { &apos;2&apos;: 2, &apos;2^2&apos;: 4 },
+    { &apos;3&apos;: 3, &apos;3^2&apos;: 9 }
+  ]
+</code></pre><p>在上面的两个 […] 中，我演示了动态计算的对象属性名称的使用，分别为对应的对象定义了当前计数器 n 和 n 的 2 次方</p>
+<h3 id="表达式解构"><a href="#表达式解构" class="headerlink" title="表达式解构"></a>表达式解构</h3><p>来了来了来了，相当有用的一个特性。有啥用？多重复值听过没？没听过？来看看吧！</p>
+<pre><code>// Matching with object
+function search(query) {
+  // ...
+  // let users = [ ... ]
+  // let posts = [ ... ]
+  // ...
+
+  return {
+    users: users,
+    posts: posts
+  }
+}
+
+let { users, posts } = search(&apos;iwillwen&apos;)
+
+// Matching with array
+let [ x, y ] = [ 1, 2 ]
+// missing one
+[ x, ,y ] = [ 1, 2, 3 ]
+
+
+function g({name: x}) {
+  console.log(x)
+}
+g({name: 5})
+</code></pre><p>还有一些可用性不大，但也是有一点用处的：</p>
+<pre><code>// Fail-soft destructuring
+var [a] = []
+a === undefined //=&gt; true
+
+// Fail-soft destructuring with defaults
+var [a = 1] = []
+a === 1 //=&gt; true
+</code></pre><h3 id="函数参数表达、传参"><a href="#函数参数表达、传参" class="headerlink" title="函数参数表达、传参"></a>函数参数表达、传参</h3><p>这个特性有非常高的使用频率，一个简单的语法糖解决了从前需要一两行代码才能实现的功能。</p>
+<p>默认参数值</p>
+<p>这个特性在类库开发中相当有用，比如实现一些可选参数：</p>
+<pre><code>import fs from &apos;fs&apos;
+import readline from &apos;readline&apos;
+import path from &apos;path&apos;
+
+function readLineInFile(filename, callback = noop, complete = noop) {
+  let rl = readline.createInterface({
+    input: fs.createReadStream(path.resolve(__dirname, filename))
+  })
+
+  rl.on(&apos;line&apos;, line =&gt; {
+    //... do something with the current line
+    callback(line)
+  })
+
+  rl.on(&apos;close&apos;, complete)
+
+  return rl
+}
+
+function noop() { return false }
+
+readLineInFile(&apos;big_file.txt&apos;, line =&gt; {
+  // ...
+})
+</code></pre><h4 id="后续参数"><a href="#后续参数" class="headerlink" title="后续参数"></a>后续参数</h4><p>我们知道，函数的 call 和 apply 在使用上的最大差异便是一个在首参数后传入各个参数，一个是在首参数后传入一个包含所有参数的数组。如果我们在实现某些函数或方法时，也希望实现像 call 一样的使用方法，在 ES2015 之前，我们可能需要这样做：</p>
+<pre><code>function fetchSomethings() {
+  var args = [].slice.apply(arguments)
+
+  // ...
+}
+function doSomeOthers(name) {
+  var args = [].slice.apply(arguments, 1)
+
+  // ...
+}
+而在 ES2015 中，我们可以很简单的使用 … 语法糖来实现：
+
+function fetchSomethings(...args) {
+  // ...
+}
+function doSomeOthers(name, ...args) {
+  // ...
+}
+</code></pre><p>要注意的是，…args 后不可再添加</p>
+<p>虽然从语言角度看，arguments 和 …args 是可以同时使用 ，但有一个特殊情况则不可：arguments 在箭头函数中，会跟随上下文绑定到上层，所以在不确定上下文绑定结果的情况下，尽可能不要再箭头函数中再使用 arguments，而使用 …args。</p>
+<p>虽然 ECMA 委员会和各类编译器都无强制性要求用 …args 代替 arguments，但从实践经验看来，…args 确实可以在绝大部份场景下可以代替 arguments 使用，除非你有很特殊的场景需要使用到 arguments.callee 和 arguments.caller。所以我推荐都使用 …args 而非 arguments。</p>
+<p>PS：在严格模式（Strict Mode）中，arguments.callee 和 arguments.caller 是被禁止使用的。</p>
+<h4 id="解构传参"><a href="#解构传参" class="headerlink" title="解构传参"></a>解构传参</h4><p>在 ES2015 中，… 语法还有另外一个功能：无上下文绑定的 apply。什么意思？看看代码你就知道了。</p>
+<pre><code>function sum(...args) {
+  return args.map(Number)
+    .reduce((a, b) =&gt; a + b)
+}
+
+console.log(sum(...[1, 2, 3])) //=&gt; 6
+</code></pre><p>有什么卵用？我也不知道(⊙o⊙)… Sorry…</p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>默认参数值和后续参数需要遵循顺序原则，否则会出错。</p>
+<p>function(…args, last = 1) {<br>  // This will go wrong<br>}<br>另外，根据函数调用的原则，无论是默认参数值还是后续参数都需要小心使用。</p>
+<h3 id="新的数据结构"><a href="#新的数据结构" class="headerlink" title="新的数据结构"></a>新的数据结构</h3><p>在介绍新的数据结构之前，我们先复习一下在 ES2015 之前，JavaScript 中有哪些基本的数据结构。</p>
+<ul>
+<li>String 字符串</li>
+<li>Number 数字（包含整型和浮点型）</li>
+<li>Boolean 布尔值</li>
+<li>Object 对象</li>
+<li>Array 数组 (其中又分为值类型和引用类型，Array 其实是 Object 的一种子类。)</li>
+</ul>
+<h4 id="Set-和-WeakSet"><a href="#Set-和-WeakSet" class="headerlink" title="Set 和 WeakSet"></a>Set 和 WeakSet</h4><p>我们再来复习下高中数学吧，集不能包含相同的元素，我们可以根据元素画出多个集的韦恩图…………</p>
+<p>好了跑题了。是的，在 ES2015 中，ECMA 委员会为 ECMAScript 增添了集(Set)和“弱”集(WeakSet)。它们都具有元素唯一性，若添加了已存在的元素，会被自动忽略。</p>
+<pre><code>let s = new Set()
+s.add(&apos;hello&apos;).add(&apos;world&apos;).add(&apos;hello&apos;)
+console.log(s.size) //=&gt; 2
+console.log(s.has(&apos;hello&apos;)) //=&gt; true
+</code></pre><p>在实际开发中，我们有很多需要用到集的场景，如搜索、索引建立等。</p>
+<p>咦？怎么还有一个 WeakSet？这是干什么的？我曾经写过一篇关于 JavaScript 内存优化 的文章，而其中大部份都是在语言上动手脚，而 WeakSet 则是在数据上做文章。</p>
+<p>WeakSet 在 JavaScript 底层作出调整（在非降级兼容的情况下），检查元素的变量引用情况。如果元素的引用已被全部解除，则该元素就会被删除，以节省内存空间。这意味著无法直接加入数字或者字符串。另外 WeakSet 对元素有严格要求，必须是 Object，当然了，你也可以用 new String(‘…’) 等形式处理元素。</p>
+<pre><code>let weaks = new WeakSet()
+weaks.add(&quot;hello&quot;) //=&gt; Error
+weaks.add(3.1415) //=&gt; Error
+
+let foo = new String(&quot;bar&quot;)
+let pi = new Number(3.1415)
+weaks.add(foo)
+weaks.add(pi)
+weaks.has(foo) //=&gt; true
+foo = null
+weaks.has(foo) //=&gt; false
+</code></pre><h4 id="Map-和-WeakMap"><a href="#Map-和-WeakMap" class="headerlink" title="Map 和 WeakMap"></a>Map 和 WeakMap</h4><p>从数据结构的角度来说，映射（Map）跟原本的 Object 非常相似，都是 Key/Value 的键值对结构。但是 Object 有一个让人非常不爽的限制：key 必须是字符串或数字。在一般情况下，我们并不会遇上这一限制，但若我们需要建立一个对象映射表时，这一限制显得尤为棘手。</p>
+<p>而 Map 则解决了这一问题，可以使用任何对象作为其 key，这可以实现从前不能实现或难以实现的功能，如在项目逻辑层实现数据索引等。</p>
+<pre><code>let map = new Map()
+let object = { id: 1 }
+
+map.set(object, &apos;hello&apos;)
+map.set(&apos;hello&apos;, &apos;world&apos;)
+map.has(object) //=&gt; true
+map.get(object) //=&gt; hello
+</code></pre><p>而 WeakMap 和 WeakSet 很类似，只不过 WeakMap 的键和值都会检查变量引用，只要其一的引用全被解除，该键值对就会被删除。</p>
+<pre><code>let weakm = new WeakMap()
+let keyObject = { id: 1 }
+let valObject = { score: 100 }
+
+weakm.set(keyObject, valObject)
+weakm.get(keyObject) //=&gt; { score: 100 }
+keyObject = null
+weakm.has(keyObject) //=&gt; false
+</code></pre><h3 id="类-Classes"><a href="#类-Classes" class="headerlink" title="类(Classes)"></a>类(Classes)</h3><p>类，作为自 JavaScript 诞生以来最大的痛点之一，终于在 ES2015 中得到了官方的妥协，“实现”了 ECMAScript 中的标准类机制。为什么是带有双引号的呢？因为我们不难发现这样一个现象：</p>
+<pre><code>$ node
+&gt; class Foo {}
+[Function: Foo]
+</code></pre><p>回想一下在 ES2015 以前的时代中，我们是怎么在 JavaScript 中实现类的？</p>
+<pre><code>function Foo() {}
+var foo = new Foo()
+</code></pre><p>是的，ES6 中的类只是一种语法糖，用于定义原型(Prototype)的。当然，饿死的厨师三百斤，有总比没有强，我们还是很欣然地接受了这一设定。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>与大多数人所期待的一样，ES2015 所带来的类语法确实与很多 C 语言家族的语法相似。</p>
+<pre><code>class Person {
+  constructor(name, gender, age) {
+    this.name = name
+    this.gender = gender
+    this.age = age
+  }
+
+  isAdult() {
+    return this.age &gt;= 18
+  }
+}
+
+let me = new Person(&apos;iwillwen&apos;, &apos;man&apos;, 19)
+console.log(me.isAdult()) //=&gt; true
+</code></pre><p>与 JavaScript 中的对象字面量不一样的是，类的属性后不能加逗号，而对象字面量则必须要加逗号。</p>
+<p>然而，让人很不爽的是，ES2015 中对类的定义依然不支持默认属性的语法：</p>
+<pre><code>// 理想型
+class Person {
+  name: String
+  gender = &apos;man&apos;
+  // ...
+}
+</code></pre><p>而在 TypeScript 中则有良好的实现。</p>
+<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><p>ES2015 的类继承总算是为 JavaScript 类继承之争抛下了一根定海神针了。在此前，有各种 JavaScript 的继承方法被发明和使用。（详细请参见《JavaScript 高级程序设计》）</p>
+<pre><code>class Animal {
+  yell() {
+    console.log(&apos;yell&apos;)
+  }
+}
+
+class Person extends Animal {
+  constructor(name, gender, age) {
+    super() // must call `super` before using `this` if this class has a superclass
+
+    this.name = name
+    this.gender = gender
+    this.age = age
+  }
+
+  isAdult() {
+    return this.age &gt;= 18
+  }
+}
+
+class Man extends Person {
+  constructor(name, age) {
+    super(name, &apos;man&apos;, age)
+  }
+}
+
+let me = new Man(&apos;iwillwen&apos;, 19)
+console.log(me.isAdult()) //=&gt; true
+me.yell()
+</code></pre><p>同样的，继承的语法跟许多语言中的很类似，ES2015 中若要是一个类继承于另外一个类而作为其子类，只需要在子类的名字后面加上 extends {SuperClass} 即可。</p>
+<h5 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h5><p>ES2015 中的类机制支持 static 类型的方法定义，比如说 Man 是一个类，而我希望为其定义一个 Man.isMan() 方法以用于类型检查，我们可以这样做：</p>
+<pre><code>class Man {
+  // ...
+
+  static isMan(obj) {
+    return obj instanceof Man
+  }
+}
+
+let me = new Man()
+console.log(Man.isMan(me)) //=&gt; true
+</code></pre><p>遗憾的是，ES2015 的类并不能直接地定义静态成员变量，但若必须实现此类需求，可以用static 加上 get 语句和 set 语句实现。</p>
+<pre><code>class SyncObject {
+  // ...
+
+  static get baseUrl() {
+    return &apos;http://example.com/api/sync&apos;
+  }
+}
+</code></pre><h4 id="不足"><a href="#不足" class="headerlink" title="不足"></a>不足</h4><p>就目前来说，ES2015 的类机制依然很鸡肋：</p>
+<ul>
+<li>不支持私有属性（private）</li>
+<li>不支持前置属性定义，但可用 get 语句和 set 语句实现</li>
+<li>不支持多重继承</li>
+<li>没有类似于协议（Protocl）或接口（Interface）等的概念</li>
+</ul>
+<p>中肯地说，ES2015 的类机制依然有待加强。但总的来说，是值得尝试和讨论的，我们可以像从前一样，不断尝试新的方法，促进 ECMAScript 标准的发展。</p>
+<h3 id="生成器-Generator"><a href="#生成器-Generator" class="headerlink" title="生成器(Generator)"></a>生成器(Generator)</h3><p>终于到了 ES2015 中我最喜欢的特性了，前方高能反应，所有人立刻进入战斗准备！</p>
+<p>为什么说这是我最喜欢的新特性呢？对于一个纯前端的 JavaScript 工程师来说，可能 Generator 并没有什么卵用，但若你曾使用过 Node.js 或者你的前端工程中有大量的异步操作，Generator 简直是你的“贤者之石”。（不过，这并不是 Generator 最正统的用法。出于严谨，我会从头开始讲述 Generator）</p>
+<h4 id="来龙"><a href="#来龙" class="headerlink" title="来龙"></a>来龙</h4><p>Generator 的设计初衷是为了提供一种能够简便地生成一系列对象的方法，如计算斐波那契数列（Fibonacci Sequence)：</p>
+<pre><code>function* fibo() {
+  let a = 1
+  let b = 1
+
+  yield a
+  yield b
+
+  while (true) {
+    let next = a + b
+    a = b
+    b = next
+    yield next
+  }
+}
+
+let generator = fibo()
+
+for (var i = 0; i &lt; 10; i++)
+  console.log(generator.next().value) //=&gt; 1 1 2 3 5 8 13 21 34 55
+</code></pre><p>如果你没有接触过 Generator，你一定会对这段代码感到很奇怪：为什么 function 后会有一个 *？为什么函数里使用了 while (true) 却没有进入死循环而导致死机？yield 又是什么鬼？</p>
+<p>不著急，我们一一道来。</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>在学习如何使用 Generator 之前，我们先了解一些必要的概念。</p>
+<h5 id="Generator-Function"><a href="#Generator-Function" class="headerlink" title="Generator Function"></a>Generator Function</h5><p>生成器函数用于生成生成器(Generator)，它与普通函数的定义方式的区别就在于它需要在 function 后加一个 * 。</p>
+<pre><code>function* FunctionName() {
+  // ...Generator Body
+}
+</code></pre><p>生成器函数的声明形式不是必须的，同样可以使用匿名函数的形式。</p>
+<pre><code>let FunctionName = function*() { /* ... */ }
+</code></pre><p>生成器函数的函数内容将会是对应生成器的运行内容，其中支持一种新的语法 yield。它的作用与 return 有点相似，但并非退出函数，而是切出生成器运行时。</p>
+<p>你可以把整个生成器运行时看成一条长长的面条（while (true) 则就是无限长的），JavaScript 引擎在每一次遇到 yield 就要切一刀，而切面所成的“纹路”则是 yield 出来的值。</p>
+<h5 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h5><p>生成器在某种意义上可以看做为与 JavaScript 主线程分离的运行时（详细可参考我的另外一篇文章：<a href="http://lifemap.in/koa-co-and-coroutine/），它可以随时被" target="_blank" rel="external">http://lifemap.in/koa-co-and-coroutine/），它可以随时被</a> yield 切回主线程（生成器不影响主线程）。</p>
+<p>每一次生成器运行时被 yield 都可以带出一个值，使其回到主线程中；此后，也可以从主线程返回一个值回到生成器运行时中：</p>
+<pre><code>let inputValue = yield outputValue
+</code></pre><p>生成器切出主线程并带出 outputValue，主函数经过处理后（可以是异步的），把 inputValue 带回生成器中；主线程可以通过 .next(inputValue) 方法返回值到生成器运行时中。</p>
+<h4 id="基本使用方法"><a href="#基本使用方法" class="headerlink" title="基本使用方法"></a>基本使用方法</h4><h5 id="构建生成器函数"><a href="#构建生成器函数" class="headerlink" title="构建生成器函数"></a>构建生成器函数</h5><p>使用 Generator 的第一步自然是要构建生成器函数，理清构建思路，比如我需要做一个生成斐波那契数列（俗称兔子数列）的生成器们则需要如何构建循环体呢？如果我需要在主线程不断获得结果，则需要在生成器 中做无限循环，以保证其不断地生成。</p>
+<p>而根据斐波那契数列的定义，第 n (n ≥ 3) 项是第 n - 1 项和第 n - 2 之和，而第 1 项和第 2 项都是 1。</p>
+<pre><code>function* fibo() {
+  let [a, b] = [1, 1]
+
+  yield a
+  yield b
+
+  while (true) {
+    [a, b] = [b, a + b]
+    yield b
+  }
+}
+</code></pre><p>这样设计生成器函数，就可以先把预先设定好的首两项输出，然后通过无限循环不断把后一项输出。</p>
+<h5 id="启动生成器"><a href="#启动生成器" class="headerlink" title="启动生成器"></a>启动生成器</h5><p>生成器函数不能直接用来作为生成器使用，需要先使用这个函数得到一个生成器，用于运行生成器内容和接收返回值。</p>
+<pre><code>let gen = fibo()
+</code></pre><p>运行生成器内容</p>
+<p>得到生成器以后，我们就可以通过它进行数列项生成了。此处演示获得前 10 项。</p>
+<pre><code>let arr = []
+for (let i = 0; i &lt; 10; i++)
+  arr.push(gen.next().value)
+
+console.log(arr) //=&gt; [ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 ]
+</code></pre><p>事实上，Generator 的用法还是很多种，其中最为著名的一种便是使用 Generator 的特性模拟出 ES7 中的 async/await 特性。而其中最为著名的就是 co 和 koa(基于 co 的 Web Framework) 了。详细可以看我的另外一篇文章：Koa, co and coroutine。</p>
+<h3 id="原生的模块化"><a href="#原生的模块化" class="headerlink" title="原生的模块化"></a>原生的模块化</h3><p>在前文中，我提到了 ES2015 在工程化方面上有著良好的优势，而采用的就是 ES2015 中的原生模块化机制，足以证明它的重要性。</p>
+<h4 id="历史小回顾"><a href="#历史小回顾" class="headerlink" title="历史小回顾"></a>历史小回顾</h4><p>在 JavaScript 的发展历史上，曾出现过多种模块加载库，如 RequireJS、SeaJS、FIS 等，而由它们衍生出来的 JavaScript 模块化标准有 CommonJS、AMD、CMD 和 UMD 等。</p>
+<p>其中最为典型的是 Node.js 所遵循的 CommonJS 和 RequireJS 的 AMD。</p>
+<p>本文在此不再详细说明这些模块化方案，详细可以阅读 What Is AMD, CommonJS, and UMD?</p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>正如前文所展示的使用方式一样，ES2015 中的模块化机制设计也是相当成熟的。基本上所有的 CommonJS 或是 AMD 代码都可以很快地转换为 ES2015 标准的加载器代码。</p>
+<pre><code>import name from &quot;module-name&quot;
+import * as name from &quot;module-name&quot;
+import { member } from &quot;module-name&quot;
+import { member as alias } from &quot;module-name&quot;
+import { member1 , member2 } from &quot;module-name&quot;
+import { member1 , member2 as alias2 , [...] } from &quot;module-name&quot;
+import defaultMember, { member [ , [...] ] } from &quot;module-name&quot;
+import defaultMember, * as alias from &quot;module-name&quot;
+import defaultMember from &quot;module-name&quot;
+import &quot;module-name&quot;
+// Copy from Mozilla Developer Center
+</code></pre><p>如上所示，ES2015 中有很多种模块引入方式，我们可以根据实际需要选择一种使用。</p>
+<h5 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h5><p>全局引入是最基本的引入方式，这跟 CommonJS、AMD 等模块化标准并无两样，都是把目标模块的所有暴露的接口引入到一个命名空间中。</p>
+<pre><code>import name from &apos;module-name&apos;
+import * as name from &apos;module-name&apos;
+</code></pre><p>这跟 Node.js 所用的 CommonJS 类似：</p>
+<pre><code>var name = require(&apos;module-name&apos;)
+</code></pre><h5 id="局部引入"><a href="#局部引入" class="headerlink" title="局部引入"></a>局部引入</h5><p>与 CommonJS 等标准不同的是，ES2015 的模块引入机制支持引入模块的部份暴露接口，这在大型的组件开发中显得尤为方便，如 React 的组件引入便是使用了该特性。</p>
+<pre><code>import { A, B, C } from &apos;module-name&apos;
+
+A()
+B()
+C()
+</code></pre><h5 id="接口暴露"><a href="#接口暴露" class="headerlink" title="接口暴露"></a>接口暴露</h5><p>ES2015 的接口暴露方式比 CommonJS 等标准都要丰富和健壮，可见 ECMA 委员会对这一部份的重视程度之高。</p>
+<p>ES2015 的接口暴露有几种用法：</p>
+<p>暴露单独接口</p>
+<pre><code>// module.js
+export function method() { /* ... */ }
+
+// main.js
+import M from &apos;./module&apos;
+M.method()
+</code></pre><p>基本的 export 语句可以调用多次，单独使用可暴露一个对象到该模块外。</p>
+<p>暴露复盖模块</p>
+<p>若需要实现像 CommonJS 中的 module.exports = {} 以覆盖整个模块的暴露对象，则需要在 export 语句后加上 default。</p>
+<pre><code>// module.js
+export default {
+  method1,
+  method2
+}
+
+// main.js
+import M from &apos;./module&apos;
+M.method1()
+</code></pre><h4 id="降级兼容"><a href="#降级兼容" class="headerlink" title="降级兼容"></a>降级兼容</h4><p>在实际应用中，我们暂时还需要使用 babel 等工具对代码进行降级兼容。庆幸的是，babel 支持 CommonJS、AMD、UMD 等模块化标准的降级兼容，我们可以根据项目的实际情况选择降级目标。</p>
+<pre><code>$ babel -m common -d dist/common/ src/
+$ babel -m amd -d dist/amd/ src/
+$ babel -m umd -d dist/umd/ src/
+</code></pre><h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>Promise，作为一个老生常谈的话题，早已被聪明的工程师们“玩坏”了。</p>
+<p>光是 Promise 自身，目前就有多种标准，而目前最为流行的是 Promises/A+。而 ES2015 中的 Promise 便是基于 Promises/A+ 制定的。</p>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>Promise 是一种用于解决回调函数无限嵌套的工具（当然，这只是其中一种），其字面意义为“保证”。它的作用便是“免去”异步操作的回调函数，保证能通过后续监听而得到返回值，或对错误处理。它能使异步操作变得井然有序，也更好控制。我们以在浏览器中访问一个 API，解析返回的 JSON 数据。</p>
+<pre><code>fetch(&apos;http://example.com/api/users/top&apos;)
+  .then(res =&gt; res.json())
+  .then(data =&gt; {
+    vm.data.topUsers = data
+  })
+  // Handle the error crash in the chaining processes
+  .catch(err =&gt; console.error(err))
+</code></pre><p>Promise 在设计上具有原子性，即只有两种状态：未开始和结束（无论成功与否都算是结束），这让我们在调用支持 Promise 的异步方法时，逻辑将变得非常简单，这在大规模的软件工程开发中具有良好的健壮性。</p>
+<h4 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h4><h5 id="创建-Promise-对象"><a href="#创建-Promise-对象" class="headerlink" title="创建 Promise 对象"></a>创建 Promise 对象</h5><p>要为一个函数赋予 Promise 的能力，先要创建一个 Promise 对象，并将其作为函数值返回。Promise 构造函数要求传入一个函数，并带有 resolve 和 reject 参数。这是两个用于结束 Promise 等待的函数，对应的成功和失败。而我们的逻辑代码就在这个函数中进行。</p>
+<p>此处，因为必须要让这个函数包裹逻辑代码，所以如果需要用到 this 时，则需要使用箭头函数或者在前面做一个 this 的别名。</p>
+<pre><code>function fetchData() {
+  return new Promise((resolve, reject) =&gt; {
+    // ...
+  })
+}
+</code></pre><h5 id="进行异步操作"><a href="#进行异步操作" class="headerlink" title="进行异步操作"></a>进行异步操作</h5><p>事实上，在异步操作内，并不需要对 Promise 对象进行操作（除非有特殊需求）。</p>
+<pre><code>function fetchData() {
+  return new Promise((resolve, reject) =&gt; {
+    api.call(&apos;fetch_data&apos;, (err, data) =&gt; {
+      if (err) return reject(err)
+
+      resolve(data)
+    })
+  })
+}
+</code></pre><p>因为在 Promise 定义的过程中，也会出现数层回调嵌套的情况，如果需要使用 this 的话，便显现出了箭头函数的优势了。</p>
+<h5 id="使用-Promise"><a href="#使用-Promise" class="headerlink" title="使用 Promise"></a>使用 Promise</h5><p>让异步操作函数支持 Promise 后，我们就可以享受 Promise 带来的优雅和便捷了~</p>
+<pre><code>fetchData()
+  .then(data =&gt; {
+    // ...
+
+    return storeInFileSystem(data)
+  })
+  .then(data =&gt; {
+    return renderUIAnimated(data)
+  })
+  .catch(err =&gt; console.error(err))
+</code></pre><h4 id="弊端"><a href="#弊端" class="headerlink" title="弊端"></a>弊端</h4><p>虽说 Promise 确实很优雅，但是这是在所有需要用到的异步方法都支持 Promise 且遵循标准。而且链式 Promise 强制性要求逻辑必须是线性单向的，一旦出现如并行、回溯等情况，Promise 便显得十分累赘。</p>
+<p>所以在目前的最佳实践中，Promise 会作为一种接口定义方法，而不是逻辑处理工具。后文将会详细阐述这种最佳实践。</p>
+<h3 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h3><p>Symbol 是一种很有意思的概念，它跟 Swift 中的 Selector 有点相像，但也更特别。在 JavaScript 中，对象的属性名称可以是字符串或数字。而如今又多了一个 Symbol。那 Symbol 究竟有什么用？</p>
+<p>首先，我们要了解的是，Symbol 对象是具有唯一性的，也就是说，每一个 Symbol 对象都是唯一的，即便我们看不到它的区别在哪里。这就意味著，我们可以用它来保证一些数据的安全性。</p>
+<pre><code>console.log(Symbol(&apos;key&apos;) == Symbol(&apos;key&apos;)) //=&gt; false
+</code></pre><p>如果将一个 Symbol 隐藏于一个封闭的作用域内，并作为一个对象中某属性的键，则外层作用域中便无法取得该属性的值，有效保障了某些私有库的代码安全性。</p>
+<pre><code>let privateDataStore = {
+  set(val) {
+    let key = Symbol(Math.random().toString(32).substr(2))
+    this[key] = val
+
+    return key
+  },
+
+  get(key) {
+    return this[key]
+  }
+}
+
+let key = privateDateStore(&apos;hello world&apos;)
+privateDataStore[key] //=&gt; undefined
+privateDataStore.get(key) //=&gt; hello world
+</code></pre><p>如果你想通过某些办法取得被隐藏的 key 的话，我只能说：理论上，不可能。</p>
+<pre><code>let obj = {}
+let key = Symbol(&apos;key&apos;)
+
+obj[key] = 1
+JSON.stringify(obj) //=&gt; {}
+Object.keys(obj) //=&gt; []
+
+obj[key] //=&gt; 1
+</code></pre><h4 id="黑科技"><a href="#黑科技" class="headerlink" title="黑科技"></a>黑科技</h4><p>Symbol 除了带给我们数据安全性以外，还带来了一些很神奇的黑科技。</p>
+<p>Symbol.iterator</p>
+<p>除 Symbol 以外，ES2015 还为 JavaScript 带来了 for…of 语句，这个跟原本的 for…in 又有什么区别？</p>
+<p>我们还是以前面的斐波那契数列作为例子。Iterator 在 Java 中经常用到中会经常用到，意为“迭代器”，你可以把它理解为用于循环的工具。</p>
+<pre><code>let fibo = {
+  [ Symbol.iterator ]() {
+    let a = 0
+    let b = 1
+    return {
+      next() {
+        [a, b] = [b, a + b]
+        return { done: false, value: b }
+      }
+    }
+  }
+}
+
+for (let n of fibo) {
+  if (n &gt; 100) break
+  console.log(n)
+}
+</code></pre><p>Wow! 看到这个 for…of 是否有种兴奋的感觉？虽然说创建 fibo 的时候稍微有点麻烦……</p>
+<p>不如我们先来看看这个 fibo 究竟是怎么定义出来了。首先，我们要了解到 JavaScript 引擎(或编译器)在处理 for…of 的时候，会从 of 后的对象取得 Symbol.iterator 这属性键的值，为一个函数。它要求要返回一个包含 next 方法的对象，用于不断迭代。而因为 Symbol.iterator 所在键值对的值是一个函数，这就让我们有了自由发挥的空间，比如定义局部变量等等。</p>
+<p>每当 for…of 进行了一次循环，都会执行一次该对象的 next 方法，已得到下一个值，并检查是否迭代完成。随著 ES7 的开发，for…of 所能发挥的潜能将会越来越强。</p>
+<p>还有更多的 Symbol 黑科技等待挖掘，再次本文不作详细阐述，如有兴趣，可以看看 Mozilla Developer Center 上的介绍。</p>
+<h3 id="Proxy-代理"><a href="#Proxy-代理" class="headerlink" title="Proxy(代理)"></a>Proxy(代理)</h3><p>Proxy 是 ECMAScript 中的一种新概念，它有很多好玩的用途，从基本的作用说就是：Proxy 可以在不入侵目标对象的情况下，对逻辑行为进行拦截和处理。</p>
+<p>比如说我想记录下我代码中某些接口的使用情况，以供数据分析所用，但是因为目标代码中是严格控制的，所以不能对其进行修改，而另外写一个对象来对目标对象做代理也很麻烦。那么 Proxy 便可以提供一种比较简单的方法来实现这一需求。</p>
+<p>假设我要对 api 这一对象进行拦截并记录下代码行为，我就可以这样做：</p>
+<pre><code>let apiProxy = new Proxy(api, {
+  get(receiver, name) {
+    return (function(...args) {
+      min.sadd(`log:${name}`, args)
+      return receiver[name].apply(receiver, args)
+    }).bind(receiver)
+  }
+})
+
+api.getComments(artical.id)
+  .then(comments =&gt; {
+    // ...
+  })
+</code></pre><p>可惜的是，目前 Proxy 的兼容性很差，哪怕是降级兼容也难以实现。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/10/22/" rel="next" title="Express Simple Guide">
+                <i class="fa fa-chevron-left"></i> Express Simple Guide
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/23/24/" rel="prev" title="Use Middleware to Check User Auth Status in Express (Chinese)">
+                Use Middleware to Check User Auth Status in Express (Chinese) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="C0deZLee" />
+          <p class="site-author-name" itemprop="name">C0deZLee</p>
+          <p class="site-description motion-element" itemprop="description">Web Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/c0dezlee" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:c0dezlee@gmail.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/c0dez" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/4985648/c0dez" target="_blank" title="StackOverFlow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                  StackOverFlow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一言蔽之-ES2015"><span class="nav-number">1.</span> <span class="nav-text">一言蔽之 ES2015</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES2015-能为-JavaScript-的开发带来什么"><span class="nav-number">2.</span> <span class="nav-text">ES2015 能为 JavaScript 的开发带来什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法糖"><span class="nav-number">2.1.</span> <span class="nav-text">语法糖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工程优势"><span class="nav-number">2.2.</span> <span class="nav-text">工程优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES2015-新语法详解"><span class="nav-number">3.</span> <span class="nav-text">ES2015 新语法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let、const-和块级作用域"><span class="nav-number">3.1.</span> <span class="nav-text">let、const 和块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数-Arrow-Function"><span class="nav-number">3.2.</span> <span class="nav-text">箭头函数(Arrow Function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板字符串"><span class="nav-number">3.3.</span> <span class="nav-text">模板字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#支持变量注入"><span class="nav-number">3.3.1.</span> <span class="nav-text">支持变量注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#支持换行"><span class="nav-number">3.3.2.</span> <span class="nav-text">支持换行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象字面量扩展语法"><span class="nav-number">3.4.</span> <span class="nav-text">对象字面量扩展语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法属性省略-function"><span class="nav-number">3.4.1.</span> <span class="nav-text">方法属性省略 function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同名方法属性省略语法"><span class="nav-number">3.4.2.</span> <span class="nav-text">同名方法属性省略语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可以动态计算的属性名称"><span class="nav-number">3.4.3.</span> <span class="nav-text">可以动态计算的属性名称</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式解构"><span class="nav-number">3.5.</span> <span class="nav-text">表达式解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数表达、传参"><span class="nav-number">3.6.</span> <span class="nav-text">函数参数表达、传参</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#后续参数"><span class="nav-number">3.6.1.</span> <span class="nav-text">后续参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解构传参"><span class="nav-number">3.6.2.</span> <span class="nav-text">解构传参</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项"><span class="nav-number">3.6.3.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新的数据结构"><span class="nav-number">3.7.</span> <span class="nav-text">新的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Set-和-WeakSet"><span class="nav-number">3.7.1.</span> <span class="nav-text">Set 和 WeakSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-和-WeakMap"><span class="nav-number">3.7.2.</span> <span class="nav-text">Map 和 WeakMap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类-Classes"><span class="nav-number">3.8.</span> <span class="nav-text">类(Classes)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">3.8.1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-number">3.8.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#继承"><span class="nav-number">3.8.1.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#静态方法"><span class="nav-number">3.8.1.3.</span> <span class="nav-text">静态方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不足"><span class="nav-number">3.8.2.</span> <span class="nav-text">不足</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器-Generator"><span class="nav-number">3.9.</span> <span class="nav-text">生成器(Generator)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#来龙"><span class="nav-number">3.9.1.</span> <span class="nav-text">来龙</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">3.9.2.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Generator-Function"><span class="nav-number">3.9.2.1.</span> <span class="nav-text">Generator Function</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Generator"><span class="nav-number">3.9.2.2.</span> <span class="nav-text">Generator</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本使用方法"><span class="nav-number">3.9.3.</span> <span class="nav-text">基本使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#构建生成器函数"><span class="nav-number">3.9.3.1.</span> <span class="nav-text">构建生成器函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动生成器"><span class="nav-number">3.9.3.2.</span> <span class="nav-text">启动生成器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原生的模块化"><span class="nav-number">3.10.</span> <span class="nav-text">原生的模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#历史小回顾"><span class="nav-number">3.10.1.</span> <span class="nav-text">历史小回顾</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本用法"><span class="nav-number">3.10.2.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#全局引入"><span class="nav-number">3.10.2.1.</span> <span class="nav-text">全局引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#局部引入"><span class="nav-number">3.10.2.2.</span> <span class="nav-text">局部引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#接口暴露"><span class="nav-number">3.10.2.3.</span> <span class="nav-text">接口暴露</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#降级兼容"><span class="nav-number">3.10.3.</span> <span class="nav-text">降级兼容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise"><span class="nav-number">3.11.</span> <span class="nav-text">Promise</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念"><span class="nav-number">3.11.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本用法-1"><span class="nav-number">3.11.2.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建-Promise-对象"><span class="nav-number">3.11.2.1.</span> <span class="nav-text">创建 Promise 对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#进行异步操作"><span class="nav-number">3.11.2.2.</span> <span class="nav-text">进行异步操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-Promise"><span class="nav-number">3.11.2.3.</span> <span class="nav-text">使用 Promise</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#弊端"><span class="nav-number">3.11.3.</span> <span class="nav-text">弊端</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Symbol"><span class="nav-number">3.12.</span> <span class="nav-text">Symbol</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#黑科技"><span class="nav-number">3.12.1.</span> <span class="nav-text">黑科技</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Proxy-代理"><span class="nav-number">3.13.</span> <span class="nav-text">Proxy(代理)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C0deZLee</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
