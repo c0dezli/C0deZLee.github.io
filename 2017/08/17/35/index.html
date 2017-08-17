@@ -1,0 +1,694 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Github," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="By Jake Benilov  Both my day job and my open-source work involve constant use of git and GitHub. These are some useful patterns that I’ve found myself using regularly. (From this point onwards, I sha">
+<meta name="keywords" content="Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="USEFUL GITHUB PATTERNS">
+<meta property="og:url" content="http://codezlee.com/2017/08/17/35/index.html">
+<meta property="og:site_name" content="Hello | World">
+<meta property="og:description" content="By Jake Benilov  Both my day job and my open-source work involve constant use of git and GitHub. These are some useful patterns that I’ve found myself using regularly. (From this point onwards, I sha">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-08-17T18:41:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="USEFUL GITHUB PATTERNS">
+<meta name="twitter:description" content="By Jake Benilov  Both my day job and my open-source work involve constant use of git and GitHub. These are some useful patterns that I’ve found myself using regularly. (From this point onwards, I sha">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codezlee.com/2017/08/17/35/"/>
+
+  <title> USEFUL GITHUB PATTERNS | Hello | World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hello | World</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Everyday is a brand new day.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text-o"></i> <br />
+            
+            Resume
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-projects">
+          <a href="/projects" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Projects
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                USEFUL GITHUB PATTERNS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-08-17T14:36:43-04:00" content="08-17-2017">
+              08-17-2017
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>By <a href="https://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/" target="_blank" rel="external">Jake Benilov</a></p>
+</blockquote>
+<p>Both my day job and my open-source work involve constant use of git and GitHub. These are some useful patterns that I’ve found myself using regularly.</p>
+<p>(From this point onwards, I shall abbreviate a “pull request” as PR).</p>
+<h2 id="the-peel-off-PR"><a href="#the-peel-off-PR" class="headerlink" title="the peel-off PR"></a>the peel-off PR</h2><h3 id="when-do-I-use-it"><a href="#when-do-I-use-it" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>I am working on a feature branch<br>I see some injustice in the code that I wish to fix right there and now, but which is unrelated to the feature I’m adding (eg a small bug, inconsistency or coding standards violation)<br><a id="more"></a></p>
+<h3 id="what-I-do"><a href="#what-I-do" class="headerlink" title="what I do"></a>what I do</h3><p>park my work-in-progress (by either committing or stashing)<br>checkout master<br>create a new branch<br>fix the injustice, open a PR<br>switch back to my feature branch and continue working<br>rebase against the injustice branch later, once it’s been merged<br>This satisfies both my desire to quickly fix the unrelated problem, and keeps the feature branch clean to make reviewing easier.</p>
+<h2 id="the-optimistic-branch"><a href="#the-optimistic-branch" class="headerlink" title="the optimistic branch"></a>the optimistic branch</h2><h3 id="when-do-I-use-it-1"><a href="#when-do-I-use-it-1" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>There is an unmerged branch (branch-A) which cannot be merged right now (eg CI build broken, code reviewer busy, etc)<br>I need to make another change that relies on the code in branch-A</p>
+<h3 id="when-I-do"><a href="#when-I-do" class="headerlink" title="when I do"></a>when I do</h3><p>create a new branch (branch-B) off branch-A<br>once branch-A is merged into master, I rebase branch-B against master and resolve any resulting conflicts<br>bugfixes from branch-A can then be rebased into branch-B<br>This approach carries the risk of conflicts if drastic changes are made to branch-A, but the optimistic strategy tends to work out fine in 95% of cases</p>
+<h2 id="the-heads-up-PR"><a href="#the-heads-up-PR" class="headerlink" title="the heads-up PR"></a>the heads-up PR</h2><h3 id="when-do-I-use-it-2"><a href="#when-do-I-use-it-2" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>I’m making a change that I assume doesn’t really need reviewing<br>I would still like my teammates to know about it</p>
+<h3 id="when-I-do-1"><a href="#when-I-do-1" class="headerlink" title="when I do"></a>when I do</h3><p>make change on branch<br>raise a PR<br>merge the PR myself immediately<br>This methods doesn’t block me from carrying on, but GitHub still notifies my teammates of a PR via email, so anybody could still potentially comment on the change if they find it objectionable</p>
+<h2 id="the-sneaky-commit"><a href="#the-sneaky-commit" class="headerlink" title="the sneaky commit"></a>the sneaky commit</h2><h3 id="when-do-I-use-it-3"><a href="#when-do-I-use-it-3" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>after the code has been reviewed and merged into master<br>I need to make a small change (eg a copy change or bugfix) that’s not even worth notifying others about</p>
+<h3 id="when-I-do-2"><a href="#when-I-do-2" class="headerlink" title="when I do"></a>when I do</h3><p>just push the new commit to master.</p>
+<h2 id="the-roger-roger-comment"><a href="#the-roger-roger-comment" class="headerlink" title="the roger roger comment"></a>the roger roger comment</h2><h3 id="when-do-I-use-it-4"><a href="#when-do-I-use-it-4" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>I’ve received actionable feedback from a code review on a branch<br>I’ve made fixes based on the feedback</p>
+<h3 id="when-I-do-3"><a href="#when-I-do-3" class="headerlink" title="when I do"></a>when I do</h3><p>I comment on the PR which includes the ref of the fixes commit<br>GitHub cleverly augments commit ref numbers with links to the diff, so that my colleagues:<br>are notified of my change via email<br>can easily click through to the commit diff<br>know that they can continue the code review</p>
+<h2 id="the-creepin’-commit"><a href="#the-creepin’-commit" class="headerlink" title="the creepin’ commit"></a>the creepin’ commit</h2><h3 id="when-do-I-use-it-5"><a href="#when-do-I-use-it-5" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>I discover that I’ve introduced small formatting bugs (eg unnecessary whitespace, missing newline at the end of file, etc), or<br>A logical code change really belongs in the previous commit, or<br>My code isn’t committable (eg some tests are failing) but I still would like to be able to roll back to this point, so I can experiment safely</p>
+<h3 id="when-I-do-4"><a href="#when-I-do-4" class="headerlink" title="when I do"></a>when I do</h3><p>in the first two cases, I amend the previous commit<br>for the third case, I have a work-in-progress (creeping) commit, which I progressively amend (or roll back to, if the experiment fails) until I reach a bonafide commit point</p>
+<h2 id="the-forced-branch"><a href="#the-forced-branch" class="headerlink" title="the forced branch"></a>the forced branch</h2><h3 id="when-do-I-use-it-6"><a href="#when-do-I-use-it-6" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>I need to amend an remotely-pushed feature branch, eg I’ve explained something badly in a commit message</p>
+<h3 id="when-I-do-5"><a href="#when-I-do-5" class="headerlink" title="when I do"></a>when I do</h3><p>I amend the commit locally<br>I force-push the feature branch to the remote repo<br>While force-pushing to a remote branch is supposed to be a big git no-no, my experience is that there are rarely problems with this approach (as long as it’s only to the branch, and not to master). GitHub deals well with force-pushing to a PR branch, ie it doesn’t lose the comments on the previous commits, etc</p>
+<h2 id="the-reformat-peel-off"><a href="#the-reformat-peel-off" class="headerlink" title="the reformat peel-off"></a>the reformat peel-off</h2><h3 id="when-do-I-use-it-7"><a href="#when-do-I-use-it-7" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>I want to both change and reformat some code</p>
+<h3 id="when-I-do-6"><a href="#when-I-do-6" class="headerlink" title="when I do"></a>when I do</h3><p>I make a separate commit onto master, which contains only the reformat<br>I rebase my branch against master<br>This way, the diff on the branch with the change is much cleaner and more obvious for a code reviewer, because it doesn’t contain the reformatting</p>
+<h2 id="the-prototype-PR"><a href="#the-prototype-PR" class="headerlink" title="the prototype PR"></a>the prototype PR</h2><h3 id="when-do-I-use-it-8"><a href="#when-do-I-use-it-8" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>I want to get feedback on my ideas before implementing lots of code</p>
+<h3 id="when-I-do-7"><a href="#when-I-do-7" class="headerlink" title="when I do"></a>when I do</h3><p>I hack something together on a branch<br>I raise a PR for it, the intention of which isn’t to deliver finished code, but rather to be a starting point to discussion.<br>I close the PR (and kill the branch) when consensus has been reached on the next steps<br>I create another branch and PR, with proper code this time<br>I used to think that PRs were supposed to be raised when the code was finished. Now I have really grokked that “Pull requests are a great way to start a conversation” – GitHub’s functionality around PRs (such as inline commenting, replies, notifications and diffing) is excellent for facilitating code and design discussion, and can prevent developers going too far down dead-end paths.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Github/" rel="tag">#Github</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/16/34/" rel="next" title="A Customized Course Searching Website for Penn State - Part I (CourseSpider)">
+                <i class="fa fa-chevron-left"></i> A Customized Course Searching Website for Penn State - Part I (CourseSpider)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/01/31/" rel="prev" title="The Plan For The Next Few Months Of 2017">
+                The Plan For The Next Few Months Of 2017 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="C0deZLee" />
+          <p class="site-author-name" itemprop="name">C0deZLee</p>
+          <p class="site-description motion-element" itemprop="description">Web Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/c0dezlee" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:c0dezlee@gmail.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/c0dez" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/4985648/c0dez" target="_blank" title="StackOverFlow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                  StackOverFlow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the-peel-off-PR"><span class="nav-number">1.</span> <span class="nav-text">the peel-off PR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it"><span class="nav-number">1.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#what-I-do"><span class="nav-number">1.2.</span> <span class="nav-text">what I do</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-optimistic-branch"><span class="nav-number">2.</span> <span class="nav-text">the optimistic branch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it-1"><span class="nav-number">2.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-I-do"><span class="nav-number">2.2.</span> <span class="nav-text">when I do</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-heads-up-PR"><span class="nav-number">3.</span> <span class="nav-text">the heads-up PR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it-2"><span class="nav-number">3.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-I-do-1"><span class="nav-number">3.2.</span> <span class="nav-text">when I do</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-sneaky-commit"><span class="nav-number">4.</span> <span class="nav-text">the sneaky commit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it-3"><span class="nav-number">4.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-I-do-2"><span class="nav-number">4.2.</span> <span class="nav-text">when I do</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-roger-roger-comment"><span class="nav-number">5.</span> <span class="nav-text">the roger roger comment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it-4"><span class="nav-number">5.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-I-do-3"><span class="nav-number">5.2.</span> <span class="nav-text">when I do</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-creepin’-commit"><span class="nav-number">6.</span> <span class="nav-text">the creepin’ commit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it-5"><span class="nav-number">6.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-I-do-4"><span class="nav-number">6.2.</span> <span class="nav-text">when I do</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-forced-branch"><span class="nav-number">7.</span> <span class="nav-text">the forced branch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it-6"><span class="nav-number">7.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-I-do-5"><span class="nav-number">7.2.</span> <span class="nav-text">when I do</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-reformat-peel-off"><span class="nav-number">8.</span> <span class="nav-text">the reformat peel-off</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it-7"><span class="nav-number">8.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-I-do-6"><span class="nav-number">8.2.</span> <span class="nav-text">when I do</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-prototype-PR"><span class="nav-number">9.</span> <span class="nav-text">the prototype PR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#when-do-I-use-it-8"><span class="nav-number">9.1.</span> <span class="nav-text">when do I use it?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#when-I-do-7"><span class="nav-number">9.2.</span> <span class="nav-text">when I do</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C0deZLee</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
