@@ -1,0 +1,721 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,Scrapy," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="First of all, LionPath sucks. It’s a disaster, especially when you are trying to use it to search course, so I decide to build a customized course searching website for Penn State students. And in ord">
+<meta name="keywords" content="Python,Scrapy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Customized Course Searching Website for Penn State - Part I (CourseSpider)">
+<meta property="og:url" content="http://codezlee.com/2017/08/16/34/index.html">
+<meta property="og:site_name" content="Hello | World">
+<meta property="og:description" content="First of all, LionPath sucks. It’s a disaster, especially when you are trying to use it to search course, so I decide to build a customized course searching website for Penn State students. And in ord">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://codezlee.com/2017/08/16/34/public.png">
+<meta property="og:image" content="http://codezlee.com/2017/08/16/34/form1.png">
+<meta property="og:image" content="http://codezlee.com/2017/08/16/34/form2.png">
+<meta property="og:updated_time" content="2017-08-17T15:40:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A Customized Course Searching Website for Penn State - Part I (CourseSpider)">
+<meta name="twitter:description" content="First of all, LionPath sucks. It’s a disaster, especially when you are trying to use it to search course, so I decide to build a customized course searching website for Penn State students. And in ord">
+<meta name="twitter:image" content="http://codezlee.com/2017/08/16/34/public.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codezlee.com/2017/08/16/34/"/>
+
+  <title> A Customized Course Searching Website for Penn State - Part I (CourseSpider) | Hello | World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hello | World</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Everyday is a brand new day.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text-o"></i> <br />
+            
+            Resume
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-projects">
+          <a href="/projects" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Projects
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                A Customized Course Searching Website for Penn State - Part I (CourseSpider)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-08-16T01:40:53-04:00" content="08-16-2017">
+              08-16-2017
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>First of all, LionPath sucks.</p>
+<p>It’s a disaster, especially when you are trying to use it to search course, so I decide to build a customized course searching website for Penn State students.</p>
+<p>And in order to do that, I need to crawl down all the course info from LionPath.</p>
+<a id="more"></a>
+<h2 id="Web-Crawling-Framework"><a href="#Web-Crawling-Framework" class="headerlink" title="Web Crawling Framework"></a>Web Crawling Framework</h2><p>For this project, I used a web crawling framework called <a href="https://scrapy.org/" target="_blank" rel="external">Scrapy</a>, it has a lot fancy features, but I only used a little of them.<br>A typical Scrapy project look like this</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[Project <span class="built_in">name</span>]/</div><div class="line">    scrapy.cfg            <span class="comment"># deploy configuration file</span></div><div class="line"></div><div class="line">    [Project <span class="built_in">name</span>]/             <span class="comment"># project's Python module, you'll import your code from here</span></div><div class="line">        __init__.py</div><div class="line"></div><div class="line">        items.py          <span class="comment"># project items definition file</span></div><div class="line"></div><div class="line">        pipelines.py      <span class="comment"># project pipelines file</span></div><div class="line"></div><div class="line">        settings.py       <span class="comment"># project settings file</span></div><div class="line"></div><div class="line">        spiders/          <span class="comment"># a directory where you'll later put your spiders</span></div><div class="line">            __init__.py</div><div class="line"></div><div class="line">            spider.py     <span class="comment"># spider file</span></div></pre></td></tr></table></figure>
+<p>Since this is not a Scrapy tutorial, I will just throw out my code and explain it later.</p>
+<p>Github Repo： <a href="https://github.com/C0deZLee/CourseSpider" target="_blank" rel="external">https://github.com/C0deZLee/CourseSpider</a></p>
+<h2 id="Start-Point"><a href="#Start-Point" class="headerlink" title="Start Point"></a>Start Point</h2><p>Generally LionPath requires you login to search courses, but there is an exception, <a href="http://public.lionpath.psu.edu/psc/CSPRD_3/EMPLOYEE/HRMS/c/PE_TE031.CLASS_SEARCH.GBL" target="_blank" rel="external">http://public.lionpath.psu.edu/psc/CSPRD_3/EMPLOYEE/HRMS/c/PE_TE031.CLASS_SEARCH.GBL</a>. </p>
+<p>I found this URL in public.lionpath.psu.edu, and it doesn’t require login to visit.</p>
+<img src="/2017/08/16/34/public.png" alt="public.lionpath.psu.edu" title="public.lionpath.psu.edu">
+<p>I’ll use this URL as my start point.</p>
+<h2 id="Break-Down-LionPath-Form-Submission"><a href="#Break-Down-LionPath-Form-Submission" class="headerlink" title="Break Down LionPath Form Submission"></a>Break Down LionPath Form Submission</h2><p>LionPath has a very stupid strategy: the entire web page is a form, and for every click, submit this form, return a new web page, replace the old one.</p>
+<p>But this strategy actually makes my crawling easier, because Scrapy provides a build in function called form_request, which can automatically detect form and simulate form submission.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classmethod from_response(response[, <span class="attribute">formname</span>=None, <span class="attribute">formid</span>=None, <span class="attribute">formnumber</span>=0, <span class="attribute">formdata</span>=None, <span class="attribute">formxpath</span>=None, <span class="attribute">formcss</span>=None, <span class="attribute">clickdata</span>=None, <span class="attribute">dont_click</span>=<span class="literal">False</span>, <span class="built_in">..</span>.])</div></pre></td></tr></table></figure>
+<p>And after inspected lionpath form submission, I find a some interesting form values.<br>(How to: in Chrome -&gt; right click somewhere on web page -&gt; inspect -&gt; Network)</p>
+<p>This is the form value when you change the location.</p>
+<img src="/2017/08/16/34/form1.png" alt="Change Location" title="Change Location">
+<p>This is the form value when you click search.</p>
+<img src="/2017/08/16/34/form2.png" alt="Search" title="Search">
+<p>So clearly the server side action is triggered by the value of “ICAction”, and some other values that action needs. </p>
+<p>After we know how it works, we can start design our crawler.</p>
+<h2 id="Design-Crawling-Logic"><a href="#Design-Crawling-Logic" class="headerlink" title="Design Crawling Logic"></a>Design Crawling Logic</h2><p>Choose <strong>Term</strong> and <strong>Campus Location</strong> </p>
+<p>For Every <strong>Major</strong> in chose <em>Campus</em></p>
+<ul>
+<li><p>Click <strong>Search</strong>, Go to <strong>Course List</strong></p>
+<ul>
+<li><p>For Every <strong>Course</strong> in <strong>Course List</strong></p>
+<ul>
+<li><p>Click <strong>Detail</strong></p>
+</li>
+<li><p>Crawl </p>
+</li>
+</ul>
+</li>
+<li><p>Return to <strong>Course List</strong></p>
+</li>
+</ul>
+</li>
+<li><p>Go to next <strong>Major</strong></p>
+</li>
+</ul>
+<h2 id="Compete-Source-Code"><a href="#Compete-Source-Code" class="headerlink" title="Compete Source Code"></a>Compete Source Code</h2><h3 id="Spider"><a href="#Spider" class="headerlink" title="Spider"></a>Spider</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div></pre></td><td class="code"><pre><div class="line">import scrapy</div><div class="line">from ..items import CourseItem</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LionPathspider</span>(<span class="title">scrapy</span>.<span class="title">Spider</span>):</span></div><div class="line">    name = <span class="string">"lionpath0"</span></div><div class="line">    url = <span class="string">'https://public.lionpath.psu.edu/psc/CSPRD_3/EMPLOYEE/HRMS/c/PE_TE031.CLASS_SEARCH.GBL'</span>    </div><div class="line">    cookies = &#123;&#125;</div><div class="line">    headers = &#123;<span class="string">'User-Agent'</span><span class="symbol">:<span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'</span></span>,</div><div class="line">               <span class="string">'Host'</span><span class="symbol">:<span class="string">'public.lionpath.psu.edu'</span></span>,</div><div class="line">               <span class="string">'Upgrade-Insecure-Requests'</span><span class="symbol">:</span><span class="number">1</span>,</div><div class="line">               <span class="string">'Accept-Encoding'</span><span class="symbol">:<span class="string">'gzip, deflate, br'</span></span>,</div><div class="line">               <span class="string">'Accept-Language'</span><span class="symbol">:<span class="string">'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4'</span></span>,</div><div class="line">               <span class="string">'Connection'</span><span class="symbol">:<span class="string">'keep-alive'</span></span>,</div><div class="line">               <span class="string">'Cache-Control'</span><span class="symbol">:<span class="string">'max-age=0'</span></span></div><div class="line">              &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_requests</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></div><div class="line">        <span class="keyword">yield</span> scrapy.Request(url=<span class="keyword">self</span>.url, callback=<span class="keyword">self</span>.change_term, headers=<span class="keyword">self</span>.headers, dont_filter=True) </div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">change_term</span><span class="params">(<span class="keyword">self</span>, response)</span></span><span class="symbol">:</span></div><div class="line">        <span class="comment"># Change Term</span></div><div class="line">        print <span class="string">'NOW: Change Term'</span></div><div class="line">        <span class="keyword">return</span> scrapy.FormRequest.from_response(</div><div class="line">            response,</div><div class="line">            formdata=&#123;<span class="string">'ICAction'</span>: <span class="string">'CLASS_SRCH_WRK2_STRM$35$'</span>, <span class="string">'CLASS_SRCH_WRK2_STRM$35$'</span><span class="symbol">:<span class="string">'2178'</span></span>&#125;,</div><div class="line">            callback=<span class="keyword">self</span>.select_location</div><div class="line">        )</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_location</span><span class="params">(<span class="keyword">self</span>, response)</span></span>:        </div><div class="line">        <span class="comment"># locations = ['UNIVPARK', 'WCAMPUS']</span></div><div class="line">        <span class="comment"># for location in locations:</span></div><div class="line">        print <span class="string">'NOW: Select Location'</span></div><div class="line">        <span class="keyword">yield</span> scrapy.FormRequest.from_response(</div><div class="line">            response,</div><div class="line">            formdata=&#123;<span class="string">'ICAction'</span>: <span class="string">'SSR_CLSRCH_WRK_LOCATION$1'</span>, <span class="string">'SSR_CLSRCH_WRK_LOCATION$1'</span><span class="symbol">:<span class="string">'UNIVPARK'</span></span>&#125;,</div><div class="line">            callback=<span class="keyword">self</span>.select_major,</div><div class="line">            meta=&#123;<span class="string">'location'</span><span class="symbol">:<span class="string">'UNIVPARK'</span></span>,<span class="string">'major_count'</span>: <span class="string">'0'</span>&#125;</div><div class="line">        )</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_major</span><span class="params">(<span class="keyword">self</span>, response)</span></span><span class="symbol">:</span></div><div class="line">        location = response.meta.get(<span class="string">'location'</span>)</div><div class="line">        major_count = response.meta.get(<span class="string">'major_count'</span>)        </div><div class="line">        </div><div class="line">        majors = &#123;&#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> option <span class="keyword">in</span> scrapy.Selector(response).xpath(<span class="string">'//*[@id="SSR_CLSRCH_WRK_SUBJECT_SRCH$2"]/option'</span>)<span class="symbol">:</span></div><div class="line">            <span class="keyword">if</span> option.xpath(<span class="string">'@value'</span>).extract_first()<span class="symbol">:</span></div><div class="line">                majors[option.xpath(<span class="string">'@value'</span>).extract_first()] = option.xpath(<span class="string">'text()'</span>).extract_first()</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> int(major_count) &lt; len(majors)<span class="symbol">:</span></div><div class="line">            major = majors.items()[int(major_count)]</div><div class="line">            print <span class="string">'NOW: Select Major'</span></div><div class="line">            print major[<span class="number">0</span>]            </div><div class="line">            <span class="keyword">yield</span> scrapy.FormRequest.from_response(</div><div class="line">                response,</div><div class="line">                formdata=&#123;</div><div class="line">                    <span class="string">'ICAction'</span>: <span class="string">'CLASS_SRCH_WRK2_SSR_PB_CLASS_SRCH'</span>, </div><div class="line">                    <span class="string">'SSR_CLSRCH_WRK_LOCATION$1'</span><span class="symbol">:location</span>,</div><div class="line">                    <span class="string">'SSR_CLSRCH_WRK_SUBJECT_SRCH$2'</span><span class="symbol">:major</span>[<span class="number">0</span>], </div><div class="line">                    <span class="string">'SSR_CLSRCH_WRK_SSR_OPEN_ONLY$chk$6'</span><span class="symbol">:<span class="string">'N'</span></span></div><div class="line">                &#125;,</div><div class="line">                callback=<span class="keyword">self</span>.select_course,</div><div class="line">                meta=&#123;</div><div class="line">                    <span class="string">'location'</span>: location,</div><div class="line">                    <span class="string">'major_short'</span>: major[<span class="number">0</span>],</div><div class="line">                    <span class="string">'major_full'</span>: major[<span class="number">1</span>],</div><div class="line">                    <span class="string">'major_count'</span>: major_count,</div><div class="line">                    <span class="string">'course_counter'</span>: <span class="string">'0'</span></div><div class="line">                &#125;</div><div class="line">            )</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_course</span><span class="params">(<span class="keyword">self</span>, response)</span></span><span class="symbol">:</span></div><div class="line">        location = response.meta.get(<span class="string">'location'</span>)</div><div class="line">        major_short = response.meta.get(<span class="string">'major_short'</span>)</div><div class="line">        major_full = response.meta.get(<span class="string">'major_full'</span>)</div><div class="line">        major_count = response.meta.get(<span class="string">'major_count'</span>)        </div><div class="line">        course_counter = response.meta.get(<span class="string">'course_counter'</span>)</div><div class="line"></div><div class="line">        <span class="keyword">if</span> scrapy.Selector(response).xpath(<span class="string">'//*[@id="DERIVED_SSE_DSP_SSR_MSG_TEXT"]'</span>).extract_first()<span class="symbol">:</span></div><div class="line">            print <span class="string">'NOW: Skiping Warning Message'</span></div><div class="line">            print location, major_short, course_counter</div><div class="line">            <span class="keyword">return</span> scrapy.FormRequest.from_response(</div><div class="line">                    response,</div><div class="line">                    formdata=&#123;<span class="string">'ICAction'</span>: <span class="string">'#ICSave'</span>&#125;,</div><div class="line">                    callback=<span class="keyword">self</span>.select_course,</div><div class="line">                    meta=&#123;</div><div class="line">                        <span class="string">'location'</span><span class="symbol">:location</span>,   </div><div class="line">                        <span class="string">'major_short'</span>: major_short,</div><div class="line">                        <span class="string">'major_full'</span>: major_full,</div><div class="line">                        <span class="string">'major_count'</span>: major_count,                    </div><div class="line">                        <span class="string">'course_counter'</span><span class="symbol">:course_counter</span></div><div class="line">                    &#125;</div><div class="line">                )        </div><div class="line"></div><div class="line">        <span class="keyword">if</span> scrapy.Selector(response).xpath(<span class="string">'//*[@id="MTG_CLASS_NBR$'</span> + str(course_counter) + <span class="string">'"]'</span>).extract_first()<span class="symbol">:</span></div><div class="line">            print <span class="string">'NOW: Going to Parse Course'</span>         </div><div class="line">            room = scrapy.Selector(response).xpath(<span class="string">'//*[@id="MTG_ROOM$'</span> + str(course_counter) + <span class="string">'"]/text()'</span>)</div><div class="line">            time = scrapy.Selector(response).xpath(<span class="string">'//*[@id="MTG_DAYTIME$'</span> + str(course_counter) + <span class="string">'"]/text()'</span>)</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (room != <span class="string">'APPT'</span> <span class="keyword">and</span> room != <span class="string">'TBA'</span>) <span class="keyword">or</span> time != <span class="string">'TBA'</span><span class="symbol">:</span></div><div class="line">                <span class="keyword">return</span> scrapy.FormRequest.from_response(</div><div class="line">                        response,</div><div class="line">                        formdata=&#123;<span class="string">'ICAction'</span>: <span class="string">'MTG_CLASS_NBR$'</span> + str(course_counter)&#125;,</div><div class="line">                        callback=<span class="keyword">self</span>.parse_course,</div><div class="line">                        meta=&#123;</div><div class="line">                            <span class="string">'location'</span><span class="symbol">:location</span>,   </div><div class="line">                            <span class="string">'major_short'</span>: major_short,</div><div class="line">                            <span class="string">'major_full'</span>: major_full,</div><div class="line">                            <span class="string">'major_count'</span>: major_count,                    </div><div class="line">                            <span class="string">'course_counter'</span><span class="symbol">:course_counter</span></div><div class="line">                        &#125;</div><div class="line">                    )</div><div class="line">        <span class="symbol">else:</span></div><div class="line">            <span class="comment"># Go to next major</span></div><div class="line">            print <span class="string">'NOW: Going to Next Major'</span>              </div><div class="line">            print location, major_short, course_counter</div><div class="line">            major_count = str(int(major_count)+<span class="number">1</span>)</div><div class="line">            <span class="keyword">return</span> scrapy.FormRequest.from_response(</div><div class="line">                    response,</div><div class="line">                    formdata=&#123;<span class="string">'ICAction'</span>: <span class="string">'CLASS_SRCH_WRK2_SSR_PB_MODIFY'</span>&#125;,</div><div class="line">                    callback=<span class="keyword">self</span>.select_major,</div><div class="line">                    meta=&#123;</div><div class="line">                        <span class="string">'location'</span><span class="symbol">:location</span>,   </div><div class="line">                        <span class="string">'major_short'</span>: major_short,</div><div class="line">                        <span class="string">'major_full'</span>: major_full,</div><div class="line">                        <span class="string">'major_count'</span>: major_count,                    </div><div class="line">                    &#125;               </div><div class="line">                )</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse_course</span><span class="params">(<span class="keyword">self</span>, response)</span></span><span class="symbol">:</span></div><div class="line">        location = response.meta.get(<span class="string">'location'</span>)</div><div class="line">        major_short = response.meta.get(<span class="string">'major_short'</span>)</div><div class="line">        major_full = response.meta.get(<span class="string">'major_full'</span>)</div><div class="line">        major_count = response.meta.get(<span class="string">'major_count'</span>)</div><div class="line">        course_counter = response.meta.get(<span class="string">'course_counter'</span>)</div><div class="line"></div><div class="line">        </div><div class="line"></div><div class="line">        <span class="comment"># parse course</span></div><div class="line"></div><div class="line">        course_page = scrapy.Selector(response)</div><div class="line"></div><div class="line">        new_course = CourseItem()</div><div class="line">        new_course[<span class="string">'course_major_short'</span>] = major_short</div><div class="line">        new_course[<span class="string">'course_major_full'</span>] = major_full</div><div class="line">        new_course[<span class="string">'course_short_name'</span>] = course_page.xpath(<span class="string">'//*[@id="DERIVED_CLSRCH_DESCR200"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'course_status'</span>] = course_page.xpath(<span class="string">'//*[@id="SSR_CLS_DTL_WRK_SSR_DESCRSHORT"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'class_number'</span>] = course_page.xpath(<span class="string">'//*[@id="SSR_CLS_DTL_WRK_CLASS_NBR"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'course_credit'</span>] = course_page.xpath(<span class="string">'//*[@id="SSR_CLS_DTL_WRK_UNITS_RANGE"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'course_location'</span>] = course_page.xpath(<span class="string">'//*[@id="CAMPUS_LOC_VW_DESCR"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'course_campus'</span>] = course_page.xpath(<span class="string">'//*[@id="CAMPUS_TBL_DESCR"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'datetime'</span>] = course_page.xpath(<span class="string">'//*[@id="MTG_SCHED$0"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'room'</span>] = course_page.xpath(<span class="string">'//*[@id="MTG_LOC$0"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'instructor1'</span>] = course_page.xpath(<span class="string">'//*[@id="MTG_INSTR$0"]/text()'</span>).extract_first()</div><div class="line"></div><div class="line">        new_course[<span class="string">'course_capacity'</span>] = course_page.xpath(<span class="string">'//*[@id="SSR_CLS_DTL_WRK_ENRL_CAP"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'course_enrolled'</span>] = course_page.xpath(<span class="string">'//*[@id="SSR_CLS_DTL_WRK_ENRL_TOT"]/text()'</span>).extract_first()</div><div class="line"></div><div class="line">        new_course[<span class="string">'course_waitlist_capacity'</span>] = course_page.xpath(<span class="string">'//*[@id="SSR_CLS_DTL_WRK_WAIT_CAP"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'course_waitlist_enrolled'</span>] = course_page.xpath(<span class="string">'//*[@id="SSR_CLS_DTL_WRK_WAIT_TOT"]/text()'</span>).extract_first()</div><div class="line"></div><div class="line">        new_course[<span class="string">'course_enrollment_req'</span>] = course_page.xpath(<span class="string">'//*[@id="SSR_CLS_DTL_WRK_SSR_REQUISITE_LONG"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'course_notes'</span>] = course_page.xpath(<span class="string">'//*[@id="DERIVED_CLSRCH_SSR_CLASSNOTE_LONG"]/text()'</span>).extract_first()</div><div class="line">        new_course[<span class="string">'course_description'</span>] = course_page.xpath(<span class="string">'//*[@id="DERIVED_CLSRCH_DESCRLONG"]/text()'</span>).extract_first()</div><div class="line">        </div><div class="line">        print <span class="string">'NOW: Yield a New Course'</span>            </div><div class="line">        <span class="keyword">yield</span> new_course</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment"># back to course list</span></div><div class="line">        course_counter = str(int(course_counter)+<span class="number">1</span>)</div><div class="line">        print <span class="string">'NOW: Going Back to Course List'</span>    </div><div class="line">        print location, major_short, course_counter</div><div class="line">                        </div><div class="line">        <span class="keyword">yield</span> scrapy.FormRequest.from_response(</div><div class="line">                response,</div><div class="line">                formdata=&#123;<span class="string">'ICAction'</span>: <span class="string">'CLASS_SRCH_WRK2_SSR_PB_BACK'</span>&#125;,</div><div class="line">                callback=<span class="keyword">self</span>.select_course,</div><div class="line">                meta=&#123;</div><div class="line">                    <span class="string">'location'</span>: location,   </div><div class="line">                    <span class="string">'major_short'</span>: major_short,</div><div class="line">                    <span class="string">'major_full'</span>: major_full,</div><div class="line">                    <span class="string">'major_count'</span>: major_count,                                        </div><div class="line">                    <span class="string">'course_counter'</span>: course_counter</div><div class="line">                &#125;</div><div class="line">            )</div><div class="line">        <span class="keyword">return</span></div></pre></td></tr></table></figure>
+<p>###Course Item</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class CourseItem(<span class="keyword">scrapy.Item):</span></div><div class="line"><span class="keyword"> </span>   course_major_short = <span class="keyword">scrapy.Field() </span><span class="comment"># CMPSC</span></div><div class="line">    course_major_full = <span class="keyword">scrapy.Field() </span><span class="comment"># Computer Science</span></div><div class="line">    </div><div class="line">    course_short_name = <span class="keyword">scrapy.Field() </span><span class="comment"># CMPSC 121</span></div><div class="line">    course_full_name = <span class="keyword">scrapy.Field() </span><span class="comment"># International Arts Minor Final Project</span></div><div class="line">    course_section = <span class="keyword">scrapy.Field() </span><span class="comment"># 001</span></div><div class="line">    course_status = <span class="keyword">scrapy.Field() </span><span class="comment"># Open</span></div><div class="line">    class_number = <span class="keyword">scrapy.Field() </span><span class="comment"># 12453</span></div><div class="line">    course_credit = <span class="keyword">scrapy.Field() </span><span class="comment"># 4</span></div><div class="line"></div><div class="line">    course_location = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"> </span>   course_campus = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"> </span>   datetime = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"> </span>   room = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"></span></div><div class="line"><span class="keyword"> </span>   <span class="keyword">instructor1 </span>= <span class="keyword">scrapy.Field() </span></div><div class="line">    <span class="keyword">instructor2 </span>= <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"></span></div><div class="line"><span class="keyword"> </span>   course_capacity = <span class="keyword">scrapy.Field() </span></div><div class="line">    course_enrolled = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"></span></div><div class="line"><span class="keyword"> </span>   course_waitlist_capacity = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"> </span>   course_waitlist_enrolled = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"> </span>   </div><div class="line">    course_enrollment_req = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"> </span>   course_notes = <span class="keyword">scrapy.Field()</span></div><div class="line"><span class="keyword"> </span>   course_description = <span class="keyword">scrapy.Field()</span></div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/Scrapy/" rel="tag">#Scrapy</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/14/33/" rel="next" title="2017下半年书单列表">
+                <i class="fa fa-chevron-left"></i> 2017下半年书单列表
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/01/31/" rel="prev" title="The Plan For The Next Few Months Of 2017">
+                The Plan For The Next Few Months Of 2017 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="C0deZLee" />
+          <p class="site-author-name" itemprop="name">C0deZLee</p>
+          <p class="site-description motion-element" itemprop="description">Web Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/c0dezlee" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:c0dezlee@gmail.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/c0dez" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/4985648/c0dez" target="_blank" title="StackOverFlow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                  StackOverFlow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Crawling-Framework"><span class="nav-number">1.</span> <span class="nav-text">Web Crawling Framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-Point"><span class="nav-number">2.</span> <span class="nav-text">Start Point</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Break-Down-LionPath-Form-Submission"><span class="nav-number">3.</span> <span class="nav-text">Break Down LionPath Form Submission</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-Crawling-Logic"><span class="nav-number">4.</span> <span class="nav-text">Design Crawling Logic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compete-Source-Code"><span class="nav-number">5.</span> <span class="nav-text">Compete Source Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spider"><span class="nav-number">5.1.</span> <span class="nav-text">Spider</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C0deZLee</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
