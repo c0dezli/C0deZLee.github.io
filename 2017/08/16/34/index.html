@@ -284,7 +284,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-08-16T01:40:53-04:00" content="08-16-2017">
+            <time itemprop="dateCreated" datetime="2017-08-16T06:40:53+01:00" content="08-16-2017">
               08-16-2017
             </time>
           </span>
@@ -341,16 +341,16 @@
 <p>Github Repo： <a href="https://github.com/C0deZLee/CourseSpider" target="_blank" rel="external">https://github.com/C0deZLee/CourseSpider</a></p>
 <h2 id="Start-Point"><a href="#Start-Point" class="headerlink" title="Start Point"></a>Start Point</h2><p>Generally LionPath requires you login to search courses, but there is an exception, <a href="http://public.lionpath.psu.edu/psc/CSPRD_3/EMPLOYEE/HRMS/c/PE_TE031.CLASS_SEARCH.GBL" target="_blank" rel="external">http://public.lionpath.psu.edu/psc/CSPRD_3/EMPLOYEE/HRMS/c/PE_TE031.CLASS_SEARCH.GBL</a>. </p>
 <p>I found this URL in public.lionpath.psu.edu, and it doesn’t require login to visit.</p>
-<img src="/2017/08/16/34/public.png" alt="public.lionpath.psu.edu" title="public.lionpath.psu.edu">
+<img src="/2017/08/16/34/public.png" title="public.lionpath.psu.edu">
 <p>I’ll use this URL as my start point.</p>
 <h2 id="Break-Down-LionPath-Form-Submission"><a href="#Break-Down-LionPath-Form-Submission" class="headerlink" title="Break Down LionPath Form Submission"></a>Break Down LionPath Form Submission</h2><p>LionPath has a very stupid strategy: the entire web page is a form, and for every click, submit this form, return a new web page, replace the old one.</p>
 <p>But this strategy actually makes my crawling easier, because Scrapy provides a build in function called form_request, which can automatically detect form and simulate form submission.</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classmethod from_response(response[, <span class="attribute">formname</span>=None, <span class="attribute">formid</span>=None, <span class="attribute">formnumber</span>=0, <span class="attribute">formdata</span>=None, <span class="attribute">formxpath</span>=None, <span class="attribute">formcss</span>=None, <span class="attribute">clickdata</span>=None, <span class="attribute">dont_click</span>=<span class="literal">False</span>, <span class="built_in">..</span>.])</div></pre></td></tr></table></figure>
 <p>And after inspected lionpath form submission, I find a some interesting form values.<br>(How to: in Chrome -&gt; right click somewhere on web page -&gt; inspect -&gt; Network)</p>
 <p>This is the form value when you change the location.</p>
-<img src="/2017/08/16/34/form1.png" alt="Change Location" title="Change Location">
+<img src="/2017/08/16/34/form1.png" title="Change Location">
 <p>This is the form value when you click search.</p>
-<img src="/2017/08/16/34/form2.png" alt="Search" title="Search">
+<img src="/2017/08/16/34/form2.png" title="Search">
 <p>So clearly the server side action is triggered by the value of “ICAction”, and some other values that action needs. </p>
 <p>After we know how it works, we can start design our crawler.</p>
 <h2 id="Design-Crawling-Logic"><a href="#Design-Crawling-Logic" class="headerlink" title="Design Crawling Logic"></a>Design Crawling Logic</h2><p>Choose <strong>Term</strong> and <strong>Campus Location</strong> </p>
