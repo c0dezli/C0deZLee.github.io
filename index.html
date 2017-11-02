@@ -437,6 +437,125 @@
             
               
                 
+                <a class="post-title-link" href="/2017/11/02/39/" itemprop="url">
+                  How to use Django to get real user ip behind Amazon Load Balancer with Nginx
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-11-02T00:42:08-04:00" content="11-02-2017">
+              11-02-2017
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring.</p>
+<p>I tried ipify.org’s servies at the beginning but the problem is a lot users have Adblock installed and Adblock somehow blocked ipify.org for some reason.</p>
+<p>So I spend some time figured out how to track the real user ip behind AWS load balancer using Nginx</p>
+<p>First you need to add the following code to your nginx config file, which can usually be found at <code>/etc/nginx/nginx.conf</code></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    ...</div><div class="line">    set_real_ip_from  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>;</div><div class="line">    real_ip_header X-Forwarded-For;</div><div class="line">    real_ip_recursive on;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/11/02/39/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/11/02/38/" itemprop="url">
                   How to update zsh to latest version on Amazon EC2 instance
                 </a>
@@ -619,27 +738,34 @@
 
       
         
-          
-            <blockquote>
-<p>By <a href="https://machinelearnings.co/text-classification-using-neural-networks-f5cd7b8765c6" target="_blank" rel="external">gk_</a></p>
+          <blockquote>
+<p>By <a href="https://machinelearnings.co/text-classification-using-neural-networks-f5cd7b8765c6" target="_blank" rel="external">gk_ from machinelearning.co</a></p>
 </blockquote>
-<p>Understanding how chatbots work is important. A fundamental piece of machinery inside a chat-bot is the text classifier. Let’s look at the inner workings of an artificial neural network (ANN) for text classification.</p>
-<p>multi-layer ANN<br>We’ll use 2 layers of neurons (1 hidden layer) and a “bag of words” approach to organizing our training data. Text classification comes in 3 flavors: pattern matching, algorithms, neural nets. While the algorithmic approach using Multinomial Naive Bayes is surprisingly effective, it suffers from 3 fundamental flaws:<br>the algorithm produces a score rather than a probability. We want a probability to ignore predictions below some threshold. This is akin to a ‘squelch’ dial on a VHF radio.<br>the algorithm ‘learns’ from examples of what is in a class, but not what isn’t. This learning of patterns of what does not belong to a class is often very important.<br>classes with disproportionately large training sets can create distorted classification scores, forcing the algorithm to adjust scores relative to class size. This is not ideal.<br>As with its ‘Naive’ counterpart, this classifier isn’t attempting to understand the meaning of a sentence, it’s trying to classify it. In fact so called “AI chat-bots” do not understand language, but that’s another story.<br>If you are new to artificial neural networks, here is how they work.<br>To understand an algorithm approach to classification, see here.<br>Let’s examine our text classifier one section at a time. We will take the following steps:<br>refer to libraries we need<br>provide training data<br>organize our data<br>iterate: code + test the results + tune the model<br>abstract<br>The code is here, we’re using iPython notebook which is a super productive way of working on data science projects. The code syntax is Python.<br>We begin by importing our natural language toolkit. We need a way to reliably tokenize sentences into words and a way to stem words.</p>
+<p>Understanding <a href="https://medium.com/@gk_/how-chat-bots-work-dfff656a35e2" target="_blank" rel="external">how chatbots work</a> is important. A fundamental piece of machinery inside a chat-bot is the text classifier. Let’s look at the inner workings of an artificial neural network (ANN) for text classification.</p>
+<p>We’ll use 2 layers of neurons (1 hidden layer) and a “bag of words” approach to organizing our training data. Text classification comes in 3 flavors: pattern matching, algorithms, neural nets. While the algorithmic approach using Multinomial Naive Bayes is surprisingly effective, it suffers from 3 fundamental flaws:</p>
+<ul>
+<li><strong>the algorithm produces a score</strong> rather than a probability. We want a probability to ignore predictions below some threshold. This is akin to a ‘squelch’ dial on a VHF radio.</li>
+<li>the algorithm ‘learns’ from examples of what is in a class, but <strong>not what isn’t</strong>. This learning of patterns of what does not belong to a class is often very important.</li>
+<li>classes with disproportionately large training sets can create distorted classification scores, forcing the algorithm to <strong>adjust scores relative to class size</strong>. This is not ideal.</li>
+</ul>
+<p>As with its ‘Naive’ counterpart, this classifier isn’t attempting to understand the meaning of a sentence, it’s trying to classify it. In fact so called “AI chat-bots” do not understand language, but that’s another story.</p>
+<p>Let’s examine our text classifier one section at a time. We will take the following steps:</p>
+<ol>
+<li>refer to libraries we need</li>
+<li>provide training data</li>
+<li>organize our data</li>
+<li>iterate: code + test the results + tune the model</li>
+<li>abstract</li>
+</ol>
+<p>The code is <a href="https://github.com/ugik/notebooks/blob/master/Neural_Network_Classifier.ipynb" target="_blank" rel="external">here</a>, we’re using iPython notebook which is a super productive way of working on data science projects. The code syntax is Python.<br>We begin by importing our natural language toolkit. We need a way to reliably tokenize sentences into words and a way to stem words.</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># use natural language toolkit</span></div><div class="line"><span class="keyword">import</span> nltk</div><div class="line"><span class="title">from</span> nltk.stem.lancaster <span class="keyword">import</span> LancasterStemmer</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="title">stemmer</span> = <span class="type">LancasterStemmer</span>()</div></pre></td></tr></table></figure>
 <p>And our training data, 12 sentences belonging to 3 classes (‘intents’).</p>
-<p>12 sentences in training data<br>We can now organize our data structures for documents, classes and words.</p>
-<p>12 documents<br>3 classes [‘greeting’, ‘goodbye’, ‘sandwich’]<br>26 unique stemmed words [‘sandwich’, ‘hav’, ‘a’, ‘how’, ‘for’, ‘ar’, ‘good’, ‘mak’, ‘me’, ‘it’, ‘day’, ‘soon’, ‘nic’, ‘lat’, ‘going’, ‘you’, ‘today’, ‘can’, ‘lunch’, ‘is’, “‘s”, ‘see’, ‘to’, ‘talk’, ‘yo’, ‘what’]<br>Notice that each word is stemmed and lower-cased. Stemming helps the machine equate words like “have” and “having”. We don’t care about case.</p>
-<p>Our training data is transformed into “bag of words” for each sentence.</p>
-<p>[‘how’, ‘ar’, ‘you’, ‘?’]<br>[0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]<br>[1, 0, 0]<br>The above step is a classic in text classification: each training sentence is reduced to an array of 0’s and 1’s against the array of unique words in the corpus.<br>[‘how’, ‘are’, ‘you’, ‘?’]<br>is stemmed:<br>[‘how’, ‘ar’, ‘you’, ‘?’]<br>then transformed to input: a 1 for each word in the bag (the ? is ignored)<br>[0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]<br>and output: the first class<br>[1, 0, 0]<br>Note that a sentence could be given multiple classes, or none.<br>Make sure the above makes sense and play with the code until you grok it.<br>Your first step in machine learning is to have clean data.</p>
-<p>Next we have our core functions for our 2-layer neural network.<br>If you are new to artificial neural networks, here is how they work.<br>We use numpy because we want our matrix multiplication to be fast.</p>
-<p>We use a sigmoid function to normalize values and its derivative to measure the error rate. Iterating and adjusting until our error rate is acceptably low.<br>Also below we implement our bag-of-words function, transforming an input sentence into an array of 0’s and 1’s. This matches precisely with our transform for training data, always crucial to get this right.</p>
-<p>And now we code our neural network training function to create synaptic weights. Don’t get too excited, this is mostly matrix multiplication — from middle-school math class.</p>
-<p>credit Andrew Trask <a href="https://iamtrask.github.io//2015/07/12/basic-python-network/" target="_blank" rel="external">https://iamtrask.github.io//2015/07/12/basic-python-network/</a><br>We are now ready to build our neural network model, we will save this as a json structure to represent our synaptic weights.<br>You should experiment with different ‘alpha’ (gradient descent parameter) and see how it affects the error rate. This parameter helps our error adjustment find the lowest error rate:<br>synapse_0 += alpha * synapse_0_weight_update</p>
-<p>We use 20 neurons in our hidden layer, you can adjust this easily. These parameters will vary depending on the dimensions and shape of your training data, tune them down to ~10^-3 as a reasonable error rate.</p>
-<p>Training with 20 neurons, alpha:0.1, dropout:False<br>Input matrix: 12x26    Output matrix: 1x3<br>delta after 10000 iterations:0.0062613597435<br>delta after 20000 iterations:0.00428296074919<br>delta after 30000 iterations:0.00343930779307<br>delta after 40000 iterations:0.00294648034566<br>delta after 50000 iterations:0.00261467859609<br>delta after 60000 iterations:0.00237219554105<br>delta after 70000 iterations:0.00218521899378<br>delta after 80000 iterations:0.00203547284581<br>delta after 90000 iterations:0.00191211022401<br>delta after 100000 iterations:0.00180823798397<br>saved synapses to: synapses.json<br>processing time: 6.501226902008057 seconds<br>The synapse.json file contains all of our synaptic weights, this is our model.</p>
-<p>This classify() function is all that’s needed for the classification once synapse weights have been calculated: ~15 lines of code.<br>The catch: if there’s a change to the training data our model will need to be re-calculated. For a very large dataset this could take a non-insignificant amount of time.<br>We can now generate the probability of a sentence belonging to one (or more) of our classes. This is super fast because it’s dot-product calculation in our previously defined think() function.</p>
-<p>sudo make me a sandwich<br> [[‘sandwich’, 0.99917711814437993]]<br>how are you today?<br> [[‘greeting’, 0.99864563257858363]]<br>talk to you tomorrow<br> [[‘goodbye’, 0.95647479275905511]]<br>who are you?<br> [[‘greeting’, 0.8964283843977312]]<br>make me some lunch<br> [[‘sandwich’, 0.95371924052636048]]<br>how was your lunch today?<br> [[‘greeting’, 0.99120883810944971], [‘sandwich’, 0.31626066870883057]]<br>Experiment with other sentences and different probabilities, you can then add training data and improve/expand the model. Notice the solid predictions with scant training data.<br>Some sentences will produce multiple predictions (above a threshold). You will need to establish the right threshold level for your application. Not all text classification scenarios are the same: some predictive situations require more confidence than others.<br>The last classification shows some internal details:<br>found in bag: good<br>found in bag: day<br>sentence: good day<br> bow: [0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]<br>good day<br> [[‘greeting’, 0.99664077655648697]]<br>Notice the bag-of-words (bow) for the sentence, 2 words matched our corpus. The neural-net also learns from the 0’s, the non-matching words.<br>A low-probability classification is easily shown by providing a sentence where ‘a’ (common word) is the only match, for example:<br>found in bag: a<br>sentence: a burrito!<br> bow: [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]<br>a burrito!<br> [[‘sandwich’, 0.61776860634647834]]<br>Here you have a fundamental piece of machinery for building a chat-bot, capable of handling a large # of classes (‘intents’) and suitable for classes with limited or extensive training data (‘patterns’). Adding one or more responses to an intent is trivial.<br>Enjoy!</p>
-
-          
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># <span class="number">3</span> classes of training data</div><div class="line">training_data = []</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"greeting"</span>, <span class="string">"sentence"</span>:<span class="string">"how are you?"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"greeting"</span>, <span class="string">"sentence"</span>:<span class="string">"how is your day?"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"greeting"</span>, <span class="string">"sentence"</span>:<span class="string">"good day"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"greeting"</span>, <span class="string">"sentence"</span>:<span class="string">"how is it going today?"</span>&#125;)</div><div class="line"></div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"goodbye"</span>, <span class="string">"sentence"</span>:<span class="string">"have a nice day"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"goodbye"</span>, <span class="string">"sentence"</span>:<span class="string">"see you later"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"goodbye"</span>, <span class="string">"sentence"</span>:<span class="string">"have a nice day"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"goodbye"</span>, <span class="string">"sentence"</span>:<span class="string">"talk to you soon"</span>&#125;)</div><div class="line"></div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"sandwich"</span>, <span class="string">"sentence"</span>:<span class="string">"make me a sandwich"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"sandwich"</span>, <span class="string">"sentence"</span>:<span class="string">"can you make a sandwich?"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"sandwich"</span>, <span class="string">"sentence"</span>:<span class="string">"having a sandwich today?"</span>&#125;)</div><div class="line">training_data.<span class="built_in">append</span>(&#123;<span class="string">"class"</span>:<span class="string">"sandwich"</span>, <span class="string">"sentence"</span>:<span class="string">"what's for lunch?"</span>&#125;)</div><div class="line"><span class="built_in">print</span> (<span class="string">"%s sentences in training data"</span> % <span class="built_in">len</span>(training_data))</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/08/20/37/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -785,126 +911,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/17/35/" itemprop="url">
-                  USEFUL GITHUB PATTERNS
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-08-17T14:36:43-04:00" content="08-17-2017">
-              08-17-2017
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>By <a href="https://blog.quickpeople.co.uk/2013/07/10/useful-github-patterns/" target="_blank" rel="external">Jake Benilov</a></p>
-</blockquote>
-<p>Both my day job and my open-source work involve constant use of git and GitHub. These are some useful patterns that I’ve found myself using regularly.</p>
-<p>(From this point onwards, I shall abbreviate a “pull request” as PR).</p>
-<h2 id="the-peel-off-PR"><a href="#the-peel-off-PR" class="headerlink" title="the peel-off PR"></a>the peel-off PR</h2><h3 id="when-do-I-use-it"><a href="#when-do-I-use-it" class="headerlink" title="when do I use it?"></a>when do I use it?</h3><p>I am working on a feature branch<br>I see some injustice in the code that I wish to fix right there and now, but which is unrelated to the feature I’m adding (eg a small bug, inconsistency or coding standards violation)<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/08/17/35/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -950,7 +956,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -967,7 +973,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

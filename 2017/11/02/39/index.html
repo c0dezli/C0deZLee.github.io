@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="c0dez, codez, codezlee, c0dezlee, blog" />
+  <meta name="keywords" content="EC2,Django,User IP," />
 
 
 
@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="Web Developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello | World">
-<meta property="og:url" content="http://codezlee.com/archives/2017/07/index.html">
+<meta name="description" content="A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring. I tried ipify.org’s servies at the beginning but th">
+<meta name="keywords" content="EC2,Django,User IP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use Django to get real user ip behind Amazon Load Balancer with Nginx">
+<meta property="og:url" content="http://codezlee.com/2017/11/02/39/index.html">
 <meta property="og:site_name" content="Hello | World">
-<meta property="og:description" content="Web Developer">
+<meta property="og:description" content="A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring. I tried ipify.org’s servies at the beginning but th">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-11-02T20:53:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello | World">
-<meta name="twitter:description" content="Web Developer">
+<meta name="twitter:title" content="How to use Django to get real user ip behind Amazon Load Balancer with Nginx">
+<meta name="twitter:description" content="A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring. I tried ipify.org’s servies at the beginning but th">
 
 
 
@@ -114,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://codezlee.com/archives/2017/07/"/>
+  <link rel="canonical" href="http://codezlee.com/2017/11/02/39/"/>
 
-  <title> Archive | Hello | World </title>
+  <title> How to use Django to get real user ip behind Amazon Load Balancer with Nginx | Hello | World </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -137,7 +139,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,65 +247,162 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 37 posts in total. Keep on posting.
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                How to use Django to get real user ip behind Amazon Load Balancer with Nginx
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-11-02T00:42:08-04:00" content="11-02-2017">
+              11-02-2017
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <p>A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring.</p>
+<p>I tried ipify.org’s servies at the beginning but the problem is a lot users have Adblock installed and Adblock somehow blocked ipify.org for some reason.</p>
+<p>So I spend some time figured out how to track the real user ip behind AWS load balancer using Nginx</p>
+<p>First you need to add the following code to your nginx config file, which can usually be found at <code>/etc/nginx/nginx.conf</code></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    ...</div><div class="line">    set_real_ip_from  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>;</div><div class="line">    real_ip_header X-Forwarded-For;</div><div class="line">    real_ip_recursive on;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>Since all the traffic to backend is from AWS load balancer, so I can safely assume I can trust all the connections by put <code>set_real_ip_from  0.0.0.0/0;</code></p>
+<p>Then I have this function on backend to extract user ip form request header</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">def <span class="title">get_client_ip</span>(<span class="params">request</span>):</span></div><div class="line"><span class="function">	x_forwarded_for </span>= request.META.<span class="keyword">get</span>(<span class="string">'HTTP_X_FORWARDED_FOR'</span>)</div><div class="line">	<span class="keyword">if</span> x_forwarded_for:</div><div class="line">		ip = x_forwarded_for.split(<span class="string">','</span>)[<span class="number">0</span>]</div><div class="line">	<span class="keyword">else</span>:</div><div class="line">		ip = request.META.<span class="keyword">get</span>(<span class="string">'REMOTE_ADDR'</span>)</div><div class="line">	<span class="keyword">return</span> ip</div></pre></td></tr></table></figure>
+<p>And finally I used GeoIP2 to recongnize the region of IP and send user a notification email if user loged in from a differnt ip.</p>
+<p>Example:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from django<span class="selector-class">.contrib</span><span class="selector-class">.gis</span><span class="selector-class">.geoip2</span> import GeoIP2</div><div class="line"></div><div class="line">g = GeoIP2()</div><div class="line">city = g.city(ip)</div><div class="line">location = city.get(<span class="string">'city'</span>) + <span class="string">', '</span> + city.get(<span class="string">'country_name'</span>)</div></pre></td></tr></table></figure>
+<p>The full documentation can be found at<br><a href="https://docs.djangoproject.com/en/1.11/ref/contrib/gis/geoip/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.11/ref/contrib/gis/geoip/</a></p>
+<p>Notice: To use GeoIP, you have to download the MaxMind DB file from<br><a href="https://dev.maxmind.com/geoip/geoip2/geolite2/" target="_blank" rel="external">https://dev.maxmind.com/geoip/geoip2/geolite2/</a><br>and extract it to your project directory and set up <code>GEOIP_PATH</code> variable in django settings.py</p>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/EC2/" rel="tag">#EC2</a>
+          
+            <a href="/tags/Django/" rel="tag">#Django</a>
+          
+            <a href="/tags/User-IP/" rel="tag">#User IP</a>
+          
         </div>
       
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/02/38/" rel="next" title="How to update zsh to latest version on Amazon EC2 instance">
+                <i class="fa fa-chevron-left"></i> How to update zsh to latest version on Amazon EC2 instance
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/01/31/" rel="prev" title="The Plan For The Next Few Months Of 2017">
+                The Plan For The Next Few Months Of 2017 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/23/30/" itemprop="url">
-              
-                <span itemprop="name">没有人是一座孤岛 为严肃八卦默哀</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-22T23:24:20-04:00"
-              content="07-22-2017" >
-          07-22
-        </time>
-      </div>
-
-    </header>
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -311,6 +410,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -330,8 +433,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -419,6 +531,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -522,11 +645,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
