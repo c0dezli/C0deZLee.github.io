@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="EC2,Django,User IP," />
+  <meta name="keywords" content="c0dez, codez, codezlee, c0dezlee, blog" />
 
 
 
@@ -84,18 +84,17 @@
 
 
 
-<meta name="description" content="A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring. I tried ipify.org’s servies at the beginning but th">
-<meta name="keywords" content="EC2,Django,User IP">
+<meta name="description" content="Learn to keep positive and happy Built some habits  Run every day  Sleep early and get up early  Explore some fancy staff every couple days  Meet a new friend every week  Learn to play guitar and be a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to use Django to get real user ip behind Amazon Load Balancer with Nginx">
-<meta property="og:url" content="http://codezlee.com/2017/11/02/39/index.html">
+<meta property="og:title" content="The Plan For The Next Few Months Of 2017">
+<meta property="og:url" content="http://codezlee.com/2017/01/01/31/index.html">
 <meta property="og:site_name" content="Hello | World">
-<meta property="og:description" content="A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring. I tried ipify.org’s servies at the beginning but th">
+<meta property="og:description" content="Learn to keep positive and happy Built some habits  Run every day  Sleep early and get up early  Explore some fancy staff every couple days  Meet a new friend every week  Learn to play guitar and be a">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-02T20:53:30.000Z">
+<meta property="og:updated_time" content="2017-11-02T21:58:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to use Django to get real user ip behind Amazon Load Balancer with Nginx">
-<meta name="twitter:description" content="A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring. I tried ipify.org’s servies at the beginning but th">
+<meta name="twitter:title" content="The Plan For The Next Few Months Of 2017">
+<meta name="twitter:description" content="Learn to keep positive and happy Built some habits  Run every day  Sleep early and get up early  Explore some fancy staff every couple days  Meet a new friend every week  Learn to play guitar and be a">
 
 
 
@@ -116,9 +115,9 @@
 
 
 
-  <link rel="canonical" href="http://codezlee.com/2017/11/02/39/"/>
+  <link rel="canonical" href="http://codezlee.com/2017/01/01/31/"/>
 
-  <title> How to use Django to get real user ip behind Amazon Load Balancer with Nginx | Hello | World </title>
+  <title> The Plan For The Next Few Months Of 2017 | Hello | World </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -268,7 +267,7 @@
             
             
               
-                How to use Django to get real user ip behind Amazon Load Balancer with Nginx
+                The Plan For The Next Few Months Of 2017
               
             
           </h1>
@@ -280,8 +279,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-11-02T04:42:08+00:00" content="11-02-2017">
-              11-02-2017
+            <time itemprop="dateCreated" datetime="2017-01-01T00:00:00-05:00" content="01-01-2017">
+              01-01-2017
             </time>
           </span>
 
@@ -294,8 +293,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
+                  <a href="/categories/Other/" itemprop="url" rel="index">
+                    <span itemprop="name">Other</span>
                   </a>
                 </span>
 
@@ -327,20 +326,61 @@
       
 
       
-        <p>A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring.</p>
-<p>I tried ipify.org’s servies at the beginning but the problem is a lot users have Adblock installed and Adblock somehow blocked ipify.org for some reason.</p>
-<p>So I spend some time figured out how to track the real user ip behind AWS load balancer using Nginx</p>
-<p>First you need to add the following code to your nginx config file, which can usually be found at <code>/etc/nginx/nginx.conf</code></p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    ...</div><div class="line">    set_real_ip_from  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>;</div><div class="line">    real_ip_header X-Forwarded-For;</div><div class="line">    real_ip_recursive on;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>Since all the traffic to backend is from AWS load balancer, so I can safely assume I can trust all the connections by put <code>set_real_ip_from  0.0.0.0/0;</code></p>
-<p>Then I have this function on backend to extract user ip form request header</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">def <span class="title">get_client_ip</span>(<span class="params">request</span>):</span></div><div class="line"><span class="function">	x_forwarded_for </span>= request.META.<span class="keyword">get</span>(<span class="string">'HTTP_X_FORWARDED_FOR'</span>)</div><div class="line">	<span class="keyword">if</span> x_forwarded_for:</div><div class="line">		ip = x_forwarded_for.split(<span class="string">','</span>)[<span class="number">0</span>]</div><div class="line">	<span class="keyword">else</span>:</div><div class="line">		ip = request.META.<span class="keyword">get</span>(<span class="string">'REMOTE_ADDR'</span>)</div><div class="line">	<span class="keyword">return</span> ip</div></pre></td></tr></table></figure>
-<p>And finally I used GeoIP2 to recongnize the region of IP and send user a notification email if user loged in from a differnt ip.</p>
-<p>Example:</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from django<span class="selector-class">.contrib</span><span class="selector-class">.gis</span><span class="selector-class">.geoip2</span> import GeoIP2</div><div class="line"></div><div class="line">g = GeoIP2()</div><div class="line">city = g.city(ip)</div><div class="line">location = city.get(<span class="string">'city'</span>) + <span class="string">', '</span> + city.get(<span class="string">'country_name'</span>)</div></pre></td></tr></table></figure>
-<p>The full documentation can be found at<br><a href="https://docs.djangoproject.com/en/1.11/ref/contrib/gis/geoip/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.11/ref/contrib/gis/geoip/</a></p>
-<p>Notice: To use GeoIP, you have to download the MaxMind DB file from<br><a href="https://dev.maxmind.com/geoip/geoip2/geolite2/" target="_blank" rel="external">https://dev.maxmind.com/geoip/geoip2/geolite2/</a><br>and extract it to your project directory and set up <code>GEOIP_PATH</code> variable in django settings.py</p>
+        <h3 id="Learn-to-keep-positive-and-happy"><a href="#Learn-to-keep-positive-and-happy" class="headerlink" title="Learn to keep positive and happy"></a><strong>Learn to keep positive and happy</strong></h3><ol>
+<li>Built some habits<ul>
+<li><input type="checkbox" disabled> Run every day</li>
+<li><input type="checkbox" disabled> Sleep early and get up early</li>
+<li><input type="checkbox" disabled> Explore some fancy staff every couple days</li>
+<li><input type="checkbox" disabled> Meet a new friend every week</li>
+<li><input type="checkbox" disabled> Learn to play guitar and be able to play 2 - 3 urban folk </li>
+</ul>
+</li>
+<li>Reading<ul>
+<li><input type="checkbox" disabled> List a reading list and follow it</li>
+</ul>
+</li>
+</ol>
+<h3 id="Become-a-better-programmer"><a href="#Become-a-better-programmer" class="headerlink" title="Become a better programmer"></a><strong>Become a better programmer</strong></h3><ol>
+<li>Have a deeper understanding of web developing<ul>
+<li><input type="checkbox" disabled> Take a look Django source code</li>
+<li><input type="checkbox" disabled> Write a simple web framework by myself</li>
+</ul>
+</li>
+<li>Have a deeper understanding of Python<ul>
+<li><input type="checkbox" disabled> Python subprocess/multiprocess/threading</li>
+<li><input type="checkbox" disabled> Python advanced skills</li>
+<li><input type="checkbox" disabled> Python interpreter and CPython detail</li>
+</ul>
+</li>
+<li>Learn new tools / keep practice on unfamiliar tools<ul>
+<li><input type="checkbox" disabled> Pandas</li>
+<li><input type="checkbox" disabled> TensorFlow</li>
+<li><input type="checkbox" disabled> Hadoop</li>
+<li><input type="checkbox" disabled> PhantomJS (A spider that can resolve JS)</li>
+</ul>
+</li>
+<li>Take some useful courses from Coursera (ML, AI, etc..)<ul>
+<li><input type="checkbox" disabled> <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning by Stanford</a> (Ongoing)</li>
+<li><input type="checkbox" disabled> <a href="https://www.coursera.org/learn/neural-networks-deep-learning/" target="_blank" rel="external">Neural Networks and Deep Learning By DeepLearning.ai</a> (Ongoing)</li>
+<li><input type="checkbox" disabled> <a href="https://www.coursera.org/specializations/algorithms/" target="_blank" rel="external">Algorithms by Stanford</a></li>
+<li><input type="checkbox" disabled> <a href="https://www.coursera.org/learn/learning-how-to-learn/" target="_blank" rel="external">Learning How to Learn: Powerful mental tools to help you master tough subjects</a></li>
+</ul>
+</li>
+<li>One new tech blog a week<ul>
+<li><input type="checkbox" disabled checked> Week 1 @ Aug 15th </li>
+</ul>
+</li>
+</ol>
+<h3 id="Gain-seed-users-of-ClassGotcha"><a href="#Gain-seed-users-of-ClassGotcha" class="headerlink" title="Gain seed users of ClassGotcha"></a><strong>Gain seed users of ClassGotcha</strong></h3><ul>
+<li><input type="checkbox" disabled> Fix ClassGotcha Bugs </li>
+<li><input type="checkbox" disabled> Develop ClassGotcha Calendar Algorithm</li>
+<li><input type="checkbox" disabled> Buy Facebook Ads</li>
+</ul>
+<h3 id="Prepare-for-the-master-application"><a href="#Prepare-for-the-master-application" class="headerlink" title="Prepare for the master application"></a><strong>Prepare for the master application</strong></h3><ul>
+<li><input type="checkbox" disabled> Get the intern opportunity at Microsoft Research Asia</li>
+<li><input type="checkbox" disabled> Study for GRE</li>
+<li><input type="checkbox" disabled> Polish my Resume and Linkedin</li>
+</ul>
 
       
     </div>
@@ -361,28 +401,22 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/EC2/" rel="tag">#EC2</a>
-          
-            <a href="/tags/Django/" rel="tag">#Django</a>
-          
-            <a href="/tags/User-IP/" rel="tag">#User IP</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/02/38/" rel="next" title="How to update zsh to latest version on Amazon EC2 instance">
-                <i class="fa fa-chevron-left"></i> How to update zsh to latest version on Amazon EC2 instance
+              <a href="/2016/07/27/28/" rel="next" title="AppleScript Based Timer to Awake Shanbay.com">
+                <i class="fa fa-chevron-left"></i> AppleScript Based Timer to Awake Shanbay.com
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/23/30/" rel="prev" title="没有人是一座孤岛 为严肃八卦默哀">
+                没有人是一座孤岛 为严肃八卦默哀 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -534,7 +568,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Learn-to-keep-positive-and-happy"><span class="nav-number">1.</span> <span class="nav-text">Learn to keep positive and happy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Become-a-better-programmer"><span class="nav-number">2.</span> <span class="nav-text">Become a better programmer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gain-seed-users-of-ClassGotcha"><span class="nav-number">3.</span> <span class="nav-text">Gain seed users of ClassGotcha</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prepare-for-the-master-application"><span class="nav-number">4.</span> <span class="nav-text">Prepare for the master application</span></a></li></ol></div>
             
           </div>
         </section>
