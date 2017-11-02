@@ -1,0 +1,681 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,ANN," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="By gk_  Understanding how chatbots work is important. A fundamental piece of machinery inside a chat-bot is the text classifier. Let’s look at the inner workings of an artificial neural network (ANN)">
+<meta name="keywords" content="Python,ANN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Text Classification using Neural Networks">
+<meta property="og:url" content="http://codezlee.com/2017/08/20/37/index.html">
+<meta property="og:site_name" content="Hello | World">
+<meta property="og:description" content="By gk_  Understanding how chatbots work is important. A fundamental piece of machinery inside a chat-bot is the text classifier. Let’s look at the inner workings of an artificial neural network (ANN)">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-11-02T00:41:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Text Classification using Neural Networks">
+<meta name="twitter:description" content="By gk_  Understanding how chatbots work is important. A fundamental piece of machinery inside a chat-bot is the text classifier. Let’s look at the inner workings of an artificial neural network (ANN)">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codezlee.com/2017/08/20/37/"/>
+
+  <title> Text Classification using Neural Networks | Hello | World </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hello | World</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Everyday is a brand new day.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text-o"></i> <br />
+            
+            Resume
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Text Classification using Neural Networks
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-08-19T21:31:27-04:00" content="08-19-2017">
+              08-19-2017
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>By <a href="https://machinelearnings.co/text-classification-using-neural-networks-f5cd7b8765c6" target="_blank" rel="external">gk_</a></p>
+</blockquote>
+<p>Understanding how chatbots work is important. A fundamental piece of machinery inside a chat-bot is the text classifier. Let’s look at the inner workings of an artificial neural network (ANN) for text classification.</p>
+<p>multi-layer ANN<br>We’ll use 2 layers of neurons (1 hidden layer) and a “bag of words” approach to organizing our training data. Text classification comes in 3 flavors: pattern matching, algorithms, neural nets. While the algorithmic approach using Multinomial Naive Bayes is surprisingly effective, it suffers from 3 fundamental flaws:<br>the algorithm produces a score rather than a probability. We want a probability to ignore predictions below some threshold. This is akin to a ‘squelch’ dial on a VHF radio.<br>the algorithm ‘learns’ from examples of what is in a class, but not what isn’t. This learning of patterns of what does not belong to a class is often very important.<br>classes with disproportionately large training sets can create distorted classification scores, forcing the algorithm to adjust scores relative to class size. This is not ideal.<br>As with its ‘Naive’ counterpart, this classifier isn’t attempting to understand the meaning of a sentence, it’s trying to classify it. In fact so called “AI chat-bots” do not understand language, but that’s another story.<br>If you are new to artificial neural networks, here is how they work.<br>To understand an algorithm approach to classification, see here.<br>Let’s examine our text classifier one section at a time. We will take the following steps:<br>refer to libraries we need<br>provide training data<br>organize our data<br>iterate: code + test the results + tune the model<br>abstract<br>The code is here, we’re using iPython notebook which is a super productive way of working on data science projects. The code syntax is Python.<br>We begin by importing our natural language toolkit. We need a way to reliably tokenize sentences into words and a way to stem words.</p>
+<p>And our training data, 12 sentences belonging to 3 classes (‘intents’).</p>
+<p>12 sentences in training data<br>We can now organize our data structures for documents, classes and words.</p>
+<p>12 documents<br>3 classes [‘greeting’, ‘goodbye’, ‘sandwich’]<br>26 unique stemmed words [‘sandwich’, ‘hav’, ‘a’, ‘how’, ‘for’, ‘ar’, ‘good’, ‘mak’, ‘me’, ‘it’, ‘day’, ‘soon’, ‘nic’, ‘lat’, ‘going’, ‘you’, ‘today’, ‘can’, ‘lunch’, ‘is’, “‘s”, ‘see’, ‘to’, ‘talk’, ‘yo’, ‘what’]<br>Notice that each word is stemmed and lower-cased. Stemming helps the machine equate words like “have” and “having”. We don’t care about case.</p>
+<p>Our training data is transformed into “bag of words” for each sentence.</p>
+<p>[‘how’, ‘ar’, ‘you’, ‘?’]<br>[0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]<br>[1, 0, 0]<br>The above step is a classic in text classification: each training sentence is reduced to an array of 0’s and 1’s against the array of unique words in the corpus.<br>[‘how’, ‘are’, ‘you’, ‘?’]<br>is stemmed:<br>[‘how’, ‘ar’, ‘you’, ‘?’]<br>then transformed to input: a 1 for each word in the bag (the ? is ignored)<br>[0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]<br>and output: the first class<br>[1, 0, 0]<br>Note that a sentence could be given multiple classes, or none.<br>Make sure the above makes sense and play with the code until you grok it.<br>Your first step in machine learning is to have clean data.</p>
+<p>Next we have our core functions for our 2-layer neural network.<br>If you are new to artificial neural networks, here is how they work.<br>We use numpy because we want our matrix multiplication to be fast.</p>
+<p>We use a sigmoid function to normalize values and its derivative to measure the error rate. Iterating and adjusting until our error rate is acceptably low.<br>Also below we implement our bag-of-words function, transforming an input sentence into an array of 0’s and 1’s. This matches precisely with our transform for training data, always crucial to get this right.</p>
+<p>And now we code our neural network training function to create synaptic weights. Don’t get too excited, this is mostly matrix multiplication — from middle-school math class.</p>
+<p>credit Andrew Trask <a href="https://iamtrask.github.io//2015/07/12/basic-python-network/" target="_blank" rel="external">https://iamtrask.github.io//2015/07/12/basic-python-network/</a><br>We are now ready to build our neural network model, we will save this as a json structure to represent our synaptic weights.<br>You should experiment with different ‘alpha’ (gradient descent parameter) and see how it affects the error rate. This parameter helps our error adjustment find the lowest error rate:<br>synapse_0 += alpha * synapse_0_weight_update</p>
+<p>We use 20 neurons in our hidden layer, you can adjust this easily. These parameters will vary depending on the dimensions and shape of your training data, tune them down to ~10^-3 as a reasonable error rate.</p>
+<p>Training with 20 neurons, alpha:0.1, dropout:False<br>Input matrix: 12x26    Output matrix: 1x3<br>delta after 10000 iterations:0.0062613597435<br>delta after 20000 iterations:0.00428296074919<br>delta after 30000 iterations:0.00343930779307<br>delta after 40000 iterations:0.00294648034566<br>delta after 50000 iterations:0.00261467859609<br>delta after 60000 iterations:0.00237219554105<br>delta after 70000 iterations:0.00218521899378<br>delta after 80000 iterations:0.00203547284581<br>delta after 90000 iterations:0.00191211022401<br>delta after 100000 iterations:0.00180823798397<br>saved synapses to: synapses.json<br>processing time: 6.501226902008057 seconds<br>The synapse.json file contains all of our synaptic weights, this is our model.</p>
+<p>This classify() function is all that’s needed for the classification once synapse weights have been calculated: ~15 lines of code.<br>The catch: if there’s a change to the training data our model will need to be re-calculated. For a very large dataset this could take a non-insignificant amount of time.<br>We can now generate the probability of a sentence belonging to one (or more) of our classes. This is super fast because it’s dot-product calculation in our previously defined think() function.</p>
+<p>sudo make me a sandwich<br> [[‘sandwich’, 0.99917711814437993]]<br>how are you today?<br> [[‘greeting’, 0.99864563257858363]]<br>talk to you tomorrow<br> [[‘goodbye’, 0.95647479275905511]]<br>who are you?<br> [[‘greeting’, 0.8964283843977312]]<br>make me some lunch<br> [[‘sandwich’, 0.95371924052636048]]<br>how was your lunch today?<br> [[‘greeting’, 0.99120883810944971], [‘sandwich’, 0.31626066870883057]]<br>Experiment with other sentences and different probabilities, you can then add training data and improve/expand the model. Notice the solid predictions with scant training data.<br>Some sentences will produce multiple predictions (above a threshold). You will need to establish the right threshold level for your application. Not all text classification scenarios are the same: some predictive situations require more confidence than others.<br>The last classification shows some internal details:<br>found in bag: good<br>found in bag: day<br>sentence: good day<br> bow: [0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]<br>good day<br> [[‘greeting’, 0.99664077655648697]]<br>Notice the bag-of-words (bow) for the sentence, 2 words matched our corpus. The neural-net also learns from the 0’s, the non-matching words.<br>A low-probability classification is easily shown by providing a sentence where ‘a’ (common word) is the only match, for example:<br>found in bag: a<br>sentence: a burrito!<br> bow: [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]<br>a burrito!<br> [[‘sandwich’, 0.61776860634647834]]<br>Here you have a fundamental piece of machinery for building a chat-bot, capable of handling a large # of classes (‘intents’) and suitable for classes with limited or extensive training data (‘patterns’). Adding one or more responses to an intent is trivial.<br>Enjoy!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/ANN/" rel="tag">#ANN</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/17/36/" rel="next" title="Python Decorator 基础">
+                <i class="fa fa-chevron-left"></i> Python Decorator 基础
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/38/" rel="prev" title="How to update zsh to latest version on Amazon EC2 instance">
+                How to update zsh to latest version on Amazon EC2 instance <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="C0deZLee" />
+          <p class="site-author-name" itemprop="name">C0deZLee</p>
+          <p class="site-description motion-element" itemprop="description">Web Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/c0dezlee" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:c0dezlee@gmail.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/c0dez" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://stackoverflow.com/users/4985648/c0dez" target="_blank" title="StackOverFlow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                  StackOverFlow
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C0deZLee</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

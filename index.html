@@ -437,6 +437,256 @@
             
               
                 
+                <a class="post-title-link" href="/2017/11/02/38/" itemprop="url">
+                  How to update zsh to latest version on Amazon EC2 instance
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-11-01T21:31:27-04:00" content="11-01-2017">
+              11-01-2017
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>The zsh version Amazon EC2 using is 5.0.2 which is not compatible with a theme I want to use, and I figured out how to use update it to the latest version. Here is how.</p>
+<p>Step 1.<br>Download the latest zsh from sourceforge</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget https:<span class="regexp">//</span>sourceforge.net<span class="regexp">/projects/</span>zsh<span class="regexp">/files/</span>zsh<span class="regexp">/5.4.2/</span>zsh-<span class="number">5.4</span>.<span class="number">2</span>.tar.xz<span class="regexp">/download</span></div></pre></td></tr></table></figure>
+<p>Step 2.<br>Unzip the package</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> tar xvfJ download</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> zsh-5.4.2</span></div></pre></td></tr></table></figure>
+<p>Step 3.<br>Build</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./configure &amp;&amp; <span class="built_in">make</span> &amp;&amp; sudo <span class="built_in">make</span> install</div></pre></td></tr></table></figure>
+<p>Step 4.<br>Check the version and it should be updated</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ zsh --version</div><div class="line">zsh <span class="number">5.4</span><span class="number">.2</span> (x86_64-unknown-linux-gnu)</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/20/37/" itemprop="url">
+                  Text Classification using Neural Networks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-08-19T21:31:27-04:00" content="08-19-2017">
+              08-19-2017
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>By <a href="https://machinelearnings.co/text-classification-using-neural-networks-f5cd7b8765c6" target="_blank" rel="external">gk_</a></p>
+</blockquote>
+<p>Understanding how chatbots work is important. A fundamental piece of machinery inside a chat-bot is the text classifier. Let’s look at the inner workings of an artificial neural network (ANN) for text classification.</p>
+<p>multi-layer ANN<br>We’ll use 2 layers of neurons (1 hidden layer) and a “bag of words” approach to organizing our training data. Text classification comes in 3 flavors: pattern matching, algorithms, neural nets. While the algorithmic approach using Multinomial Naive Bayes is surprisingly effective, it suffers from 3 fundamental flaws:<br>the algorithm produces a score rather than a probability. We want a probability to ignore predictions below some threshold. This is akin to a ‘squelch’ dial on a VHF radio.<br>the algorithm ‘learns’ from examples of what is in a class, but not what isn’t. This learning of patterns of what does not belong to a class is often very important.<br>classes with disproportionately large training sets can create distorted classification scores, forcing the algorithm to adjust scores relative to class size. This is not ideal.<br>As with its ‘Naive’ counterpart, this classifier isn’t attempting to understand the meaning of a sentence, it’s trying to classify it. In fact so called “AI chat-bots” do not understand language, but that’s another story.<br>If you are new to artificial neural networks, here is how they work.<br>To understand an algorithm approach to classification, see here.<br>Let’s examine our text classifier one section at a time. We will take the following steps:<br>refer to libraries we need<br>provide training data<br>organize our data<br>iterate: code + test the results + tune the model<br>abstract<br>The code is here, we’re using iPython notebook which is a super productive way of working on data science projects. The code syntax is Python.<br>We begin by importing our natural language toolkit. We need a way to reliably tokenize sentences into words and a way to stem words.</p>
+<p>And our training data, 12 sentences belonging to 3 classes (‘intents’).</p>
+<p>12 sentences in training data<br>We can now organize our data structures for documents, classes and words.</p>
+<p>12 documents<br>3 classes [‘greeting’, ‘goodbye’, ‘sandwich’]<br>26 unique stemmed words [‘sandwich’, ‘hav’, ‘a’, ‘how’, ‘for’, ‘ar’, ‘good’, ‘mak’, ‘me’, ‘it’, ‘day’, ‘soon’, ‘nic’, ‘lat’, ‘going’, ‘you’, ‘today’, ‘can’, ‘lunch’, ‘is’, “‘s”, ‘see’, ‘to’, ‘talk’, ‘yo’, ‘what’]<br>Notice that each word is stemmed and lower-cased. Stemming helps the machine equate words like “have” and “having”. We don’t care about case.</p>
+<p>Our training data is transformed into “bag of words” for each sentence.</p>
+<p>[‘how’, ‘ar’, ‘you’, ‘?’]<br>[0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]<br>[1, 0, 0]<br>The above step is a classic in text classification: each training sentence is reduced to an array of 0’s and 1’s against the array of unique words in the corpus.<br>[‘how’, ‘are’, ‘you’, ‘?’]<br>is stemmed:<br>[‘how’, ‘ar’, ‘you’, ‘?’]<br>then transformed to input: a 1 for each word in the bag (the ? is ignored)<br>[0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]<br>and output: the first class<br>[1, 0, 0]<br>Note that a sentence could be given multiple classes, or none.<br>Make sure the above makes sense and play with the code until you grok it.<br>Your first step in machine learning is to have clean data.</p>
+<p>Next we have our core functions for our 2-layer neural network.<br>If you are new to artificial neural networks, here is how they work.<br>We use numpy because we want our matrix multiplication to be fast.</p>
+<p>We use a sigmoid function to normalize values and its derivative to measure the error rate. Iterating and adjusting until our error rate is acceptably low.<br>Also below we implement our bag-of-words function, transforming an input sentence into an array of 0’s and 1’s. This matches precisely with our transform for training data, always crucial to get this right.</p>
+<p>And now we code our neural network training function to create synaptic weights. Don’t get too excited, this is mostly matrix multiplication — from middle-school math class.</p>
+<p>credit Andrew Trask <a href="https://iamtrask.github.io//2015/07/12/basic-python-network/" target="_blank" rel="external">https://iamtrask.github.io//2015/07/12/basic-python-network/</a><br>We are now ready to build our neural network model, we will save this as a json structure to represent our synaptic weights.<br>You should experiment with different ‘alpha’ (gradient descent parameter) and see how it affects the error rate. This parameter helps our error adjustment find the lowest error rate:<br>synapse_0 += alpha * synapse_0_weight_update</p>
+<p>We use 20 neurons in our hidden layer, you can adjust this easily. These parameters will vary depending on the dimensions and shape of your training data, tune them down to ~10^-3 as a reasonable error rate.</p>
+<p>Training with 20 neurons, alpha:0.1, dropout:False<br>Input matrix: 12x26    Output matrix: 1x3<br>delta after 10000 iterations:0.0062613597435<br>delta after 20000 iterations:0.00428296074919<br>delta after 30000 iterations:0.00343930779307<br>delta after 40000 iterations:0.00294648034566<br>delta after 50000 iterations:0.00261467859609<br>delta after 60000 iterations:0.00237219554105<br>delta after 70000 iterations:0.00218521899378<br>delta after 80000 iterations:0.00203547284581<br>delta after 90000 iterations:0.00191211022401<br>delta after 100000 iterations:0.00180823798397<br>saved synapses to: synapses.json<br>processing time: 6.501226902008057 seconds<br>The synapse.json file contains all of our synaptic weights, this is our model.</p>
+<p>This classify() function is all that’s needed for the classification once synapse weights have been calculated: ~15 lines of code.<br>The catch: if there’s a change to the training data our model will need to be re-calculated. For a very large dataset this could take a non-insignificant amount of time.<br>We can now generate the probability of a sentence belonging to one (or more) of our classes. This is super fast because it’s dot-product calculation in our previously defined think() function.</p>
+<p>sudo make me a sandwich<br> [[‘sandwich’, 0.99917711814437993]]<br>how are you today?<br> [[‘greeting’, 0.99864563257858363]]<br>talk to you tomorrow<br> [[‘goodbye’, 0.95647479275905511]]<br>who are you?<br> [[‘greeting’, 0.8964283843977312]]<br>make me some lunch<br> [[‘sandwich’, 0.95371924052636048]]<br>how was your lunch today?<br> [[‘greeting’, 0.99120883810944971], [‘sandwich’, 0.31626066870883057]]<br>Experiment with other sentences and different probabilities, you can then add training data and improve/expand the model. Notice the solid predictions with scant training data.<br>Some sentences will produce multiple predictions (above a threshold). You will need to establish the right threshold level for your application. Not all text classification scenarios are the same: some predictive situations require more confidence than others.<br>The last classification shows some internal details:<br>found in bag: good<br>found in bag: day<br>sentence: good day<br> bow: [0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]<br>good day<br> [[‘greeting’, 0.99664077655648697]]<br>Notice the bag-of-words (bow) for the sentence, 2 words matched our corpus. The neural-net also learns from the 0’s, the non-matching words.<br>A low-probability classification is easily shown by providing a sentence where ‘a’ (common word) is the only match, for example:<br>found in bag: a<br>sentence: a burrito!<br> bow: [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]<br>a burrito!<br> [[‘sandwich’, 0.61776860634647834]]<br>Here you have a fundamental piece of machinery for building a chat-bot, capable of handling a large # of classes (‘intents’) and suitable for classes with limited or extensive training data (‘patterns’). Adding one or more responses to an intent is trivial.<br>Enjoy!</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/08/17/36/" itemprop="url">
                   Python Decorator 基础
                 </a>
@@ -655,252 +905,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/16/34/" itemprop="url">
-                  A Customized Course Searching Website for Penn State - Part I (CourseSpider)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-08-16T01:40:53-04:00" content="08-16-2017">
-              08-16-2017
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>First of all, LionPath sucks.</p>
-<p>It’s a disaster, especially when you are trying to use it to search course, so I decide to build a customized course searching website for Penn State students.</p>
-<p>And in order to do that, I need to crawl down all the course info from LionPath.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/08/16/34/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/14/33/" itemprop="url">
-                  2017下半年书单列表
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-08-14T01:29:51-04:00" content="08-14-2017">
-              08-14-2017
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂文/" itemprop="url" rel="index">
-                    <span itemprop="name">杂文</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>筛选自公众号 <strong>一晌贪欢</strong> 的<a href="https://mp.weixin.qq.com/s?__biz=MzAxNDY1Mzk5Mw==&amp;mid=2650012348&amp;idx=1" target="_blank" rel="external">微信推送</a></p>
-</blockquote>
-<h2 id="社科类"><a href="#社科类" class="headerlink" title="社科类"></a>社科类</h2><ol>
-<li>《狂热分子》 - 有助于理解社会上大多数群体行为以及我们为什么那么喜欢群体运动</li>
-<li>《中国文化的深层结构》 - 《巨婴国》的高级讲法</li>
-<li>《沉默的大多数》- 王小波</li>
-<li><input type="checkbox" disabled checked>《黄金时代》- 王小波</li>
-<li>《乡土中国》- 农村运作的逻辑</li>
-<li>《娱乐至死》 - 媒介之惑
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/08/14/33/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -941,7 +950,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -958,7 +967,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
