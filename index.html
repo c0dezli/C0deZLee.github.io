@@ -262,7 +262,7 @@
               
                 
                 <a class="post-title-link" href="/2017/11/02/39/" itemprop="url">
-                  How to use Django to get real user ip behind Amazon Load Balancer with Nginx
+                  How to use Django to get real user IP behind Amazon Load Balancer with Nginx
                 </a>
               
             
@@ -323,10 +323,10 @@
 
       
         
-          <p>A thing keeps borthing me recently is how to log user ip in django since our user baed is increased to an amount that need more detailed monitoring.</p>
-<p>I tried ipify.org’s servies at the beginning but the problem is a lot users have Adblock installed and Adblock somehow blocked ipify.org for some reason.</p>
-<p>So I spend some time figured out how to track the real user ip behind AWS load balancer using Nginx</p>
-<p>First you need to add the following code to your nginx config file, which can usually be found at <code>/etc/nginx/nginx.conf</code></p>
+          <p>One thing keeps borthering me recently is how to log user IP in django since our user base is increasing to an amount that needs more detailed monitoring.</p>
+<p>I tried ipify.org’s servies at the beginning but the problem is that a lot users have Adblock installed and Adblock somehow blocked ipify.org for some reasons.</p>
+<p>So I spent some time figuring out how to track the real user IP behind AWS load balancer using Nginx</p>
+<p>First you need to add the following code to your nginx config file, which can be found at <code>/etc/nginx/nginx.conf</code></p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    ...</div><div class="line">    set_real_ip_from  <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span>;</div><div class="line">    real_ip_header X-Forwarded-For;</div><div class="line">    real_ip_recursive on;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/11/02/39/#more" rel="contents">
